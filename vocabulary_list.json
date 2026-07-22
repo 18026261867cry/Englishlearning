@@ -1341,7 +1341,7 @@
   },
   {
     "word": "take off",
-    "meaning": "phr. 起飞，成功",
+    "meaning": "phr. 起飞，成功，脱掉",
     "list": "单词5"
   },
   {
@@ -1461,7 +1461,7 @@
   },
   {
     "word": "employee",
-    "meaning": "n. 员工",
+    "meaning": "n. 员工，雇员",
     "list": "单词5"
   },
   {
@@ -2605,11 +2605,6 @@
     "list": "单词8"
   },
   {
-    "word": "employee",
-    "meaning": "n. 员工，雇员",
-    "list": "单词8"
-  },
-  {
     "word": "workload",
     "meaning": "n. 工作量",
     "list": "单词8"
@@ -2648,8 +2643,374 @@
     "word": "miss",
     "meaning": "v. 错过，想念",
     "list": "单词8"
+  },
+  {
+    "word": "restaurant",
+    "meaning": "n. 饭馆，餐厅",
+    "list": "单词9"
+  },
+  {
+    "word": "be/get used to doing",
+    "meaning": "phr. 习惯于做某事",
+    "list": "单词9"
+  },
+  {
+    "word": "wildfire",
+    "meaning": "n. 山火，林火，野火",
+    "list": "单词9"
+  },
+  {
+    "word": "relief",
+    "meaning": "n. 援助物资，缓解，宽慰",
+    "list": "单词9"
+  },
+  {
+    "word": "stream",
+    "meaning": "n. 溪流",
+    "list": "单词9"
+  },
+  {
+    "word": "a stream of",
+    "meaning": "phr. 一股，源源不断的……",
+    "list": "单词9"
+  },
+  {
+    "word": "heartbreak",
+    "meaning": "n. 心碎，巨大伤痛",
+    "list": "单词9"
+  },
+  {
+    "word": "show up",
+    "meaning": "phr. 到场，出现",
+    "list": "单词9"
+  },
+  {
+    "word": "supply",
+    "meaning": "n. 供给，供应（物），物资",
+    "list": "单词9"
+  },
+  {
+    "word": "truck",
+    "meaning": "n. 卡车，货车",
+    "list": "单词9"
+  },
+  {
+    "word": "transport",
+    "meaning": "v. 运输，运送  n. 运输，运送",
+    "list": "单词9"
+  },
+  {
+    "word": "house",
+    "meaning": "v. 容纳，提供住处",
+    "list": "单词9"
+  },
+  {
+    "word": "cancel",
+    "meaning": "v. 取消，废除",
+    "list": "单词9"
+  },
+  {
+    "word": "call up",
+    "meaning": "phr. 打电话，召集，使人想起",
+    "list": "单词9"
+  },
+  {
+    "word": "stop by",
+    "meaning": "phr. 顺便拜访，路过",
+    "list": "单词9"
+  },
+  {
+    "word": "try out",
+    "meaning": "phr. 参加选拔，试用，试验",
+    "list": "单词9"
+  },
+  {
+    "word": "displace",
+    "meaning": "v. 取代，替代，迫使……离开家园",
+    "list": "单词9"
+  },
+  {
+    "word": "belongings",
+    "meaning": "n. 财产，所有物，随身物品",
+    "list": "单词9"
+  },
+  {
+    "word": "formula",
+    "meaning": "n. 公式，方案，配方",
+    "list": "单词9"
+  },
+  {
+    "word": "figure",
+    "meaning": "n. 数字，人物，身材  v. 认为，计算",
+    "list": "单词9"
+  },
+  {
+    "word": "figure out",
+    "meaning": "phr. 想出，理解，弄清",
+    "list": "单词9"
+  },
+  {
+    "word": "hang out",
+    "meaning": "phr. 闲逛，经常出没",
+    "list": "单词9"
+  },
+  {
+    "word": "resident",
+    "meaning": "n. 居民，住户",
+    "list": "单词9"
+  },
+  {
+    "word": "reminder",
+    "meaning": "n. 提示物，引起回忆的事物",
+    "list": "单词9"
+  },
+  {
+    "word": "fighter",
+    "meaning": "n. 战士，奋斗者，消防员",
+    "list": "单词9"
+  },
+  {
+    "word": "criminal",
+    "meaning": "n. 罪犯  adj. 犯罪的，刑事的",
+    "list": "单词9"
+  },
+  {
+    "word": "victim",
+    "meaning": "n. 受害者，牺牲品",
+    "list": "单词9"
+  },
+  {
+    "word": "grab",
+    "meaning": "v. 抓住，攫取，赶紧做/吃",
+    "list": "单词9"
+  },
+  {
+    "word": "mission",
+    "meaning": "n. 任务，使命",
+    "list": "单词9"
+  },
+  {
+    "word": "acquire",
+    "meaning": "v. 获得，习得，购得",
+    "list": "单词9"
+  },
+  {
+    "word": "previous",
+    "meaning": "adj. 以前的，先前的",
+    "list": "单词9"
+  },
+  {
+    "word": "misuse",
+    "meaning": "v. 滥用，误用，虐待  n. 滥用，误用，虐待",
+    "list": "单词9"
+  },
+  {
+    "word": "headline",
+    "meaning": "n. 头条新闻，大字标题",
+    "list": "单词9"
+  },
+  {
+    "word": "particularly",
+    "meaning": "adv. 尤其，特别",
+    "list": "单词9"
+  },
+  {
+    "word": "broad",
+    "meaning": "adj. 宽阔的，广泛的",
+    "list": "单词9"
+  },
+  {
+    "word": "a range of",
+    "meaning": "phr. 一系列，各种各样的",
+    "list": "单词9"
+  },
+  {
+    "word": "range",
+    "meaning": "n. 范围，变动区间  v. 包括，变动",
+    "list": "单词9"
+  },
+  {
+    "word": "original",
+    "meaning": "adj. 原创的，最初的  n. 原件",
+    "list": "单词9"
+  },
+  {
+    "word": "moral",
+    "meaning": "adj. 道德的，道义的  n. 寓意，道德",
+    "list": "单词9"
+  },
+  {
+    "word": "book review",
+    "meaning": "n. 书评",
+    "list": "单词9"
+  },
+  {
+    "word": "positive",
+    "meaning": "adj. 积极的，肯定的",
+    "list": "单词9"
+  },
+  {
+    "word": "supportive",
+    "meaning": "adj. 支持的",
+    "list": "单词9"
+  },
+  {
+    "word": "favorable",
+    "meaning": "adj. 赞同的，有利的，好评的",
+    "list": "单词9"
+  },
+  {
+    "word": "approving",
+    "meaning": "adj. 赞成的，满意的",
+    "list": "单词9"
+  },
+  {
+    "word": "optimistic",
+    "meaning": "adj. 乐观的",
+    "list": "单词9"
+  },
+  {
+    "word": "hopeful",
+    "meaning": "adj. 抱有希望的",
+    "list": "单词9"
+  },
+  {
+    "word": "confident",
+    "meaning": "adj. 自信的，确信的",
+    "list": "单词9"
+  },
+  {
+    "word": "sympathetic",
+    "meaning": "adj. 同情的，赞同的",
+    "list": "单词9"
+  },
+  {
+    "word": "enthusiastic",
+    "meaning": "adj. 热情的，热心的",
+    "list": "单词9"
+  },
+  {
+    "word": "appreciative",
+    "meaning": "adj. 赞赏的，感激的",
+    "list": "单词9"
+  },
+  {
+    "word": "negative",
+    "meaning": "adj. 消极的，否定的，负面的",
+    "list": "单词9"
+  },
+  {
+    "word": "critical",
+    "meaning": "adj. 批评的，挑剔的，批判性的",
+    "list": "单词9"
+  },
+  {
+    "word": "disapproving",
+    "meaning": "adj. 不赞成的，反对的",
+    "list": "单词9"
+  },
+  {
+    "word": "doubtful",
+    "meaning": "adj. 怀疑的，不确定的",
+    "list": "单词9"
+  },
+  {
+    "word": "suspicious",
+    "meaning": "adj. 疑心的，可疑的",
+    "list": "单词9"
+  },
+  {
+    "word": "pessimistic",
+    "meaning": "adj. 悲观的",
+    "list": "单词9"
+  },
+  {
+    "word": "worried",
+    "meaning": "adj. 担忧的，焦虑的",
+    "list": "单词9"
+  },
+  {
+    "word": "concerned",
+    "meaning": "adj. 关切的，忧虑的",
+    "list": "单词9"
+  },
+  {
+    "word": "opposed",
+    "meaning": "adj. 反对的，对抗的",
+    "list": "单词9"
+  },
+  {
+    "word": "biased",
+    "meaning": "adj. 有偏见的，偏颇的",
+    "list": "单词9"
+  },
+  {
+    "word": "prejudiced",
+    "meaning": "adj. 有成见的，带有偏见的",
+    "list": "单词9"
+  },
+  {
+    "word": "objective",
+    "meaning": "adj. 客观的",
+    "list": "单词9"
+  },
+  {
+    "word": "neutral",
+    "meaning": "adj. 中立的",
+    "list": "单词9"
+  },
+  {
+    "word": "impartial",
+    "meaning": "adj. 公正的，不偏不倚的",
+    "list": "单词9"
+  },
+  {
+    "word": "cautious",
+    "meaning": "adj. 谨慎的，小心的",
+    "list": "单词9"
+  },
+  {
+    "word": "tolerant",
+    "meaning": "adj. 宽容的，容忍的",
+    "list": "单词9"
+  },
+  {
+    "word": "indifferent",
+    "meaning": "adj. 漠不关心的，冷淡的",
+    "list": "单词9"
+  },
+  {
+    "word": "subjective",
+    "meaning": "adj. 主观的",
+    "list": "单词9"
+  },
+  {
+    "word": "confused",
+    "meaning": "adj. 困惑的，糊涂的",
+    "list": "单词9"
+  },
+  {
+    "word": "puzzled",
+    "meaning": "adj. 迷惑的，茫然的",
+    "list": "单词9"
+  },
+  {
+    "word": "scared",
+    "meaning": "adj. 害怕的，恐惧的",
+    "list": "单词9"
+  },
+  {
+    "word": "frightened",
+    "meaning": "adj. 受惊的，害怕的",
+    "list": "单词9"
+  },
+  {
+    "word": "desperate",
+    "meaning": "adj. 绝望的，拼命的",
+    "list": "单词9"
   }
 ]
+
 
 
 
