@@ -370,7 +370,7 @@
     "list": "单词1"
   },
   {
-    "word": "starw",
+    "word": "straw",
     "meaning": "n. 吸管，稻草杆",
     "list": "单词1"
   },
@@ -1096,7 +1096,7 @@
   },
   {
     "word": "view",
-    "meaning": "v. 注视；看",
+    "meaning": "v. 注视；看  n.观点",
     "list": "单词4"
   },
   {
@@ -1315,11 +1315,6 @@
     "list": "单词5"
   },
   {
-    "word": "straw",
-    "meaning": "n. 麦秆；吸管",
-    "list": "单词5"
-  },
-  {
     "word": "strength",
     "meaning": "n. 力量；优势",
     "list": "单词5"
@@ -1335,13 +1330,8 @@
     "list": "单词5"
   },
   {
-    "word": "serve",
-    "meaning": "v. 服务，提供",
-    "list": "单词5"
-  },
-  {
-    "word": "expose (to)",
-    "meaning": "v. 暴露",
+    "word": "expose to sth/doing sth",
+    "meaning": "暴露于...",
     "list": "单词5"
   },
   {
@@ -1352,11 +1342,6 @@
   {
     "word": "take off",
     "meaning": "phr. 起飞，成功",
-    "list": "单词5"
-  },
-  {
-    "word": "view",
-    "meaning": "n. 观点",
     "list": "单词5"
   },
   {
