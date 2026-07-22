@@ -388,5 +388,225 @@
     "word": "condition",
     "meaning": "n. 条件；状况",
     "list": "单词1"
+  },
+  {
+    "word": "insurance",
+    "meaning": "n. 保险",
+    "list": "单词2"
+  },
+  {
+    "word": "coverage",
+    "meaning": "n. 覆盖范围；保险范围",
+    "list": "单词2"
+  },
+  {
+    "word": "amount",
+    "meaning": "n. 数量；总额",
+    "list": "单词2"
+  },
+  {
+    "word": "patient",
+    "meaning": "n. 病人",
+    "list": "单词2"
+  },
+  {
+    "word": "advice",
+    "meaning": "n. 建议，忠告(不可数)",
+    "list": "单词2"
+  },
+  {
+    "word": "access",
+    "meaning": "n. 通道；进入权  v. 获得；进入",
+    "list": "单词2"
+  },
+  {
+    "word": "discount",
+    "meaning": "n. 折扣",
+    "list": "单词2"
+  },
+  {
+    "word": "wonder",
+    "meaning": "n. 奇迹；惊奇  v. 想要知道；感到惊奇",
+    "list": "单词2"
+  },
+  {
+    "word": "form",
+    "meaning": "n. 形式；表格",
+    "list": "单词2"
+  },
+  {
+    "word": "matter",
+    "meaning": "n. 事件；事情  v. 要紧；有关系",
+    "list": "单词2"
+  },
+  {
+    "word": "sign",
+    "meaning": "n. 信号；标志；迹象",
+    "list": "单词2"
+  },
+  {
+    "word": "melody",
+    "meaning": "n. 旋律",
+    "list": "单词2"
+  },
+  {
+    "word": "masterpiece",
+    "meaning": "n. 杰作；代表作",
+    "list": "单词2"
+  },
+  {
+    "word": "link",
+    "meaning": "n. 联系；链接",
+    "list": "单词2"
+  },
+  {
+    "word": "region",
+    "meaning": "n. 地区；区域",
+    "list": "单词2"
+  },
+  {
+    "word": "effort",
+    "meaning": "n. 努力；尝试",
+    "list": "单词2"
+  },
+  {
+    "word": "globe",
+    "meaning": "n. 全球；地球仪",
+    "list": "单词2"
+  },
+  {
+    "word": "consumer",
+    "meaning": "n. 消费者；顾客",
+    "list": "单词2"
+  },
+  {
+    "word": "root",
+    "meaning": "n. 根；根源",
+    "list": "单词2"
+  },
+  {
+    "word": "cover",
+    "meaning": "v. 覆盖；包括",
+    "list": "单词2"
+  },
+  {
+    "word": "determine",
+    "meaning": "v. 确定；决定",
+    "list": "单词2"
+  },
+  {
+    "word": "lend",
+    "meaning": "v. 借出",
+    "list": "单词2"
+  },
+  {
+    "word": "infer",
+    "meaning": "v. 推断；推论",
+    "list": "单词2"
+  },
+  {
+    "word": "shape",
+    "meaning": "v. 影响；塑造",
+    "list": "单词2"
+  },
+  {
+    "word": "distinguish",
+    "meaning": "v. 区分；辨别",
+    "list": "单词2"
+  },
+  {
+    "word": "maintain",
+    "meaning": "v. 维持；保养",
+    "list": "单词2"
+  },
+  {
+    "word": "extend",
+    "meaning": "v. 延伸；延长",
+    "list": "单词2"
+  },
+  {
+    "word": "implement",
+    "meaning": "v. 执行；实施",
+    "list": "单词2"
+  },
+  {
+    "word": "increase",
+    "meaning": "v. 增加；增长",
+    "list": "单词2"
+  },
+  {
+    "word": "export",
+    "meaning": "v. 输出；出口",
+    "list": "单词2"
+  },
+  {
+    "word": "import",
+    "meaning": "v. 进口；输入",
+    "list": "单词2"
+  },
+  {
+    "word": "consume",
+    "meaning": "v. 消费；消耗",
+    "list": "单词2"
+  },
+  {
+    "word": "current",
+    "meaning": "adj. 当前的；现行的",
+    "list": "单词2"
+  },
+  {
+    "word": "subtle",
+    "meaning": "adj. 微妙的；细微的",
+    "list": "单词2"
+  },
+  {
+    "word": "significant",
+    "meaning": "adj. 重要的；意义重大的",
+    "list": "单词2"
+  },
+  {
+    "word": "global",
+    "meaning": "adj. 全球的；全世界的",
+    "list": "单词2"
+  },
+  {
+    "word": "various",
+    "meaning": "adj. 各种各样的；不同的",
+    "list": "单词2"
+  },
+  {
+    "word": "increasing",
+    "meaning": "adj. 增长的；越来越多的",
+    "list": "单词2"
+  },
+  {
+    "word": "by phone",
+    "meaning": "phr. 通过电话",
+    "list": "单词2"
+  },
+  {
+    "word": "with the rise of",
+    "meaning": "phr. 随着……的兴起",
+    "list": "单词2"
+  },
+  {
+    "word": "tend to",
+    "meaning": "phr. 倾向于；往往会",
+    "list": "单词2"
+  },
+  {
+    "word": "lie in",
+    "meaning": "phr. 在于；处于",
+    "list": "单词2"
+  },
+  {
+    "word": "what is adj is that...",
+    "meaning": "phr. 是……的是……",
+    "list": "单词2"
+  },
+  {
+    "word": "be rooted in",
+    "meaning": "phr. 根植于；源于",
+    "list": "单词2"
   }
 ]
