@@ -1,0 +1,382 @@
+[
+  {
+    "word": "course",
+    "meaning": "n. 课程；过程；一道菜",
+    "list": "单词1"
+  },
+  {
+    "word": "awake",
+    "meaning": "v./adj. 唤醒；醒着的",
+    "list": "单词1"
+  },
+  {
+    "word": "finance",
+    "meaning": "n./v. 金融；财务；资助",
+    "list": "单词1"
+  },
+  {
+    "word": "rediscover",
+    "meaning": "v. 重新发现",
+    "list": "单词1"
+  },
+  {
+    "word": "potential",
+    "meaning": "n./adj. 潜力；潜在的",
+    "list": "单词1"
+  },
+  {
+    "word": "convince",
+    "meaning": "v. 说服；使确信",
+    "list": "单词1"
+  },
+  {
+    "word": "admit",
+    "meaning": "v. 承认；允许进入",
+    "list": "单词1"
+  },
+  {
+    "word": "college",
+    "meaning": "n. 大学；学院",
+    "list": "单词1"
+  },
+  {
+    "word": "prospect",
+    "meaning": "n. 前景；展望",
+    "list": "单词1"
+  },
+  {
+    "word": "enthusiastic",
+    "meaning": "adj. 热情的；热心的",
+    "list": "单词1"
+  },
+  {
+    "word": "on",
+    "meaning": "prep. 关于（此处特指[关于]含义）",
+    "list": "单词1"
+  },
+  {
+    "word": "select",
+    "meaning": "v./adj. 选择；精选的",
+    "list": "单词1"
+  },
+  {
+    "word": "pride",
+    "meaning": "n./v. 自豪；骄傲",
+    "list": "单词1"
+  },
+  {
+    "word": "independent",
+    "meaning": "adj. 独立的；自主的",
+    "list": "单词1"
+  },
+  {
+    "word": "rest on",
+    "meaning": "phr. 依靠；建立在……之上",
+    "list": "单词1"
+  },
+  {
+    "word": "depend on",
+    "meaning": "phr. 依赖；取决于",
+    "list": "单词1"
+  },
+  {
+    "word": "rely on",
+    "meaning": "phr. 依靠；信赖",
+    "list": "单词1"
+  },
+  {
+    "word": "thought",
+    "meaning": "n. 想法；思考",
+    "list": "单词1"
+  },
+  {
+    "word": "homesick",
+    "meaning": "adj. 思乡的；想家的",
+    "list": "单词1"
+  },
+  {
+    "word": "give rise to",
+    "meaning": "phr. 引起；导致",
+    "list": "单词1"
+  },
+  {
+    "word": "contribute to",
+    "meaning": "phr. 有助于；促成",
+    "list": "单词1"
+  },
+  {
+    "word": "uncover",
+    "meaning": "v. 揭露；发现",
+    "list": "单词1"
+  },
+  {
+    "word": "reprocess",
+    "meaning": "v. 再加工；重新处理",
+    "list": "单词1"
+  },
+  {
+    "word": "wound",
+    "meaning": "n./v. 伤口；伤害",
+    "list": "单词1"
+  },
+  {
+    "word": "chairman",
+    "meaning": "n. 主席；董事长",
+    "list": "单词1"
+  },
+  {
+    "word": "flee",
+    "meaning": "v. 逃跑；逃离",
+    "list": "单词1"
+  },
+  {
+    "word": "occur",
+    "meaning": "v. 发生；出现",
+    "list": "单词1"
+  },
+  {
+    "word": "persuade",
+    "meaning": "v. 说服；劝说",
+    "list": "单词1"
+  },
+  {
+    "word": "forecast",
+    "meaning": "n./v. 预测；预报",
+    "list": "单词1"
+  },
+  {
+    "word": "interview",
+    "meaning": "n./v. 采访；面试",
+    "list": "单词1"
+  },
+  {
+    "word": "assume",
+    "meaning": "v. 假设；承担",
+    "list": "单词1"
+  },
+  {
+    "word": "violent",
+    "meaning": "adj. 暴力的；猛烈的",
+    "list": "单词1"
+  },
+  {
+    "word": "force",
+    "meaning": "n./v. 力量；强迫",
+    "list": "单词1"
+  },
+  {
+    "word": "demand",
+    "meaning": "n./v. 需求；要求",
+    "list": "单词1"
+  },
+  {
+    "word": "raise",
+    "meaning": "v. 提高；筹集；养育",
+    "list": "单词1"
+  },
+  {
+    "word": "ban",
+    "meaning": "n./v. 禁令；禁止",
+    "list": "单词1"
+  },
+  {
+    "word": "single-use",
+    "meaning": "adj. 一次性的",
+    "list": "单词1"
+  },
+  {
+    "word": "ton",
+    "meaning": "n. 吨",
+    "list": "单词1"
+  },
+  {
+    "word": "pour",
+    "meaning": "v. 倾倒；涌入",
+    "list": "单词1"
+  },
+  {
+    "word": "transform",
+    "meaning": "v. 转变；改造",
+    "list": "单词1"
+  },
+  {
+    "word": "industry",
+    "meaning": "n. 工业；行业",
+    "list": "单词1"
+  },
+  {
+    "word": "lab",
+    "meaning": "n. 实验室",
+    "list": "单词1"
+  },
+  {
+    "word": "practical",
+    "meaning": "adj. 实用的；实际的",
+    "list": "单词1"
+  },
+  {
+    "word": "sustainable",
+    "meaning": "adj. 可持续的",
+    "list": "单词1"
+  },
+  {
+    "word": "affordable",
+    "meaning": "adj. 负担得起的；实惠的",
+    "list": "单词1"
+  },
+  {
+    "word": "channel",
+    "meaning": "n./v. 渠道；引导",
+    "list": "单词1"
+  },
+  {
+    "word": "construction",
+    "meaning": "n. 建筑；建造",
+    "list": "单词1"
+  },
+  {
+    "word": "Hire/fire",
+    "meaning": "v./n. 雇用；租用",
+    "list": "单词1"
+  },
+  {
+    "word": "employment",
+    "meaning": "n. 就业；雇用",
+    "list": "单词1"
+  },
+  {
+    "word": "mix",
+    "meaning": "v./n. 混合；混合物",
+    "list": "单词1"
+  },
+  {
+    "word": "mixture",
+    "meaning": "n. 混合物；混合",
+    "list": "单词1"
+  },
+  {
+    "word": "vary in",
+    "meaning": "phr. 在……方面有所不同",
+    "list": "单词1"
+  },
+  {
+    "word": "light",
+    "meaning": "adj. 轻的（此处特指重量轻）",
+    "list": "单词1"
+  },
+  {
+    "word": "fruitless",
+    "meaning": "adj. 无结果的；徒劳的",
+    "list": "单词1"
+  },
+  {
+    "word": "landfill",
+    "meaning": "n. 垃圾填埋场",
+    "list": "单词1"
+  },
+  {
+    "word": "temporary",
+    "meaning": "adj. 临时的；暂时的",
+    "list": "单词1"
+  },
+  {
+    "word": "unreliable",
+    "meaning": "adj. 不可靠的",
+    "list": "单词1"
+  },
+  {
+    "word": "product",
+    "meaning": "n. 产品；成果",
+    "list": "单词1"
+  },
+  {
+    "word": "fill",
+    "meaning": "v. 填满；充满",
+    "list": "单词1"
+  },
+  {
+    "word": "heat",
+    "meaning": "n./v. 热量；加热",
+    "list": "单词1"
+  },
+  {
+    "word": "innovative",
+    "meaning": "adj. 创新的；革新的",
+    "list": "单词1"
+  },
+  {
+    "word": "thickness",
+    "meaning": "n. 厚度",
+    "list": "单词1"
+  },
+  {
+    "word": "multiple",
+    "meaning": "adj. 多个的；多种的",
+    "list": "单词1"
+  },
+  {
+    "word": "expand",
+    "meaning": "v. 扩展；扩大",
+    "list": "单词1"
+  },
+  {
+    "word": "address",
+    "meaning": "v. 提出；处理；演讲",
+    "list": "单词1"
+  },
+  {
+    "word": "following",
+    "meaning": "adj./prep. 接下来的；在……之后",
+    "list": "单词1"
+  },
+  {
+    "word": "soil",
+    "meaning": "n. 土壤；土地",
+    "list": "单词1"
+  },
+  {
+    "word": "examine",
+    "meaning": "v. 检查；审查",
+    "list": "单词1"
+  },
+  {
+    "word": "rough",
+    "meaning": "adj. 粗糙的；大概的",
+    "list": "单词1"
+  },
+  {
+    "word": "Tough structure",
+    "meaning": "adj. 坚韧的；艰难的",
+    "list": "单词1"
+  },
+  {
+    "word": "weed",
+    "meaning": "n./v. 杂草；除草",
+    "list": "单词1"
+  },
+  {
+    "word": "sow",
+    "meaning": "v. 播种",
+    "list": "单词1"
+  },
+  {
+    "word": "Wheat straw",
+    "meaning": "n. 小麦",
+    "list": "单词1"
+  },
+  {
+    "word": "harvest",
+    "meaning": "n./v. 收获；收割",
+    "list": "单词1"
+  },
+  {
+    "word": "subject",
+    "meaning": "n. 主题；科目；主语",
+    "list": "单词1"
+  },
+  {
+    "word": "condition",
+    "meaning": "n. 条件；状况",
+    "list": "单词1"
+  }
+]
