@@ -1,17 +1,17 @@
 [
   {
     "word": "course",
-    "meaning": "n. 课程；过程；一道菜",
+    "meaning": "n. 课程；过程",
     "list": "单词1"
   },
   {
     "word": "awake",
-    "meaning": "v./adj. 唤醒；醒着的",
+    "meaning": "v. 唤醒；\n adj. 醒着的",
     "list": "单词1"
   },
   {
     "word": "finance",
-    "meaning": "n./v. 金融；财务；资助",
+    "meaning": "n.金融；财务；v.资助",
     "list": "单词1"
   },
   {
@@ -360,8 +360,13 @@
     "list": "单词1"
   },
   {
-    "word": "Wheat straw",
+    "word": "wheat",
     "meaning": "n. 小麦",
+    "list": "单词1"
+  },
+  {
+    "word": "starw",
+    "meaning": "n. 吸管，稻草杆",
     "list": "单词1"
   },
   {
