@@ -6,7 +6,7 @@
   },
   {
     "word": "awake",
-    "meaning": "v. 唤醒；\n adj. 醒着的",
+    "meaning": "v. 唤醒； adj. 醒着的",
     "list": "单词1"
   },
   {
@@ -21,7 +21,7 @@
   },
   {
     "word": "potential",
-    "meaning": "n./adj. 潜力；潜在的",
+    "meaning": "n.adj. 潜力；adj. 潜在的",
     "list": "单词1"
   },
   {
@@ -56,12 +56,12 @@
   },
   {
     "word": "select",
-    "meaning": "v./adj. 选择；精选的",
+    "meaning": "v. 选择；",
     "list": "单词1"
   },
   {
     "word": "pride",
-    "meaning": "n./v. 自豪；骄傲",
+    "meaning": "n. 自豪；骄傲",
     "list": "单词1"
   },
   {
@@ -116,7 +116,7 @@
   },
   {
     "word": "wound",
-    "meaning": "n./v. 伤口；伤害",
+    "meaning": "n. 伤口；v. 伤害",
     "list": "单词1"
   },
   {
@@ -141,12 +141,12 @@
   },
   {
     "word": "forecast",
-    "meaning": "n./v. 预测；预报",
+    "meaning": "n.&v. 预测；预报",
     "list": "单词1"
   },
   {
     "word": "interview",
-    "meaning": "n./v. 采访；面试",
+    "meaning": "n.& v. 采访；面试",
     "list": "单词1"
   },
   {
@@ -161,12 +161,12 @@
   },
   {
     "word": "force",
-    "meaning": "n./v. 力量；强迫",
+    "meaning": "n. 力量；v. 强迫",
     "list": "单词1"
   },
   {
     "word": "demand",
-    "meaning": "n./v. 需求；要求",
+    "meaning": "n.& v. 需求；要求",
     "list": "单词1"
   },
   {
@@ -176,7 +176,7 @@
   },
   {
     "word": "ban",
-    "meaning": "n./v. 禁令；禁止",
+    "meaning": "n.& v. 禁令；禁止",
     "list": "单词1"
   },
   {
@@ -226,7 +226,7 @@
   },
   {
     "word": "channel",
-    "meaning": "n./v. 渠道；引导",
+    "meaning": "n. 渠道；v. 引导",
     "list": "单词1"
   },
   {
@@ -235,8 +235,13 @@
     "list": "单词1"
   },
   {
-    "word": "Hire/fire",
-    "meaning": "v./n. 雇用；租用",
+    "word": "hire",
+    "meaning": "v.& n. 雇用；租用",
+    "list": "单词1"
+  },
+  {
+    "word": "fire",
+    "meaning": "v. 解雇",
     "list": "单词1"
   },
   {
@@ -246,7 +251,7 @@
   },
   {
     "word": "mix",
-    "meaning": "v./n. 混合；混合物",
+    "meaning": "v. 混合；",
     "list": "单词1"
   },
   {
@@ -296,7 +301,7 @@
   },
   {
     "word": "heat",
-    "meaning": "n./v. 热量；加热",
+    "meaning": "n. 热量；v. 加热",
     "list": "单词1"
   },
   {
@@ -326,7 +331,7 @@
   },
   {
     "word": "following",
-    "meaning": "adj./prep. 接下来的；在……之后",
+    "meaning": "adj. 接下来的；prep. 在……之后",
     "list": "单词1"
   },
   {
@@ -351,7 +356,7 @@
   },
   {
     "word": "weed",
-    "meaning": "n./v. 杂草；除草",
+    "meaning": "n. 杂草；v. 除草",
     "list": "单词1"
   },
   {
@@ -371,7 +376,7 @@
   },
   {
     "word": "harvest",
-    "meaning": "n./v. 收获；收割",
+    "meaning": "n. 收获；v. 收割",
     "list": "单词1"
   },
   {
