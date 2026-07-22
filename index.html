@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>📚 我的单词库</title>
+    <title>📚 凯文的单词库</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, sans-serif; background: #f5f7fa; display: flex; flex-direction: column; height: 100vh; }
@@ -115,8 +115,17 @@
                 const list = item.list || '未分类';
                 set.add(list);
             });
-            return ['全部', ...Array.from(set)];
-        }
+    // 提取所有分组（不包括"全部"）
+        const groups = Array.from(set);
+    // 自定义排序：按数字顺序排列 "单词1", "单词2", "单词3" ...
+        groups.sort((a, b) => {
+        // 提取数字部分进行比较
+            const numA = parseInt(a.replace(/\D/g, '')) || 0;
+            const numB = parseInt(b.replace(/\D/g, '')) || 0;
+            return numA - numB;
+        });
+        return ['全部', ...groups];
+}
 
         // ===== 3. 初始化导航标签 =====
         function initTabs() {
