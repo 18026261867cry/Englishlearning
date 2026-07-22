@@ -1636,7 +1636,7 @@
   },
   {
     "word": "staff",
-    "meaning": "n. 员工",
+    "meaning": "n. （全体）员工",
     "list": "单词6"
   },
   {
@@ -2106,7 +2106,7 @@
   },
   {
     "word": "produce",
-    "meaning": "v. 生产，制造  n. 农产品",
+    "meaning": "v. 生产，制造",
     "list": "单词7"
   },
   {
@@ -2205,11 +2205,6 @@
     "list": "单词7"
   },
   {
-    "word": "strategy",
-    "meaning": "n. 策略，战略",
-    "list": "单词7"
-  },
-  {
     "word": "refer",
     "meaning": "v. 指代，查阅，提到",
     "list": "单词7"
@@ -2233,8 +2228,429 @@
     "word": "expressive",
     "meaning": "adj. 富有表现力的",
     "list": "单词7"
+  },
+  {
+    "word": "adapt",
+    "meaning": "v. 适应",
+    "list": "单词8"
+  },
+  {
+    "word": "adopt",
+    "meaning": "v. 采纳，收养",
+    "list": "单词8"
+  },
+  {
+    "word": "govern",
+    "meaning": "v. 统治，管理",
+    "list": "单词8"
+  },
+  {
+    "word": "fool",
+    "meaning": "n. 傻瓜  v. 愚弄",
+    "list": "单词8"
+  },
+  {
+    "word": "foolish",
+    "meaning": "adj. 愚蠢的",
+    "list": "单词8"
+  },
+  {
+    "word": "statement",
+    "meaning": "n. 声明，陈述",
+    "list": "单词8"
+  },
+  {
+    "word": "misunderstanding",
+    "meaning": "n. 误解",
+    "list": "单词8"
+  },
+  {
+    "word": "regard",
+    "meaning": "v. 认为，看待",
+    "list": "单词8"
+  },
+  {
+    "word": "midnight",
+    "meaning": "n. 半夜，子夜",
+    "list": "单词8"
+  },
+  {
+    "word": "Korea",
+    "meaning": "n. 韩国，朝鲜",
+    "list": "单词8"
+  },
+  {
+    "word": "South Korea",
+    "meaning": "n. 韩国",
+    "list": "单词8"
+  },
+  {
+    "word": "North Korea",
+    "meaning": "n. 朝鲜",
+    "list": "单词8"
+  },
+  {
+    "word": "journalist",
+    "meaning": "n. 记者",
+    "list": "单词8"
+  },
+  {
+    "word": "publish",
+    "meaning": "v. 出版，发表",
+    "list": "单词8"
+  },
+  {
+    "word": "overlook",
+    "meaning": "v. 忽视，俯瞰",
+    "list": "单词8"
+  },
+  {
+    "word": "blame",
+    "meaning": "v. 责备，归咎于",
+    "list": "单词8"
+  },
+  {
+    "word": "decline",
+    "meaning": "v. 减少，下降，婉拒  n. 减少，下降",
+    "list": "单词8"
+  },
+  {
+    "word": "identify",
+    "meaning": "v. 识别，确认",
+    "list": "单词8"
+  },
+  {
+    "word": "border",
+    "meaning": "n. 边界，边境",
+    "list": "单词8"
+  },
+  {
+    "word": "considerable",
+    "meaning": "adj. 相当大的，相当重要的",
+    "list": "单词8"
+  },
+  {
+    "word": "claim",
+    "meaning": "v. 声称  n. 声明，索赔",
+    "list": "单词8"
+  },
+  {
+    "word": "essential",
+    "meaning": "adj. 极其重要的，必不可少的",
+    "list": "单词8"
+  },
+  {
+    "word": "production",
+    "meaning": "n. 生产，产量",
+    "list": "单词8"
+  },
+  {
+    "word": "pollinate",
+    "meaning": "v. 授粉",
+    "list": "单词8"
+  },
+  {
+    "word": "crop",
+    "meaning": "n. 作物，庄稼",
+    "list": "单词8"
+  },
+  {
+    "word": "loss",
+    "meaning": "n. 损失，丢失",
+    "list": "单词8"
+  },
+  {
+    "word": "pesticide",
+    "meaning": "n. 杀虫剂",
+    "list": "单词8"
+  },
+  {
+    "word": "income",
+    "meaning": "n. 收入，收益",
+    "list": "单词8"
+  },
+  {
+    "word": "outcome",
+    "meaning": "n. 结果",
+    "list": "单词8"
+  },
+  {
+    "word": "expense",
+    "meaning": "n. 支出",
+    "list": "单词8"
+  },
+  {
+    "word": "typical",
+    "meaning": "adj. 典型的，特有的",
+    "list": "单词8"
+  },
+  {
+    "word": "consist",
+    "meaning": "v. 组成",
+    "list": "单词8"
+  },
+  {
+    "word": "insist",
+    "meaning": "v. 坚持",
+    "list": "单词8"
+  },
+  {
+    "word": "track",
+    "meaning": "n. 轨道，跑道，火车轨道  v. 追踪",
+    "list": "单词8"
+  },
+  {
+    "word": "digital",
+    "meaning": "adj. 数字的，数码的",
+    "list": "单词8"
+  },
+  {
+    "word": "arouse",
+    "meaning": "v. 引起，激起",
+    "list": "单词8"
+  },
+  {
+    "word": "familiar",
+    "meaning": "adj. 熟悉的",
+    "list": "单词8"
+  },
+  {
+    "word": "sight",
+    "meaning": "n. 视力，风景，视觉",
+    "list": "单词8"
+  },
+  {
+    "word": "yet",
+    "meaning": "adv. 但是，然而，还",
+    "list": "单词8"
+  },
+  {
+    "word": "take in",
+    "meaning": "phr. 吸收，领会，欺骗",
+    "list": "单词8"
+  },
+  {
+    "word": "take on",
+    "meaning": "phr. 承担，呈现，雇佣",
+    "list": "单词8"
+  },
+  {
+    "word": "make decisions",
+    "meaning": "phr. 做出决定",
+    "list": "单词8"
+  },
+  {
+    "word": "crisis",
+    "meaning": "n. 危机",
+    "list": "单词8"
+  },
+  {
+    "word": "give out",
+    "meaning": "phr. 散发，分发，用尽",
+    "list": "单词8"
+  },
+  {
+    "word": "side",
+    "meaning": "n. 侧边，一方，旁边",
+    "list": "单词8"
+  },
+  {
+    "word": "clue",
+    "meaning": "n. 线索",
+    "list": "单词8"
+  },
+  {
+    "word": "show off",
+    "meaning": "phr. 炫耀，卖弄",
+    "list": "单词8"
+  },
+  {
+    "word": "make up",
+    "meaning": "phr. 编造，组成，弥补，和好",
+    "list": "单词8"
+  },
+  {
+    "word": "break up",
+    "meaning": "phr. 打碎，分手，结束",
+    "list": "单词8"
+  },
+  {
+    "word": "landscape",
+    "meaning": "n. 风景，风景画",
+    "list": "单词8"
+  },
+  {
+    "word": "calligraphy",
+    "meaning": "n. 书法",
+    "list": "单词8"
+  },
+  {
+    "word": "labor",
+    "meaning": "n. 劳动，劳工",
+    "list": "单词8"
+  },
+  {
+    "word": "session",
+    "meaning": "n. 时段，会议，学期",
+    "list": "单词8"
+  },
+  {
+    "word": "in advance",
+    "meaning": "phr. 提前，预先",
+    "list": "单词8"
+  },
+  {
+    "word": "available",
+    "meaning": "adj. 可获得的，有空的",
+    "list": "单词8"
+  },
+  {
+    "word": "pre-booking",
+    "meaning": "n. 提前预订",
+    "list": "单词8"
+  },
+  {
+    "word": "glove",
+    "meaning": "n. 手套",
+    "list": "单词8"
+  },
+  {
+    "word": "ward",
+    "meaning": "n. 病房，行政区",
+    "list": "单词8"
+  },
+  {
+    "word": "infect",
+    "meaning": "v. 感染，传染",
+    "list": "单词8"
+  },
+  {
+    "word": "germ",
+    "meaning": "n. 病菌，细菌",
+    "list": "单词8"
+  },
+  {
+    "word": "concern",
+    "meaning": "n. 担忧，关心  v. 涉及，使担忧",
+    "list": "单词8"
+  },
+  {
+    "word": "come",
+    "meaning": "v. 来到",
+    "list": "单词8"
+  },
+  {
+    "word": "free",
+    "meaning": "adj. 免费的，自由的，空闲的",
+    "list": "单词8"
+  },
+  {
+    "word": "doubt",
+    "meaning": "n. 怀疑  v. 怀疑",
+    "list": "单词8"
+  },
+  {
+    "word": "pile",
+    "meaning": "v. 堆积  n. 堆",
+    "list": "单词8"
+  },
+  {
+    "word": "lantern",
+    "meaning": "n. 灯笼",
+    "list": "单词8"
+  },
+  {
+    "word": "careless",
+    "meaning": "adj. 粗心的",
+    "list": "单词8"
+  },
+  {
+    "word": "readily",
+    "meaning": "adv. 容易地，乐意地",
+    "list": "单词8"
+  },
+  {
+    "word": "lead",
+    "meaning": "v. 带领，导致",
+    "list": "单词8"
+  },
+  {
+    "word": "leader",
+    "meaning": "n. 领导者",
+    "list": "单词8"
+  },
+  {
+    "word": "urge",
+    "meaning": "v. 催促，力劝  n. 强烈的欲望",
+    "list": "单词8"
+  },
+  {
+    "word": "urge to do sth.",
+    "meaning": "phr. 催促某人做某事，做某事的冲动",
+    "list": "单词8"
+  },
+  {
+    "word": "flu",
+    "meaning": "n. 流感",
+    "list": "单词8"
+  },
+  {
+    "word": "employ",
+    "meaning": "v. 雇佣，应用",
+    "list": "单词8"
+  },
+  {
+    "word": "employer",
+    "meaning": "n. 雇主",
+    "list": "单词8"
+  },
+  {
+    "word": "employee",
+    "meaning": "n. 员工，雇员",
+    "list": "单词8"
+  },
+  {
+    "word": "workload",
+    "meaning": "n. 工作量",
+    "list": "单词8"
+  },
+  {
+    "word": "cure",
+    "meaning": "v. 治疗，治愈  n. 疗法",
+    "list": "单词8"
+  },
+  {
+    "word": "physician",
+    "meaning": "n. 内科医生",
+    "list": "单词8"
+  },
+  {
+    "word": "salary",
+    "meaning": "n. 薪水，工资",
+    "list": "单词8"
+  },
+  {
+    "word": "fail to",
+    "meaning": "phr. 未能，不能",
+    "list": "单词8"
+  },
+  {
+    "word": "minor",
+    "meaning": "adj. 次要的，较小的",
+    "list": "单词8"
+  },
+  {
+    "word": "definitely",
+    "meaning": "adv. 必然，肯定",
+    "list": "单词8"
+  },
+  {
+    "word": "miss",
+    "meaning": "v. 错过，想念",
+    "list": "单词8"
   }
 ]
+
 
 
 
