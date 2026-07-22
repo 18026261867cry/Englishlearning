@@ -1118,7 +1118,538 @@
     "word": "fortunate",
     "meaning": "adj. 幸运的",
     "list": "单词4"
+  },
+  {
+    "word": "exist",
+    "meaning": "v. 存在",
+    "list": "单词5"
+  },
+  {
+    "word": "regular",
+    "meaning": "adj. 日常的，规律的",
+    "list": "单词5"
+  },
+  {
+    "word": "limit",
+    "meaning": "v. 限制",
+    "list": "单词5"
+  },
+  {
+    "word": "study",
+    "meaning": "n. 研究",
+    "list": "单词5"
+  },
+  {
+    "word": "dentist",
+    "meaning": "n. 牙医",
+    "list": "单词5"
+  },
+  {
+    "word": "sample",
+    "meaning": "n. 样本",
+    "list": "单词5"
+  },
+  {
+    "word": "treat",
+    "meaning": "v. 款待，治疗，对待",
+    "list": "单词5"
+  },
+  {
+    "word": "prove",
+    "meaning": "v. 证明",
+    "list": "单词5"
+  },
+  {
+    "word": "promising",
+    "meaning": "adj. 有希望的",
+    "list": "单词5"
+  },
+  {
+    "word": "hard",
+    "meaning": "adj. 坚硬的，困难的",
+    "list": "单词5"
+  },
+  {
+    "word": "coating",
+    "meaning": "n. 涂层",
+    "list": "单词5"
+  },
+  {
+    "word": "outer",
+    "meaning": "adj. 外层的",
+    "list": "单词5"
+  },
+  {
+    "word": "send",
+    "meaning": "v. 送",
+    "list": "单词5"
+  },
+  {
+    "word": "eventually",
+    "meaning": "adv. 最终",
+    "list": "单词5"
+  },
+  {
+    "word": "likely",
+    "meaning": "adv. 可能地",
+    "list": "单词5"
+  },
+  {
+    "word": "in the meantime",
+    "meaning": "phr. 同时",
+    "list": "单词5"
+  },
+  {
+    "word": "toothpaste",
+    "meaning": "n. 牙膏",
+    "list": "单词5"
+  },
+  {
+    "word": "application",
+    "meaning": "n. 应用；申请",
+    "list": "单词5"
+  },
+  {
+    "word": "reality",
+    "meaning": "n. 现实",
+    "list": "单词5"
+  },
+  {
+    "word": "general",
+    "meaning": "adj. 大体的",
+    "list": "单词5"
+  },
+  {
+    "word": "accent",
+    "meaning": "n. 口音",
+    "list": "单词5"
+  },
+  {
+    "word": "facial",
+    "meaning": "adj. 面部的",
+    "list": "单词5"
+  },
+  {
+    "word": "recognise",
+    "meaning": "v. 识别",
+    "list": "单词5"
+  },
+  {
+    "word": "record",
+    "meaning": "v. 记录  n. 记录",
+    "list": "单词5"
+  },
+  {
+    "word": "imitate",
+    "meaning": "v. 模仿",
+    "list": "单词5"
+  },
+  {
+    "word": "feed",
+    "meaning": "v. 喂养",
+    "list": "单词5"
+  },
+  {
+    "word": "oral",
+    "meaning": "adj. 口语的",
+    "list": "单词5"
+  },
+  {
+    "word": "award",
+    "meaning": "n. 奖励  v. 获奖",
+    "list": "单词5"
+  },
+  {
+    "word": "not only… but (also)",
+    "meaning": "phr. 不仅…而且",
+    "list": "单词5"
+  },
+  {
+    "word": "debate",
+    "meaning": "n. 争论  v. 争论",
+    "list": "单词5"
+  },
+  {
+    "word": "negative",
+    "meaning": "adj. 负面的",
+    "list": "单词5"
+  },
+  {
+    "word": "suppose",
+    "meaning": "v. 推断",
+    "list": "单词5"
+  },
+  {
+    "word": "seek",
+    "meaning": "v. 寻找",
+    "list": "单词5"
+  },
+  {
+    "word": "brief",
+    "meaning": "adj. 简短的",
+    "list": "单词5"
+  },
+  {
+    "word": "frequent",
+    "meaning": "adj. 频繁的",
+    "list": "单词5"
+  },
+  {
+    "word": "chief",
+    "meaning": "adj. 首要的",
+    "list": "单词5"
+  },
+  {
+    "word": "progress",
+    "meaning": "n. 进展",
+    "list": "单词5"
+  },
+  {
+    "word": "span",
+    "meaning": "v. 跨越  n. 时间跨度",
+    "list": "单词5"
+  },
+  {
+    "word": "detail",
+    "meaning": "n. 细节",
+    "list": "单词5"
+  },
+  {
+    "word": "straw",
+    "meaning": "n. 麦秆；吸管",
+    "list": "单词5"
+  },
+  {
+    "word": "strength",
+    "meaning": "n. 力量；优势",
+    "list": "单词5"
+  },
+  {
+    "word": "review",
+    "meaning": "v. 评估，评论",
+    "list": "单词5"
+  },
+  {
+    "word": "raw",
+    "meaning": "adj. 生的，未加工的",
+    "list": "单词5"
+  },
+  {
+    "word": "serve",
+    "meaning": "v. 服务，提供",
+    "list": "单词5"
+  },
+  {
+    "word": "expose (to)",
+    "meaning": "v. 暴露",
+    "list": "单词5"
+  },
+  {
+    "word": "a number of",
+    "meaning": "phr. 许多",
+    "list": "单词5"
+  },
+  {
+    "word": "take off",
+    "meaning": "phr. 起飞，成功",
+    "list": "单词5"
+  },
+  {
+    "word": "view",
+    "meaning": "n. 观点",
+    "list": "单词5"
+  },
+  {
+    "word": "cap",
+    "meaning": "n. 覆盖",
+    "list": "单词5"
+  },
+  {
+    "word": "campaign",
+    "meaning": "n. 战役",
+    "list": "单词5"
+  },
+  {
+    "word": "detective",
+    "meaning": "n. 侦探",
+    "list": "单词5"
+  },
+  {
+    "word": "album",
+    "meaning": "n. 专辑，相册",
+    "list": "单词5"
+  },
+  {
+    "word": "dramatically",
+    "meaning": "adv. 戏剧性地",
+    "list": "单词5"
+  },
+  {
+    "word": "revolve",
+    "meaning": "v. 旋转",
+    "list": "单词5"
+  },
+  {
+    "word": "remarkable",
+    "meaning": "adj. 非凡的",
+    "list": "单词5"
+  },
+  {
+    "word": "plus",
+    "meaning": "prep. 加上  n. 优势",
+    "list": "单词5"
+  },
+  {
+    "word": "account",
+    "meaning": "n. 记录，叙述",
+    "list": "单词5"
+  },
+  {
+    "word": "exhibition",
+    "meaning": "n. 展览",
+    "list": "单词5"
+  },
+  {
+    "word": "anniversary",
+    "meaning": "n. 周年纪念日",
+    "list": "单词5"
+  },
+  {
+    "word": "on display",
+    "meaning": "phr. 展览",
+    "list": "单词5"
+  },
+  {
+    "word": "rare",
+    "meaning": "adj. 稀有的",
+    "list": "单词5"
+  },
+  {
+    "word": "manuscripts",
+    "meaning": "n. 稿件",
+    "list": "单词5"
+  },
+  {
+    "word": "glorious",
+    "meaning": "adj. 光辉的",
+    "list": "单词5"
+  },
+  {
+    "word": "trace",
+    "meaning": "n. 踪迹  v. 跟踪",
+    "list": "单词5"
+  },
+  {
+    "word": "where",
+    "meaning": "adv. 哪里  conj. 哪里",
+    "list": "单词5"
+  },
+  {
+    "word": "attach",
+    "meaning": "v. 贴上，连接",
+    "list": "单词5"
+  },
+  {
+    "word": "since",
+    "meaning": "conj. 因为，自从  prep. 因为，自从",
+    "list": "单词5"
+  },
+  {
+    "word": "once",
+    "meaning": "conj. 一旦",
+    "list": "单词5"
+  },
+  {
+    "word": "melt",
+    "meaning": "v. 融化",
+    "list": "单词5"
+  },
+  {
+    "word": "confirm",
+    "meaning": "v. 确认",
+    "list": "单词5"
+  },
+  {
+    "word": "generous",
+    "meaning": "adj. 慷慨的",
+    "list": "单词5"
+  },
+  {
+    "word": "employee",
+    "meaning": "n. 员工",
+    "list": "单词5"
+  },
+  {
+    "word": "item",
+    "meaning": "n. 事物，货物",
+    "list": "单词5"
+  },
+  {
+    "word": "if",
+    "meaning": "conj. 是否",
+    "list": "单词5"
+  },
+  {
+    "word": "action",
+    "meaning": "n. 行动",
+    "list": "单词5"
+  },
+  {
+    "word": "one of",
+    "meaning": "phr. ...之一",
+    "list": "单词5"
+  },
+  {
+    "word": "aim",
+    "meaning": "v. 目的  n. 目的",
+    "list": "单词5"
+  },
+  {
+    "word": "strategy",
+    "meaning": "n. 战略",
+    "list": "单词5"
+  },
+  {
+    "word": "organic",
+    "meaning": "adj. 有机的",
+    "list": "单词5"
+  },
+  {
+    "word": "quality",
+    "meaning": "n. 质量",
+    "list": "单词5"
+  },
+  {
+    "word": "service",
+    "meaning": "n. 服务",
+    "list": "单词5"
+  },
+  {
+    "word": "fair",
+    "meaning": "adj. 公平的",
+    "list": "单词5"
+  },
+  {
+    "word": "devastate",
+    "meaning": "v. 毁灭",
+    "list": "单词5"
+  },
+  {
+    "word": "date back",
+    "meaning": "phr. 追溯到",
+    "list": "单词5"
+  },
+  {
+    "word": "undergo",
+    "meaning": "v. 经历",
+    "list": "单词5"
+  },
+  {
+    "word": "suitable",
+    "meaning": "adj. 适合的",
+    "list": "单词5"
+  },
+  {
+    "word": "devote",
+    "meaning": "v. 奉献",
+    "list": "单词5"
+  },
+  {
+    "word": "view as",
+    "meaning": "phr. 看作",
+    "list": "单词5"
+  },
+  {
+    "word": "critical",
+    "meaning": "adj. 批判的",
+    "list": "单词5"
+  },
+  {
+    "word": "frequently",
+    "meaning": "adv. 频繁地",
+    "list": "单词5"
+  },
+  {
+    "word": "express",
+    "meaning": "v. 表达",
+    "list": "单词5"
+  },
+  {
+    "word": "appeal to",
+    "meaning": "phr. 吸引",
+    "list": "单词5"
+  },
+  {
+    "word": "mainstream",
+    "meaning": "n. 主流",
+    "list": "单词5"
+  },
+  {
+    "word": "few",
+    "meaning": "pron. 几乎没有",
+    "list": "单词5"
+  },
+  {
+    "word": "value",
+    "meaning": "n. 价值  v. 看重",
+    "list": "单词5"
+  },
+  {
+    "word": "for",
+    "meaning": "prep. 用来，为了",
+    "list": "单词5"
+  },
+  {
+    "word": "emotion",
+    "meaning": "n. 情绪",
+    "list": "单词5"
+  },
+  {
+    "word": "range",
+    "meaning": "n. 范围",
+    "list": "单词5"
+  },
+  {
+    "word": "enhance",
+    "meaning": "v. 增强",
+    "list": "单词5"
+  },
+  {
+    "word": "scene",
+    "meaning": "n. 场景",
+    "list": "单词5"
+  },
+  {
+    "word": "interaction",
+    "meaning": "n. 互动",
+    "list": "单词5"
+  },
+  {
+    "word": "visual",
+    "meaning": "adj. 视觉的",
+    "list": "单词5"
+  },
+  {
+    "word": "fold",
+    "meaning": "v. 折叠",
+    "list": "单词5"
+  },
+  {
+    "word": "stress",
+    "meaning": "v. 强调",
+    "list": "单词5"
+  },
+  {
+    "word": "symbol",
+    "meaning": "n. 象征",
+    "list": "单词5"
+  },
+  {
+    "word": "equally",
+    "meaning": "adv. 平等地",
+    "list": "单词5"
   }
 ]
+
 
 
