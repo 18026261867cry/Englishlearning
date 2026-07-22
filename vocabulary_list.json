@@ -1621,7 +1621,7 @@
   },
   {
     "word": "stress",
-    "meaning": "v. 强调",
+    "meaning": "v. 强调  n.压力",
     "list": "单词5"
   },
   {
@@ -1633,8 +1633,292 @@
     "word": "equally",
     "meaning": "adv. 平等地",
     "list": "单词5"
+  },
+  {
+    "word": "staff",
+    "meaning": "n. 员工",
+    "list": "单词6"
+  },
+  {
+    "word": "instruction",
+    "meaning": "n. 指导",
+    "list": "单词6"
+  },
+  {
+    "word": "content",
+    "meaning": "n. 内容",
+    "list": "单词6"
+  },
+  {
+    "word": "degree",
+    "meaning": "n. 学位",
+    "list": "单词6"
+  },
+  {
+    "word": "play a...role",
+    "meaning": "phr. 起到...作用",
+    "list": "单词6"
+  },
+  {
+    "word": "guide",
+    "meaning": "v. 指导，指引",
+    "list": "单词6"
+  },
+  {
+    "word": "own",
+    "meaning": "v. 拥有",
+    "list": "单词6"
+  },
+  {
+    "word": "associate",
+    "meaning": "v. 联系",
+    "list": "单词6"
+  },
+  {
+    "word": "association",
+    "meaning": "n. 协会，联系",
+    "list": "单词6"
+  },
+  {
+    "word": "reduce",
+    "meaning": "v. 减少",
+    "list": "单词6"
+  },
+  {
+    "word": "reduction",
+    "meaning": "n. 减少",
+    "list": "单词6"
+  },
+  {
+    "word": "risk",
+    "meaning": "n. 风险",
+    "list": "单词6"
+  },
+  {
+    "word": "boredom",
+    "meaning": "n. 无聊",
+    "list": "单词6"
+  },
+  {
+    "word": "involve",
+    "meaning": "v. 包含，涉及",
+    "list": "单词6"
+  },
+  {
+    "word": "involvement",
+    "meaning": "n. 参与，涉及",
+    "list": "单词6"
+  },
+  {
+    "word": "participant",
+    "meaning": "n. 参与者",
+    "list": "单词6"
+  },
+  {
+    "word": "push",
+    "meaning": "v. 推动；推",
+    "list": "单词6"
+  },
+  {
+    "word": "social",
+    "meaning": "adj. 社会的",
+    "list": "单词6"
+  },
+  {
+    "word": "interact",
+    "meaning": "v. 互动",
+    "list": "单词6"
+  },
+  {
+    "word": "rate",
+    "meaning": "n. 比率",
+    "list": "单词6"
+  },
+  {
+    "word": "Sweden",
+    "meaning": "n. 瑞典",
+    "list": "单词6"
+  },
+  {
+    "word": "puppy",
+    "meaning": "n. 小狗",
+    "list": "单词6"
+  },
+  {
+    "word": "slave",
+    "meaning": "n. 奴隶",
+    "list": "单词6"
+  },
+  {
+    "word": "stand for",
+    "meaning": "phr. 代表",
+    "list": "单词6"
+  },
+  {
+    "word": "honor",
+    "meaning": "n. 荣耀，荣誉  v. 赞美，致敬",
+    "list": "单词6"
+  },
+  {
+    "word": "marine",
+    "meaning": "adj. 海洋的，海产的",
+    "list": "单词6"
+  },
+  {
+    "word": "conscious",
+    "meaning": "adj. 有意识的",
+    "list": "单词6"
+  },
+  {
+    "word": "contest",
+    "meaning": "n. 比赛，争议",
+    "list": "单词6"
+  },
+  {
+    "word": "guidance",
+    "meaning": "n. 指引",
+    "list": "单词6"
+  },
+  {
+    "word": "repeat",
+    "meaning": "v. 重复",
+    "list": "单词6"
+  },
+  {
+    "word": "sink",
+    "meaning": "v. 下沉",
+    "list": "单词6"
+  },
+  {
+    "word": "try one's best",
+    "meaning": "phr. 尽力",
+    "list": "单词6"
+  },
+  {
+    "word": "shore",
+    "meaning": "n. 海岸",
+    "list": "单词6"
+  },
+  {
+    "word": "shadow",
+    "meaning": "n. 影子，阴影",
+    "list": "单词6"
+  },
+  {
+    "word": "shallow",
+    "meaning": "adj. 浅的",
+    "list": "单词6"
+  },
+  {
+    "word": "estimate",
+    "meaning": "v. 预估",
+    "list": "单词6"
+  },
+  {
+    "word": "estimation",
+    "meaning": "n. 估计，预估",
+    "list": "单词6"
+  },
+  {
+    "word": "message",
+    "meaning": "n. 消息",
+    "list": "单词6"
+  },
+  {
+    "word": "accomplish",
+    "meaning": "v. 完成",
+    "list": "单词6"
+  },
+  {
+    "word": "accomplishment",
+    "meaning": "n. 成就，完成",
+    "list": "单词6"
+  },
+  {
+    "word": "dedicate",
+    "meaning": "v. 奉献",
+    "list": "单词6"
+  },
+  {
+    "word": "dive",
+    "meaning": "v. 下潜，潜水",
+    "list": "单词6"
+  },
+  {
+    "word": "elective",
+    "meaning": "n. 选修课",
+    "list": "单词6"
+  },
+  {
+    "word": "charity",
+    "meaning": "n. 慈善活动",
+    "list": "单词6"
+  },
+  {
+    "word": "exceptional",
+    "meaning": "adj. 杰出的，优秀的",
+    "list": "单词6"
+  },
+  {
+    "word": "excel",
+    "meaning": "v. 优秀，擅长",
+    "list": "单词6"
+  },
+  {
+    "word": "discipline",
+    "meaning": "n. 纪律",
+    "list": "单词6"
+  },
+  {
+    "word": "emphasize",
+    "meaning": "v. 强调",
+    "list": "单词6"
+  },
+  {
+    "word": "biography",
+    "meaning": "n. 传记",
+    "list": "单词6"
+  },
+  {
+    "word": "fiction",
+    "meaning": "n. 小说",
+    "list": "单词6"
+  },
+  {
+    "word": "folk",
+    "meaning": "adj. 民间的",
+    "list": "单词6"
+  },
+  {
+    "word": "style",
+    "meaning": "n. 风格，形式",
+    "list": "单词6"
+  },
+  {
+    "word": "dialect",
+    "meaning": "n. 方言",
+    "list": "单词6"
+  },
+  {
+    "word": "in + 语言",
+    "meaning": "phr. 用某种语言",
+    "list": "单词6"
+  },
+  {
+    "word": "be known for",
+    "meaning": "phr. 因...而出名",
+    "list": "单词6"
+  },
+  {
+    "word": "be known as",
+    "meaning": "phr. 作为...而出名",
+    "list": "单词6"
   }
 ]
+
+
+
+
 
 
 
