@@ -95,17 +95,15 @@
 
     <script>
         // ============================================================
-        // ⚠️ 请修改下面两个配置项
+        // ⚠️ 请修改下面的 JSONBin 配置项
         // ============================================================
         const DATA_URL = 'https://ghproxy.net/https://raw.githubusercontent.com/18026261867cry/Englishlearning/refs/heads/main/vocabulary_list.json';
-        const GITHUB_TOKEN = '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'; // 替换成你生成的 token
+        
+        const JSONBIN_BIN_ID = '6a6194b7da38895dfe826c68'; // 填入你的 Bin ID
+        const JSONBIN_API_KEY = '$2a$10$XrPLO2BgVEmb62nVI/rQneSm/dQf1yW5C84ROPDoseaFxuUU/.qbi';     // 填入你的 Master Key ($2a$10$ 开头的那串)
+        
+        const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
         // ============================================================
-
-        // GitHub API 配置
-        const REPO_OWNER = '18026261867cry';
-        const REPO_NAME = 'Englishlearning';
-        const FAV_FILE_PATH = 'favorites.json';
-        const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FAV_FILE_PATH}`;
 
         let allWords = [];
         let currentTab = '全部';
@@ -123,93 +121,55 @@
             '未分类': '#8e8e93'
         };
 
-        // ---------- GitHub API：读取收藏 ----------
-        async function fetchFavoritesFromGitHub() {
+        // ---------- JSONBin API：读取收藏 ----------
+        async function fetchFavoritesFromCloud() {
             try {
-                const res = await fetch(API_BASE, {
+                const res = await fetch(JSONBIN_URL, {
                     headers: {
-                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json'
+                        'X-Master-Key': JSONBIN_API_KEY
                     }
                 });
-                if (res.status === 404) {
-                    // 文件不存在，创建空文件
-                    await createFavoritesFile();
-                    return [];
-                }
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                const content = atob(data.content); // 解码 base64
-                return JSON.parse(content) || [];
+                
+                // JSONBin 返回的数据在 record 字段中
+                let record = data.record;
+                // 兼容处理：如果里面是个对象数组且带有 word 占位符，做简单过滤
+                if (Array.isArray(record)) {
+                    // 如果第一个元素是之前填的占位对象，过滤掉字符串
+                    return record.map(item => typeof item === 'string' ? item : item.word).filter(Boolean);
+                }
+                return [];
             } catch (err) {
-                console.warn('读取收藏失败，使用本地缓存:', err);
-                // 降级到 localStorage
+                console.warn('读取云端收藏失败，改用本地缓存:', err);
                 return getLocalFavorites();
             }
         }
 
-        // ---------- 创建 favorites.json ----------
-        async function createFavoritesFile() {
-            try {
-                await fetch(API_BASE, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        message: '创建收藏文件',
-                        content: btoa('[]')
-                    })
-                });
-            } catch (err) {
-                console.warn('创建收藏文件失败:', err);
-            }
-        }
-
-        // ---------- GitHub API：写入收藏 ----------
-        async function saveFavoritesToGitHub(favList) {
+        // ---------- JSONBin API：写入收藏 ----------
+        async function saveFavoritesToCloud(favList) {
             if (isSyncing) return;
             isSyncing = true;
             updateSyncStatus('syncing', '同步中...');
 
             try {
-                // 先获取当前文件的 sha
-                const getRes = await fetch(API_BASE, {
-                    headers: {
-                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-                let sha = null;
-                if (getRes.ok) {
-                    const data = await getRes.json();
-                    sha = data.sha;
-                }
-
-                const content = btoa(JSON.stringify(favList, null, 2));
-                const putRes = await fetch(API_BASE, {
+                const res = await fetch(JSONBIN_URL, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
-                        'Accept': 'application/vnd.github.v3+json'
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': JSONBIN_API_KEY
                     },
-                    body: JSON.stringify({
-                        message: `更新收藏 (${favList.length} 个单词)`,
-                        content: content,
-                        sha: sha
-                    })
+                    body: JSON.stringify(favList)
                 });
 
-                if (!putRes.ok) throw new Error(`HTTP ${putRes.status}`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 
-                // 同步到 localStorage 作为缓存
+                // 同步成功后更新本地缓存
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
                 updateSyncStatus('synced', `已同步 ${favList.length} 个`);
             } catch (err) {
-                console.error('同步收藏失败:', err);
+                console.error('同步云端收藏失败:', err);
                 updateSyncStatus('error', '同步失败，已保存到本地');
-                // 降级保存到 localStorage
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
             } finally {
                 isSyncing = false;
@@ -225,11 +185,7 @@
             } catch { return []; }
         }
 
-        function saveLocalFavorites(favList) {
-            localStorage.setItem('fav_words_cache', JSON.stringify(favList));
-        }
-
-        // ---------- 收藏操作（优先云端） ----------
+        // ---------- 收藏操作 ----------
         function toggleFavorite(wordText) {
             const idx = favorites.indexOf(wordText);
             if (idx > -1) {
@@ -239,8 +195,8 @@
             }
             // 乐观更新 UI
             render();
-            // 后台同步到 GitHub
-            saveFavoritesToGitHub(favorites);
+            // 后台同步到 JSONBin
+            saveFavoritesToCloud(favorites);
         }
 
         function isFavorite(wordText) {
@@ -266,10 +222,10 @@
         // ---------- 加载数据 ----------
         async function loadData() {
             try {
-                // 并行加载单词数据和收藏数据
+                // 并行加载单词数据和 JSONBin 收藏数据
                 const [wordsRes, favs] = await Promise.all([
                     fetch(DATA_URL),
-                    fetchFavoritesFromGitHub()
+                    fetchFavoritesFromCloud()
                 ]);
                 
                 if (!wordsRes.ok) throw new Error('网络请求失败');
