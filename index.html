@@ -40,12 +40,15 @@
 
         /* 次级过滤栏 */
         .sub-filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px 16px; border-top: 1px dashed #f0f2f5; font-size: 13px; color: var(--text-sub); }
-        .filter-left { display: flex; align-items: center; gap: 8px; }
+        .filter-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .filter-select-wrapper { display: flex; align-items: center; gap: 4px; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; }
         .filter-select-wrapper select { border: none; background: transparent; font-size: 12px; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; }
         
         .mask-toggle { display: flex; align-items: center; gap: 4px; font-size: 12px; cursor: pointer; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; user-select: none; }
         .mask-toggle input { cursor: pointer; }
+
+        .btn-export { border: none; background: #eef4ff; color: var(--primary); font-size: 12px; font-weight: 600; padding: 4px 8px; border-radius: 8px; cursor: pointer; }
+        .btn-export:active { transform: scale(0.95); }
 
         .sync-indicator { font-size: 11px; color: #8d949e; }
         .sync-indicator.synced { color: #34c759; }
@@ -181,6 +184,8 @@
                     <input type="checkbox" id="maskModeCheckbox">
                     <span>🙈 遮挡释义</span>
                 </label>
+                <!-- 📥 导出当前筛选数据 -->
+                <button class="btn-export" id="btnExport">📥 导出JSON</button>
             </div>
             
             <div class="sync-indicator synced" id="syncStatus">☁️ 已同步</div>
@@ -256,6 +261,7 @@
         let wrongList = []; 
         
         let isSyncing = false;
+        let currentAudio = null;
 
         // 背诵状态变量
         let reciteList = [];
@@ -263,16 +269,15 @@
         let isRandomMode = true;
         let isMeaningShown = false;
 
-        // ---------- 🔊 核心语音发音函数 ----------
+        // ---------- 🔊 语音发音：使用有道免费在线发音（全平台全系统兼容） ----------
         function speakWord(text) {
-    // 使用有道词典免费的发音 API (type=1 为英音，type=2 为美音)
+            if (currentAudio) {
+                currentAudio.pause();
+            }
+            // type=2 为美音，type=1 为英音
             const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=1`;
-            const audio = new Audio(audioUrl);
-            
-            audio.play().catch(err => {
-                console.error("播放失败:", err);
-                alert("发音播放失败，请检查网络设置。");
-            });
+            currentAudio = new Audio(audioUrl);
+            currentAudio.play().catch(err => console.log('音频播放被阻拦:', err));
         }
 
         // ---------- 读取/写入云端数据 ----------
@@ -443,6 +448,34 @@
             return { groups, sortedKeys: Object.keys(groups).sort() };
         }
 
+        // ---------- 📥 智能导出当前列表的数据 ----------
+        function exportCurrentData() {
+            const filteredData = getFilteredData();
+            if (filteredData.length === 0) {
+                alert('当前展示列表为空，无需导出！');
+                return;
+            }
+
+            // 计算导出文件名
+            let scopeName = currentTab === '收藏' ? '收藏集' : '全部单词';
+            if (selectedGroup === '__WRONG_LIST__') scopeName = '错题本';
+            else if (selectedGroup === '__ONLY_WORDS__') scopeName = '仅单词';
+            else if (selectedGroup === '__ONLY_PHRASES__') scopeName = '仅短语';
+            else if (selectedGroup !== '全部') scopeName = selectedGroup;
+
+            const dateStr = new Date().toISOString().split('T')[0];
+            const fileName = `单词库_${scopeName}_${dateStr}.json`;
+
+            // 转为 JSON 格式下载
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(filteredData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", fileName);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
         // ---------- 主列表渲染 ----------
         function render() {
             const container = document.getElementById('mainContent');
@@ -581,7 +614,7 @@
                 speakWord(currentObj.word);
             };
 
-            // 自动为你朗读当前新出现的单词 (如不需要自动发音，注释掉下面这行即可)
+            // 自动为你朗读当前新出现的单词
             speakWord(currentObj.word);
 
             // 收藏按钮
@@ -648,7 +681,7 @@
         document.getElementById('btnOpenRecite').addEventListener('click', startRecite);
         document.getElementById('btnCloseRecite').addEventListener('click', () => {
             document.getElementById('reciteModal').classList.remove('show');
-            window.speechSynthesis.cancel(); // 关闭背诵时停止发音
+            if (currentAudio) currentAudio.pause();
             render();
         });
 
@@ -656,6 +689,8 @@
             if (this.checked) document.body.classList.add('mask-mode');
             else document.body.classList.remove('mask-mode');
         });
+
+        document.getElementById('btnExport').addEventListener('click', exportCurrentData);
 
         // ---------- 加载数据 ----------
         async function loadData() {
