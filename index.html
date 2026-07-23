@@ -10,6 +10,7 @@
             --primary-light: #eef4ff;
             --danger: #ff3b30;
             --danger-light: #ffebee;
+            --success: #34c759;
             --bg-body: #f7f9fc;
             --text-main: #1c1e21;
             --text-sub: #606770;
@@ -31,17 +32,25 @@
         .search-icon { color: #8d949e; margin-right: 8px; font-size: 16px; }
 
         /* 主视图切换（全部 vs 收藏） */
-        .main-tabs { display: flex; padding: 4px 16px 10px 16px; gap: 10px; }
-        .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 12px; border: none; font-size: 14px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
+        .main-tabs { display: flex; padding: 4px 16px 8px 16px; gap: 8px; }
+        .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 9px; border-radius: 12px; border: none; font-size: 13px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
         .tab-main-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(45,122,255,0.25); }
         .tab-main-btn.fav-tab.active { background: var(--danger); box-shadow: 0 4px 10px rgba(255,59,48,0.25); }
-
-        /* 次级过滤栏（List 分类筛选） */
-        .sub-filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px 16px; border-top: 1px dashed #f0f2f5; font-size: 13px; color: var(--text-sub); }
-        .filter-select-wrapper { display: flex; align-items: center; gap: 6px; background: #f0f2f5; padding: 4px 10px; border-radius: 8px; }
-        .filter-select-wrapper select { border: none; background: transparent; font-size: 13px; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; }
         
-        .sync-indicator { font-size: 12px; color: #8d949e; }
+        /* 背诵模式按钮特别样式 */
+        .tab-main-btn.recite-btn { background: #eef4ff; color: var(--primary); border: 1px solid rgba(45,122,255,0.2); }
+
+        /* 次级过滤栏 */
+        .sub-filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px 16px; border-top: 1px dashed #f0f2f5; font-size: 13px; color: var(--text-sub); }
+        .filter-left { display: flex; align-items: center; gap: 8px; }
+        .filter-select-wrapper { display: flex; align-items: center; gap: 4px; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; }
+        .filter-select-wrapper select { border: none; background: transparent; font-size: 12px; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; }
+        
+        /* 遮挡释义开关 */
+        .mask-toggle { display: flex; align-items: center; gap: 4px; font-size: 12px; cursor: pointer; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; user-select: none; }
+        .mask-toggle input { cursor: pointer; }
+
+        .sync-indicator { font-size: 11px; color: #8d949e; }
         .sync-indicator.synced { color: #34c759; }
         .sync-indicator.syncing { color: #ff9500; }
         .sync-indicator.error { color: var(--danger); }
@@ -59,10 +68,13 @@
         .word-left { flex: 1; min-width: 0; }
         .word-header-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
         .word-text { font-size: 18px; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
-        
         .tag-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: #f0f2f5; color: var(--text-sub); }
 
-        .word-meaning { font-size: 14px; color: var(--text-sub); line-height: 1.5; white-space: pre-wrap; margin-top: 4px; }
+        .word-meaning { font-size: 14px; color: var(--text-sub); line-height: 1.5; white-space: pre-wrap; margin-top: 4px; transition: all 0.2s; }
+        
+        /* 遮挡模式效果 */
+        body.mask-mode .word-meaning { filter: blur(6px); background: #eee; border-radius: 4px; user-select: none; cursor: pointer; }
+        body.mask-mode .word-meaning:hover, body.mask-mode .word-meaning:active { filter: none; background: transparent; }
 
         /* 收藏按钮 */
         .star-btn { flex-shrink: 0; font-size: 24px; cursor: pointer; background: none; border: none; padding: 2px; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #d1d5db; line-height: 1; }
@@ -74,14 +86,43 @@
         .letter-index span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; cursor: pointer; }
         .letter-index span:active { background: var(--primary); color: #fff; }
 
+        /* ================= 🃏 背诵全屏弹窗 ================= */
+        .recite-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #f7f9fc; z-index: 100; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+        .recite-modal.show { opacity: 1; pointer-events: auto; }
+
+        .recite-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .recite-title { font-weight: 700; font-size: 16px; }
+        .close-btn { border: none; background: #f0f2f5; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; }
+
+        .recite-mode-selector { display: flex; justify-content: center; gap: 10px; margin: 12px 20px 0 20px; }
+        .mode-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #d0d7de; background: #fff; font-size: 12px; font-weight: 600; color: var(--text-sub); cursor: pointer; }
+        .mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .recite-card-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; perspective: 1000px; }
+        
+        .flash-card { width: 100%; max-width: 340px; height: 320px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; padding: 24px; position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; border: 1px solid rgba(0,0,0,0.03); }
+        
+        .card-top { display: flex; justify-content: space-between; align-items: center; }
+        .card-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .card-word { font-size: 28px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
+        .card-meaning-text { font-size: 16px; color: var(--text-sub); line-height: 1.6; visibility: hidden; opacity: 0; transition: opacity 0.2s; }
+        .card-meaning-text.show { visibility: visible; opacity: 1; }
+        .tap-tip { font-size: 12px; color: #b0b8c4; margin-top: 10px; }
+
+        .recite-footer { padding: 16px 20px 30px 20px; background: #fff; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 12px; }
+        .progress-bar-bg { width: 100%; height: 6px; background: #f0f2f5; border-radius: 3px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s; }
+        
+        .recite-actions { display: flex; gap: 12px; }
+        .action-btn { flex: 1; padding: 12px; border-radius: 12px; border: none; font-weight: 700; font-size: 14px; cursor: pointer; transition: transform 0.1s; }
+        .action-btn:active { transform: scale(0.96); }
+        .btn-know { background: #e8f8ee; color: var(--success); }
+        .btn-unknow { background: #ffebee; color: var(--danger); }
+        .btn-next { background: var(--primary); color: #fff; }
+
         /* 空状态 */
         .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
         .loading { text-align: center; padding: 80px 20px; color: #8d949e; }
-
-        @media (max-width: 480px) {
-            .word-text { font-size: 17px; }
-            .letter-index span { font-size: 9px; width: 16px; height: 16px; line-height: 16px; }
-        }
     </style>
 </head>
 <body>
@@ -95,7 +136,7 @@
             </div>
         </div>
 
-        <!-- 主 Tab：全部 vs 收藏 -->
+        <!-- 主 Tab -->
         <div class="main-tabs">
             <button class="tab-main-btn active" id="btnAllTab">
                 <span>📚 全部</span>
@@ -105,21 +146,30 @@
                 <span>❤️ 收藏</span>
                 <span id="countFav">(0)</span>
             </button>
+            <button class="tab-main-btn recite-btn" id="btnOpenRecite">
+                <span>🃏 开始抽背</span>
+            </button>
         </div>
 
-        <!-- 次级筛选：单元/词性过滤 & 同步状态 -->
+        <!-- 次级筛选 -->
         <div class="sub-filter-bar">
-            <div class="filter-select-wrapper">
-                <span>📁 筛选：</span>
-                <select id="groupSelect">
-                    <option value="全部">全部分组</option>
-                    <option value="__ONLY_WORDS__">🔤 仅看单词</option>
-                    <option value="__ONLY_PHRASES__">💬 仅看短语</option>
-                </select>
+            <div class="filter-left">
+                <div class="filter-select-wrapper">
+                    <span>📁 筛选：</span>
+                    <select id="groupSelect">
+                        <option value="全部">全部分组</option>
+                        <option value="__ONLY_WORDS__">🔤 仅看单词</option>
+                        <option value="__ONLY_PHRASES__">💬 仅看短语</option>
+                    </select>
+                </div>
+                <!-- 🙈 遮挡释义 开关 -->
+                <label class="mask-toggle">
+                    <input type="checkbox" id="maskModeCheckbox">
+                    <span>🙈 遮挡释义</span>
+                </label>
             </div>
-            <div class="sync-indicator synced" id="syncStatus">
-                ☁️ 已同步
-            </div>
+            
+            <div class="sync-indicator synced" id="syncStatus">☁️ 已同步</div>
         </div>
     </div>
 
@@ -128,8 +178,46 @@
         <div class="loading">⏳ 加载单词库中...</div>
     </div>
 
-    <!-- 右侧字母表快捷跳跃 -->
+    <!-- 右侧字母快捷索引 -->
     <div class="letter-index" id="letterIndex"></div>
+
+    <!-- ================= 🃏 背诵全屏弹窗 ================= -->
+    <div class="recite-modal" id="reciteModal">
+        <div class="recite-header">
+            <div class="recite-title" id="reciteScopeTitle">抽背模式</div>
+            <button class="close-btn" id="btnCloseRecite">✕</button>
+        </div>
+
+        <div class="recite-mode-selector">
+            <button class="mode-btn active" id="btnModeRandom">🎲 随机抽背</button>
+            <button class="mode-btn" id="btnModeOrder">🔤 顺序背诵</button>
+        </div>
+
+        <div class="recite-card-container">
+            <div class="flash-card" id="flashCard">
+                <div class="card-top">
+                    <span class="tag-badge" id="cardTag">List 1</span>
+                    <button class="star-btn" id="cardStarBtn">☆</button>
+                </div>
+                <div class="card-center">
+                    <div class="card-word" id="cardWord">Word</div>
+                    <div class="card-meaning-text" id="cardMeaning">释义...</div>
+                    <div class="tap-tip" id="tapTip">👆 点击卡片显示释义</div>
+                </div>
+                <div style="text-align: center; font-size: 12px; color: #a0a0a0;" id="cardIndexText">1 / 10</div>
+            </div>
+        </div>
+
+        <div class="recite-footer">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="reciteProgressBar"></div>
+            </div>
+            <div class="recite-actions">
+                <button class="action-btn btn-unknow" id="btnUnknow">❌ 没记住</button>
+                <button class="action-btn btn-know" id="btnKnow">✅ 记住了</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // ============================================================
@@ -144,17 +232,21 @@
 
         let allWords = [];
         let currentTab = '全部'; // '全部' 或 '收藏'
-        let selectedGroup = '全部'; // 下拉菜单选择项
+        let selectedGroup = '全部';
         let searchKeyword = '';
         let favorites = []; 
         let isSyncing = false;
 
-        // ---------- 读取云端收藏 ----------
+        // 背诵状态变量
+        let reciteList = [];
+        let reciteIndex = 0;
+        let isRandomMode = true;
+        let isMeaningShown = false;
+
+        // ---------- 读取/写入云端收藏 ----------
         async function fetchFavoritesFromCloud() {
             try {
-                const res = await fetch(JSONBIN_URL, {
-                    headers: { 'X-Master-Key': JSONBIN_API_KEY }
-                });
+                const res = await fetch(JSONBIN_URL, { headers: { 'X-Master-Key': JSONBIN_API_KEY } });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 let record = data.record;
@@ -163,12 +255,10 @@
                 }
                 return [];
             } catch (err) {
-                console.warn('读取云端失败，降级本地缓存:', err);
                 return getLocalFavorites();
             }
         }
 
-        // ---------- 写入云端收藏 ----------
         async function saveFavoritesToCloud(favList) {
             if (isSyncing) return;
             isSyncing = true;
@@ -177,18 +267,13 @@
             try {
                 const res = await fetch(JSONBIN_URL, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': JSONBIN_API_KEY
-                    },
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_API_KEY },
                     body: JSON.stringify(favList)
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
                 updateSyncStatus('synced', '☁️ 已同步');
             } catch (err) {
-                console.error('同步失败:', err);
                 updateSyncStatus('error', '⚠️ 暂存本地');
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
             } finally {
@@ -197,27 +282,19 @@
         }
 
         function getLocalFavorites() {
-            try {
-                const cached = localStorage.getItem('fav_words_cache');
-                return cached ? JSON.parse(cached) : [];
-            } catch { return []; }
+            try { return JSON.parse(localStorage.getItem('fav_words_cache')) || []; } catch { return []; }
         }
 
         function toggleFavorite(wordText) {
             const idx = favorites.indexOf(wordText);
-            if (idx > -1) {
-                favorites.splice(idx, 1);
-            } else {
-                favorites.push(wordText);
-            }
+            if (idx > -1) favorites.splice(idx, 1);
+            else favorites.push(wordText);
             updateTabCounts();
             render();
             saveFavoritesToCloud(favorites);
         }
 
-        function isFavorite(wordText) {
-            return favorites.includes(wordText);
-        }
+        function isFavorite(wordText) { return favorites.includes(wordText); }
 
         function updateSyncStatus(status, msg) {
             const el = document.getElementById('syncStatus');
@@ -225,12 +302,9 @@
             el.textContent = msg;
         }
 
-        // ---------- 判断是否是短语 ----------
-        function isPhrase(item) {
-            return item.meaning && item.meaning.includes('phr.');
-        }
+        function isPhrase(item) { return item.meaning && item.meaning.includes('phr.'); }
 
-        // ---------- 初始化 Dropdown 下拉选项 ----------
+        // ---------- Dropdown 初始化 ----------
         function initGroupSelect() {
             const set = new Set();
             allWords.forEach(item => set.add(item.list || '未分类'));
@@ -269,12 +343,10 @@
         function getFilteredData() {
             let data = allWords;
 
-            // 1. 视角过滤（全部 vs 收藏）
             if (currentTab === '收藏') {
                 data = data.filter(item => favorites.includes(item.word));
             }
 
-            // 2. 下拉条件过滤（短语 / 单词 / 指定 List 单元）
             if (selectedGroup === '__ONLY_PHRASES__') {
                 data = data.filter(item => isPhrase(item));
             } else if (selectedGroup === '__ONLY_WORDS__') {
@@ -283,7 +355,6 @@
                 data = data.filter(item => (item.list || '未分类') === selectedGroup);
             }
 
-            // 3. 关键词过滤
             if (searchKeyword.trim() !== '') {
                 const kw = searchKeyword.trim().toLowerCase();
                 data = data.filter(item =>
@@ -304,7 +375,7 @@
             return { groups, sortedKeys: Object.keys(groups).sort() };
         }
 
-        // ---------- 页面渲染 ----------
+        // ---------- 主列表渲染 ----------
         function render() {
             const container = document.getElementById('mainContent');
             const filtered = getFilteredData();
@@ -321,7 +392,6 @@
 
             const { groups, sortedKeys } = groupByLetter(filtered);
 
-            // 渲染字母快捷跳转
             const indexContainer = document.getElementById('letterIndex');
             indexContainer.innerHTML = '';
             sortedKeys.forEach(letter => {
@@ -334,7 +404,6 @@
                 indexContainer.appendChild(span);
             });
 
-            // 渲染卡片
             let html = '';
             sortedKeys.forEach(letter => {
                 const items = groups[letter];
@@ -360,7 +429,6 @@
             });
             container.innerHTML = html;
 
-            // 绑定收藏事件
             container.querySelectorAll('.star-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -368,6 +436,134 @@
                 });
             });
         }
+
+        // ============================================================
+        // 🃏 背诵模式核心逻辑
+        // ============================================================
+        function startRecite() {
+            const sourceData = getFilteredData();
+            if (sourceData.length === 0) {
+                alert('当前筛选状态下没有可以背诵的单词！');
+                return;
+            }
+
+            reciteList = [...sourceData];
+            if (isRandomMode) {
+                // 洗牌算法打乱
+                reciteList.sort(() => Math.random() - 0.5);
+            }
+            reciteIndex = 0;
+
+            // 设置标题
+            let title = `背诵: ${currentTab}`;
+            if (selectedGroup !== '全部') {
+                const selObj = document.getElementById('groupSelect');
+                title += ` (${selObj.options[selObj.selectedIndex].text})`;
+            }
+            document.getElementById('reciteScopeTitle').textContent = title;
+
+            document.getElementById('reciteModal').classList.add('show');
+            renderReciteCard();
+        }
+
+        function renderReciteCard() {
+            if (reciteIndex >= reciteList.length) {
+                // 告捷/结束提示
+                document.getElementById('cardWord').textContent = '🎉 太棒了！';
+                document.getElementById('cardMeaning').innerHTML = '你已经背完了本轮的所有单词！';
+                document.getElementById('cardMeaning').classList.add('show');
+                document.getElementById('tapTip').style.display = 'none';
+                document.getElementById('cardTag').textContent = '完成';
+                document.getElementById('cardIndexText').textContent = `${reciteList.length} / ${reciteList.length}`;
+                document.getElementById('reciteProgressBar').style.width = '100%';
+                return;
+            }
+
+            const currentObj = reciteList[reciteIndex];
+            isMeaningShown = false;
+
+            document.getElementById('cardWord').textContent = currentObj.word;
+            document.getElementById('cardMeaning').innerHTML = (currentObj.meaning || '').replace(/\n/g, '<br>');
+            document.getElementById('cardMeaning').classList.remove('show');
+            document.getElementById('tapTip').style.display = 'block';
+            document.getElementById('cardTag').textContent = currentObj.list || '未分类';
+
+            // 收藏星号
+            const starBtn = document.getElementById('cardStarBtn');
+            const fav = isFavorite(currentObj.word);
+            starBtn.className = `star-btn ${fav ? 'active' : ''}`;
+            starBtn.textContent = fav ? '★' : '☆';
+            starBtn.onclick = (e) => {
+                e.stopPropagation();
+                toggleFavorite(currentObj.word);
+                renderReciteCard();
+            };
+
+            // 进度条与计数
+            document.getElementById('cardIndexText').textContent = `${reciteIndex + 1} / ${reciteList.length}`;
+            const pct = ((reciteIndex) / reciteList.length) * 100;
+            document.getElementById('reciteProgressBar').style.width = `${pct}%`;
+        }
+
+        // 切换卡片显示释义
+        document.getElementById('flashCard').addEventListener('click', () => {
+            if (reciteIndex >= reciteList.length) return;
+            isMeaningShown = !isMeaningShown;
+            const meaningEl = document.getElementById('cardMeaning');
+            const tipEl = document.getElementById('tapTip');
+            if (isMeaningShown) {
+                meaningEl.classList.add('show');
+                tipEl.style.display = 'none';
+            } else {
+                meaningEl.classList.remove('show');
+                tipEl.style.display = 'block';
+            }
+        });
+
+        // 记住了 / 没记住
+        document.getElementById('btnKnow').addEventListener('click', () => {
+            if (reciteIndex >= reciteList.length) return;
+            reciteIndex++;
+            renderReciteCard();
+        });
+
+        document.getElementById('btnUnknow').addEventListener('click', () => {
+            if (reciteIndex >= reciteList.length) return;
+            // 没记住的把当前词放回队列末尾，稍后重新抽到
+            reciteList.push(reciteList[reciteIndex]);
+            reciteIndex++;
+            renderReciteCard();
+        });
+
+        // 背诵模式：随机 vs 顺序 切换
+        document.getElementById('btnModeRandom').addEventListener('click', function() {
+            isRandomMode = true;
+            this.classList.add('active');
+            document.getElementById('btnModeOrder').classList.remove('active');
+            startRecite();
+        });
+
+        document.getElementById('btnModeOrder').addEventListener('click', function() {
+            isRandomMode = false;
+            this.classList.add('active');
+            document.getElementById('btnModeRandom').classList.remove('active');
+            startRecite();
+        });
+
+        document.getElementById('btnOpenRecite').addEventListener('click', startRecite);
+        document.getElementById('btnCloseRecite').addEventListener('click', () => {
+            document.getElementById('reciteModal').classList.remove('show');
+            render(); // 刷新列表
+        });
+
+        // 🙈 遮挡释义开关
+        document.getElementById('maskModeCheckbox').addEventListener('change', function() {
+            if (this.checked) {
+                document.body.classList.add('mask-mode');
+            } else {
+                document.body.classList.remove('mask-mode');
+            }
+        });
 
         // ---------- 加载数据 ----------
         async function loadData() {
