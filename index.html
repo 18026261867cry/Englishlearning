@@ -1,156 +1,176 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>📚 我的单词库</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, sans-serif; background: #f5f7fa; display: flex; flex-direction: column; height: 100vh; }
+        :root {
+            --primary: #2d7aff;
+            --primary-light: #eef4ff;
+            --danger: #ff3b30;
+            --danger-light: #ffebee;
+            --bg-body: #f7f9fc;
+            --text-main: #1c1e21;
+            --text-sub: #606770;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
 
-        .header { background: white; padding: 12px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); z-index: 10; flex-shrink: 0; }
-        .search-box { display: flex; align-items: center; background: #f0f2f5; border-radius: 10px; padding: 0 14px; height: 44px; }
-        .search-box input { border: none; background: transparent; flex: 1; outline: none; font-size: 16px; padding: 8px 0; }
-        .search-box input::placeholder { color: #999; }
-        .search-icon { color: #999; margin-right: 10px; font-size: 18px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg-body); color: var(--text-main); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-        .nav-tabs { background: white; display: flex; gap: 6px; padding: 8px 16px 12px 16px; overflow-x: auto; flex-shrink: 0; border-bottom: 1px solid #f0f0f0; }
-        .nav-tabs::-webkit-scrollbar { display: none; }
-        .tab-btn { flex-shrink: 0; padding: 6px 16px; border-radius: 20px; border: none; font-size: 14px; font-weight: 500; background: #f0f2f5; color: #555; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-        .tab-btn.active { background: #2d7aff; color: white; box-shadow: 0 2px 8px rgba(45,122,255,0.3); }
-        .tab-btn:active { transform: scale(0.95); }
-        .tab-btn.fav-tab { background: #ffebee; color: #e53935; }
-        .tab-btn.fav-tab.active { background: #e53935; color: white; box-shadow: 0 2px 8px rgba(229,57,53,0.3); }
+        /* 顶部固定区域 */
+        .top-container { background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.06); flex-shrink: 0; z-index: 10; }
 
-        .main-content { flex: 1; overflow-y: auto; padding: 16px; position: relative; }
+        /* 搜索框 */
+        .header { padding: 12px 16px 8px 16px; }
+        .search-box { display: flex; align-items: center; background: #f0f2f5; border-radius: 12px; padding: 0 14px; height: 42px; transition: all 0.2s; }
+        .search-box:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--primary); }
+        .search-box input { border: none; background: transparent; flex: 1; outline: none; font-size: 15px; color: var(--text-main); }
+        .search-box input::placeholder { color: #8d949e; }
+        .search-icon { color: #8d949e; margin-right: 8px; font-size: 16px; }
 
-        .letter-header { font-size: 22px; font-weight: 700; color: #2d7aff; padding: 12px 0 6px 0; border-bottom: 2px solid #e8edf4; margin-top: 8px; }
+        /* 主视图切换（全部 vs 收藏） */
+        .main-tabs { display: flex; padding: 4px 16px 10px 16px; gap: 10px; }
+        .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 10px; border-radius: 12px; border: none; font-size: 14px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
+        .tab-main-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(45,122,255,0.25); }
+        .tab-main-btn.fav-tab.active { background: var(--danger); box-shadow: 0 4px 10px rgba(255,59,48,0.25); }
+
+        /* 次级过滤栏（List 分类筛选） */
+        .sub-filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px 16px; border-top: 1px dashed #f0f2f5; font-size: 13px; color: var(--text-sub); }
+        .filter-select-wrapper { display: flex; align-items: center; gap: 6px; background: #f0f2f5; padding: 4px 10px; border-radius: 8px; }
+        .filter-select-wrapper select { border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--text-main); outline: none; cursor: pointer; }
+        
+        .sync-indicator { font-size: 12px; color: #8d949e; }
+        .sync-indicator.synced { color: #34c759; }
+        .sync-indicator.syncing { color: #ff9500; }
+        .sync-indicator.error { color: var(--danger); }
+
+        /* 主内容滚动区 */
+        .main-content { flex: 1; overflow-y: auto; padding: 12px 16px 30px 16px; scroll-behavior: smooth; }
+
+        /* 字母分组标题 */
+        .letter-header { font-size: 18px; font-weight: 800; color: var(--primary); padding: 14px 0 6px 0; border-bottom: 2px solid #eef2f7; margin-top: 10px; display: flex; align-items: center; justify-content: space-between; }
         .letter-header:first-of-type { margin-top: 0; }
 
-        .word-card { background: white; border-radius: 12px; padding: 14px 16px; margin: 8px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: all 0.15s; display: flex; align-items: flex-start; gap: 10px; }
-        .word-card:active { background: #f5f7fa; transform: scale(0.99); }
-        .word-card .word-left { flex: 1; min-width: 0; }
-        .word-text { font-size: 17px; font-weight: 600; color: #1a2332; }
-        .word-meaning { font-size: 14px; color: #6b7a8f; margin-top: 4px; line-height: 1.5; white-space: pre-wrap; }
+        /* 单词卡片 */
+        .word-card { background: #ffffff; border-radius: 14px; padding: 14px 16px; margin: 10px 0; box-shadow: var(--card-shadow); transition: transform 0.15s, box-shadow 0.15s; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; border: 1px solid rgba(0,0,0,0.02); }
+        .word-card:active { transform: scale(0.985); }
+        .word-left { flex: 1; min-width: 0; }
+        .word-header-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+        .word-text { font-size: 18px; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
+        
+        .tag-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: #f0f2f5; color: var(--text-sub); }
 
-        .star-btn { 
-            flex-shrink: 0; 
-            font-size: 26px; 
-            cursor: pointer; 
-            background: none; 
-            border: none; 
-            padding: 0 4px; 
-            transition: transform 0.15s;
-            line-height: 1;
-            color: #ccc;
-        }
-        .star-btn.active { color: #f5a623; }
-        .star-btn:active { transform: scale(1.3); }
+        .word-meaning { font-size: 14px; color: var(--text-sub); line-height: 1.5; white-space: pre-wrap; margin-top: 4px; }
 
-        .letter-index { position: fixed; right: 4px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 1px; z-index: 20; }
-        .letter-index span { display: block; font-size: 11px; font-weight: 600; color: #2d7aff; width: 20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; cursor: pointer; transition: all 0.1s; }
-        .letter-index span:active { background: #2d7aff; color: white; transform: scale(1.2); }
+        /* 收藏按钮 */
+        .star-btn { flex-shrink: 0; font-size: 24px; cursor: pointer; background: none; border: none; padding: 2px; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #d1d5db; line-height: 1; }
+        .star-btn.active { color: #f5a623; transform: scale(1.1); }
+        .star-btn:active { transform: scale(1.4); }
 
-        .empty { text-align: center; padding: 60px 20px; color: #999; font-size: 15px; }
-        .stats { font-size: 13px; color: #8a9aa8; padding: 4px 0 8px 0; flex-shrink: 0; }
-        .loading { text-align: center; padding: 60px 20px; color: #999; }
+        /* 右侧字母快捷索引 */
+        .letter-index { position: fixed; right: 2px; top: 55%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 1px; z-index: 20; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); padding: 4px 2px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .letter-index span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; cursor: pointer; }
+        .letter-index span:active { background: var(--primary); color: #fff; }
 
-        .tag-label { display: inline-block; color: white; font-size: 11px; font-weight: 600; padding: 2px 12px; border-radius: 12px; letter-spacing: 0.3px; margin-top: 6px; }
-
-        /* 同步状态提示 */
-        .sync-status { font-size: 12px; color: #8a9aa8; padding: 2px 16px 4px 16px; background: white; display: flex; justify-content: space-between; border-bottom: 1px solid #f0f0f0; }
-        .sync-status .synced { color: #34c759; }
-        .sync-status .syncing { color: #ff9500; }
-        .sync-status .error { color: #ff3b30; }
+        /* 空状态 */
+        .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
+        .loading { text-align: center; padding: 80px 20px; color: #8d949e; }
 
         @media (max-width: 480px) {
-            .tab-btn { font-size: 13px; padding: 5px 14px; }
-            .word-text { font-size: 16px; }
-            .letter-index span { font-size: 10px; width: 18px; height: 18px; line-height: 18px; }
-            .star-btn { font-size: 24px; }
+            .word-text { font-size: 17px; }
+            .letter-index span { font-size: 9px; width: 16px; height: 16px; line-height: 16px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="搜索单词或释义..." autocomplete="off">
+    <div class="top-container">
+        <!-- 搜索栏 -->
+        <div class="header">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="搜索单词或释义..." autocomplete="off">
+            </div>
+        </div>
+
+        <!-- 主 Tab：全部 vs 收藏 -->
+        <div class="main-tabs">
+            <button class="tab-main-btn active" id="btnAllTab">
+                <span>📚 全部</span>
+                <span id="countAll">(0)</span>
+            </button>
+            <button class="tab-main-btn fav-tab" id="btnFavTab">
+                <span>❤️ 收藏</span>
+                <span id="countFav">(0)</span>
+            </button>
+        </div>
+
+        <!-- 次级筛选：单元 List & 同步状态 -->
+        <div class="sub-filter-bar">
+            <div class="filter-select-wrapper">
+                <span>📁 分组：</span>
+                <select id="groupSelect">
+                    <option value="全部">全部分组</option>
+                </select>
+            </div>
+            <div class="sync-indicator synced" id="syncStatus">
+                ☁️ 已同步
+            </div>
         </div>
     </div>
 
-    <div class="nav-tabs" id="navTabs"></div>
-    <div class="sync-status" id="syncStatus">
-        <span>☁️ 收藏已同步</span>
-        <span id="syncTime"></span>
-    </div>
-    <div class="stats" id="stats" style="padding: 8px 16px 0 16px; background: white;"></div>
-
+    <!-- 列表容器 -->
     <div class="main-content" id="mainContent">
-        <div class="loading">⏳ 加载中...</div>
+        <div class="loading">⏳ 加载单词库中...</div>
     </div>
 
+    <!-- 右侧字母表快捷跳跃 -->
     <div class="letter-index" id="letterIndex"></div>
 
     <script>
         // ============================================================
-        // ⚠️ 请修改下面的 JSONBin 配置项
+        // JSONBin 配置项
         // ============================================================
         const DATA_URL = 'https://ghproxy.net/https://raw.githubusercontent.com/18026261867cry/Englishlearning/refs/heads/main/vocabulary_list.json';
-        
-        const JSONBIN_BIN_ID = '6a6194b7da38895dfe826c68'; // 填入你的 Bin ID
-        const JSONBIN_API_KEY = '$2a$10$XrPLO2BgVEmb62nVI/rQneSm/dQf1yW5C84ROPDoseaFxuUU/.qbi';     // 填入你的 Master Key ($2a$10$ 开头的那串)
+        const JSONBIN_BIN_ID = '6a6194b7da38895dfe826c68'; 
+        const JSONBIN_API_KEY = '$2a$10$XrPLO2BgVEmb62nVI/rQneSm/dQf1yW5C84ROPDoseaFxuUU/.qbi';
         
         const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
         // ============================================================
 
         let allWords = [];
-        let currentTab = '全部';
+        let currentTab = '全部'; // '全部' 或 '收藏'
+        let selectedGroup = '全部'; // List 单元选择
         let searchKeyword = '';
-        let favorites = []; // 云端收藏列表
+        let favorites = []; 
         let isSyncing = false;
 
-        // ---------- 标签颜色 ----------
-        const tagColors = {
-            '单词1': '#2d7aff',
-            '单词2': '#34c759',
-            '单词3': '#ff9500',
-            '单词4': '#af52de',
-            '单词5': '#ff3b30',
-            '未分类': '#8e8e93'
-        };
-
-        // ---------- JSONBin API：读取收藏 ----------
+        // ---------- 读取云端收藏 ----------
         async function fetchFavoritesFromCloud() {
             try {
                 const res = await fetch(JSONBIN_URL, {
-                    headers: {
-                        'X-Master-Key': JSONBIN_API_KEY
-                    }
+                    headers: { 'X-Master-Key': JSONBIN_API_KEY }
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
-                
-                // JSONBin 返回的数据在 record 字段中
                 let record = data.record;
-                // 兼容处理：如果里面是个对象数组且带有 word 占位符，做简单过滤
                 if (Array.isArray(record)) {
-                    // 如果第一个元素是之前填的占位对象，过滤掉字符串
                     return record.map(item => typeof item === 'string' ? item : item.word).filter(Boolean);
                 }
                 return [];
             } catch (err) {
-                console.warn('读取云端收藏失败，改用本地缓存:', err);
+                console.warn('读取云端失败，降级本地缓存:', err);
                 return getLocalFavorites();
             }
         }
 
-        // ---------- JSONBin API：写入收藏 ----------
+        // ---------- 写入云端收藏 ----------
         async function saveFavoritesToCloud(favList) {
             if (isSyncing) return;
             isSyncing = true;
-            updateSyncStatus('syncing', '同步中...');
+            updateSyncStatus('syncing', '⏳ 同步中');
 
             try {
                 const res = await fetch(JSONBIN_URL, {
@@ -161,31 +181,26 @@
                     },
                     body: JSON.stringify(favList)
                 });
-
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 
-                // 同步成功后更新本地缓存
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
-                updateSyncStatus('synced', `已同步 ${favList.length} 个`);
+                updateSyncStatus('synced', '☁️ 已同步');
             } catch (err) {
-                console.error('同步云端收藏失败:', err);
-                updateSyncStatus('error', '同步失败，已保存到本地');
+                console.error('同步失败:', err);
+                updateSyncStatus('error', '⚠️ 暂存本地');
                 localStorage.setItem('fav_words_cache', JSON.stringify(favList));
             } finally {
                 isSyncing = false;
             }
         }
 
-        // ---------- 本地 localStorage 降级 ----------
         function getLocalFavorites() {
             try {
                 const cached = localStorage.getItem('fav_words_cache');
-                if (cached) return JSON.parse(cached);
-                return [];
+                return cached ? JSON.parse(cached) : [];
             } catch { return []; }
         }
 
-        // ---------- 收藏操作 ----------
         function toggleFavorite(wordText) {
             const idx = favorites.indexOf(wordText);
             if (idx > -1) {
@@ -193,9 +208,8 @@
             } else {
                 favorites.push(wordText);
             }
-            // 乐观更新 UI
+            updateTabCounts();
             render();
-            // 后台同步到 JSONBin
             saveFavoritesToCloud(favorites);
         }
 
@@ -203,105 +217,57 @@
             return favorites.includes(wordText);
         }
 
-        // ---------- 同步状态显示 ----------
         function updateSyncStatus(status, msg) {
             const el = document.getElementById('syncStatus');
-            const statusText = el.querySelector('span:first-child');
-            const timeText = document.getElementById('syncTime');
-            
-            if (status === 'synced') {
-                statusText.textContent = `✅ 收藏已同步`;
-                timeText.textContent = msg || '';
-            } else if (status === 'syncing') {
-                statusText.textContent = `⏳ ${msg || '同步中...'}`;
-            } else if (status === 'error') {
-                statusText.textContent = `⚠️ ${msg || '同步失败'}`;
-            }
+            el.className = `sync-indicator ${status}`;
+            el.textContent = msg;
         }
 
-        // ---------- 加载数据 ----------
-        async function loadData() {
-            try {
-                // 并行加载单词数据和 JSONBin 收藏数据
-                const [wordsRes, favs] = await Promise.all([
-                    fetch(DATA_URL),
-                    fetchFavoritesFromCloud()
-                ]);
-                
-                if (!wordsRes.ok) throw new Error('网络请求失败');
-                allWords = await wordsRes.json();
-                allWords.sort((a, b) => a.word.localeCompare(b.word));
-
-                // 恢复收藏
-                if (favs && Array.isArray(favs)) {
-                    favorites = favs;
-                } else {
-                    favorites = getLocalFavorites();
-                }
-                // 同步到 localStorage 缓存
-                localStorage.setItem('fav_words_cache', JSON.stringify(favorites));
-
-                initTabs();
-                render();
-                updateSyncStatus('synced', `${favorites.length} 个收藏`);
-            } catch (err) {
-                // 降级：尝试从本地缓存加载
-                const cached = getLocalFavorites();
-                if (cached.length > 0) favorites = cached;
-                document.getElementById('mainContent').innerHTML = `
-                    <div class="empty">❌ 加载失败<br><span style="font-size:13px;color:#bbb;">${err.message}</span></div>
-                `;
-                updateSyncStatus('error', '加载失败');
-            }
-        }
-
-        // ---------- 分组 ----------
-        function getGroups() {
+        // ---------- 初始化 Dropdown 下拉选项 ----------
+        function initGroupSelect() {
             const set = new Set();
-            allWords.forEach(item => {
-                const list = item.list || '未分类';
-                set.add(list);
-            });
-            const groups = Array.from(set);
-            groups.sort((a, b) => {
+            allWords.forEach(item => set.add(item.list || '未分类'));
+            const groups = Array.from(set).sort((a, b) => {
                 const numA = parseInt(a.replace(/\D/g, '')) || 0;
                 const numB = parseInt(b.replace(/\D/g, '')) || 0;
                 return numA - numB;
             });
-            return ['全部', '❤️ 收藏', ...groups];
-        }
 
-        function initTabs() {
-            const groups = getGroups();
-            const container = document.getElementById('navTabs');
-            container.innerHTML = '';
-            groups.forEach(group => {
-                const btn = document.createElement('button');
-                const isFavTab = group === '❤️ 收藏';
-                btn.className = 'tab-btn' + (group === currentTab ? ' active' : '') + (isFavTab ? ' fav-tab' : '');
-                btn.textContent = isFavTab ? '❤️ 收藏' : (group === '全部' ? '📚 全部' : `📁 ${group}`);
-                btn.dataset.group = group;
-                btn.addEventListener('click', () => {
-                    currentTab = group;
-                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    render();
-                });
-                container.appendChild(btn);
+            const selectEl = document.getElementById('groupSelect');
+            selectEl.innerHTML = '<option value="全部">全部分组</option>';
+            groups.forEach(g => {
+                const opt = document.createElement('option');
+                opt.value = g;
+                opt.textContent = g;
+                selectEl.appendChild(opt);
+            });
+
+            selectEl.addEventListener('change', (e) => {
+                selectedGroup = e.target.value;
+                render();
             });
         }
 
-        // ---------- 过滤 ----------
+        function updateTabCounts() {
+            document.getElementById('countAll').textContent = `(${allWords.length})`;
+            document.getElementById('countFav').textContent = `(${favorites.length})`;
+        }
+
+        // ---------- 数据过滤 ----------
         function getFilteredData() {
             let data = allWords;
 
-            if (currentTab === '❤️ 收藏') {
+            // 1. 视角过滤（全部 vs 收藏）
+            if (currentTab === '收藏') {
                 data = data.filter(item => favorites.includes(item.word));
-                if (data.length === 0) return [];
-            } else if (currentTab !== '全部') {
-                data = data.filter(item => (item.list || '未分类') === currentTab);
             }
 
+            // 2. 分组下拉过滤
+            if (selectedGroup !== '全部') {
+                data = data.filter(item => (item.list || '未分类') === selectedGroup);
+            }
+
+            // 3. 关键词过滤
             if (searchKeyword.trim() !== '') {
                 const kw = searchKeyword.trim().toLowerCase();
                 data = data.filter(item =>
@@ -319,23 +285,19 @@
                 if (!groups[firstChar]) groups[firstChar] = [];
                 groups[firstChar].push(item);
             });
-            const sortedKeys = Object.keys(groups).sort();
-            return { groups, sortedKeys };
+            return { groups, sortedKeys: Object.keys(groups).sort() };
         }
 
-        // ---------- 渲染 ----------
+        // ---------- 页面渲染 ----------
         function render() {
             const container = document.getElementById('mainContent');
-            const stats = document.getElementById('stats');
             const filtered = getFilteredData();
-            const total = filtered.length;
 
-            const groupLabel = currentTab === '❤️ 收藏' ? '❤️ 收藏' : (currentTab === '全部' ? '全部单词' : currentTab);
-            stats.textContent = `${groupLabel} · ${total} 个单词`;
-
-            if (total === 0) {
-                let msg = '😅 没有找到匹配的单词';
-                if (currentTab === '❤️ 收藏') msg = '💔 还没有收藏任何单词，点击单词旁的 ⭐ 收藏吧！';
+            if (filtered.length === 0) {
+                let msg = '😅 没找到符合要求的单词';
+                if (currentTab === '收藏' && favorites.length === 0) {
+                    msg = '💔 暂无收藏单词<br><span style="font-size:13px;color:#abb2bf;">点击单词右侧的 ⭐ 即可收藏</span>';
+                }
                 container.innerHTML = `<div class="empty">${msg}</div>`;
                 document.getElementById('letterIndex').innerHTML = '';
                 return;
@@ -343,6 +305,7 @@
 
             const { groups, sortedKeys } = groupByLetter(filtered);
 
+            // 渲染字母快捷跳转
             const indexContainer = document.getElementById('letterIndex');
             indexContainer.innerHTML = '';
             sortedKeys.forEach(letter => {
@@ -355,47 +318,90 @@
                 indexContainer.appendChild(span);
             });
 
+            // 渲染卡片
             let html = '';
             sortedKeys.forEach(letter => {
                 const items = groups[letter];
-                html += `<div class="letter-header" id="letter-${letter}">${letter}</div>`;
+                html += `<div class="letter-header" id="letter-${letter}"><span>${letter}</span></div>`;
                 items.forEach(item => {
                     const tag = item.list || '未分类';
-                    const tagColor = tagColors[tag] || '#8e8e93';
                     const meaningHtml = (item.meaning || '').replace(/\n/g, '<br>');
                     const fav = isFavorite(item.word);
+                    
                     html += `
                         <div class="word-card">
                             <div class="word-left">
-                                <div class="word-text">${item.word}</div>
+                                <div class="word-header-line">
+                                    <span class="word-text">${item.word}</span>
+                                    <span class="tag-badge">${tag}</span>
+                                </div>
                                 <div class="word-meaning">${meaningHtml}</div>
-                                <span class="tag-label" style="background:${tagColor};">📁 ${tag}</span>
                             </div>
-                            <button class="star-btn ${fav ? 'active' : ''}" data-word="${item.word}">${fav ? '⭐' : '☆'}</button>
+                            <button class="star-btn ${fav ? 'active' : ''}" data-word="${item.word}">${fav ? '★' : '☆'}</button>
                         </div>
                     `;
                 });
             });
             container.innerHTML = html;
 
+            // 绑定收藏事件
             container.querySelectorAll('.star-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    const word = this.dataset.word;
-                    toggleFavorite(word);
+                    toggleFavorite(this.dataset.word);
                 });
             });
         }
 
-        // ---------- 搜索 ----------
+        // ---------- 加载数据 ----------
+        async function loadData() {
+            try {
+                const [wordsRes, favs] = await Promise.all([
+                    fetch(DATA_URL),
+                    fetchFavoritesFromCloud()
+                ]);
+                
+                if (!wordsRes.ok) throw new Error('网络请求失败');
+                allWords = await wordsRes.json();
+                allWords.sort((a, b) => a.word.localeCompare(b.word));
+
+                favorites = (favs && Array.isArray(favs)) ? favs : getLocalFavorites();
+                localStorage.setItem('fav_words_cache', JSON.stringify(favorites));
+
+                initGroupSelect();
+                updateTabCounts();
+                render();
+                updateSyncStatus('synced', '☁️ 已同步');
+            } catch (err) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div class="empty">❌ 加载失败<br><span style="font-size:13px;color:#bbb;">${err.message}</span></div>
+                `;
+                updateSyncStatus('error', '⚠️ 加载出错');
+            }
+        }
+
+        // ---------- 事件绑定 ----------
+        document.getElementById('btnAllTab').addEventListener('click', function() {
+            currentTab = '全部';
+            document.getElementById('btnFavTab').classList.remove('active');
+            this.classList.add('active');
+            render();
+        });
+
+        document.getElementById('btnFavTab').addEventListener('click', function() {
+            currentTab = '收藏';
+            document.getElementById('btnAllTab').classList.remove('active');
+            this.classList.add('active');
+            render();
+        });
+
         document.getElementById('searchInput').addEventListener('input', function() {
             searchKeyword = this.value;
             render();
         });
 
-        // ---------- 启动 ----------
+        // 启动
         loadData();
     </script>
-
 </body>
 </html>
