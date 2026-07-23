@@ -31,13 +31,11 @@
         .search-box input::placeholder { color: #8d949e; }
         .search-icon { color: #8d949e; margin-right: 8px; font-size: 16px; }
 
-        /* 主视图切换（全部 vs 收藏） */
+        /* 主视图切换 */
         .main-tabs { display: flex; padding: 4px 16px 8px 16px; gap: 8px; }
         .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 9px; border-radius: 12px; border: none; font-size: 13px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
         .tab-main-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(45,122,255,0.25); }
         .tab-main-btn.fav-tab.active { background: var(--danger); box-shadow: 0 4px 10px rgba(255,59,48,0.25); }
-        
-        /* 背诵模式按钮特别样式 */
         .tab-main-btn.recite-btn { background: #eef4ff; color: var(--primary); border: 1px solid rgba(45,122,255,0.2); }
 
         /* 次级过滤栏 */
@@ -46,7 +44,6 @@
         .filter-select-wrapper { display: flex; align-items: center; gap: 4px; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; }
         .filter-select-wrapper select { border: none; background: transparent; font-size: 12px; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; }
         
-        /* 遮挡释义开关 */
         .mask-toggle { display: flex; align-items: center; gap: 4px; font-size: 12px; cursor: pointer; background: #f0f2f5; padding: 4px 8px; border-radius: 8px; user-select: none; }
         .mask-toggle input { cursor: pointer; }
 
@@ -72,7 +69,6 @@
 
         .word-meaning { font-size: 14px; color: var(--text-sub); line-height: 1.5; white-space: pre-wrap; margin-top: 4px; transition: all 0.2s; }
         
-        /* 遮挡模式效果 */
         body.mask-mode .word-meaning { filter: blur(6px); background: #eee; border-radius: 4px; user-select: none; cursor: pointer; }
         body.mask-mode .word-meaning:hover, body.mask-mode .word-meaning:active { filter: none; background: transparent; }
 
@@ -86,30 +82,77 @@
         .letter-index span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; cursor: pointer; }
         .letter-index span:active { background: var(--primary); color: #fff; }
 
-        /* ================= 🃏 背诵全屏弹窗 ================= */
-        .recite-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #f7f9fc; z-index: 100; display: flex; flex-direction: column; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+        /* ================= 🃏 背诵全屏弹窗（已适配手机屏与滚动） ================= */
+        .recite-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            height: 100dvh; /* 适配移动端动态视口 */
+            background: #f7f9fc;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            overflow-y: auto; /* 允许整个弹窗在超小屏幕上滚动 */
+            -webkit-overflow-scrolling: touch;
+        }
         .recite-modal.show { opacity: 1; pointer-events: auto; }
 
-        .recite-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .recite-title { font-weight: 700; font-size: 16px; }
+        .recite-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #fff; border-bottom: 1px solid rgba(0,0,0,0.05); flex-shrink: 0; }
+        .recite-title { font-weight: 700; font-size: 15px; }
         .close-btn { border: none; background: #f0f2f5; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; }
 
-        .recite-mode-selector { display: flex; justify-content: center; gap: 10px; margin: 12px 20px 0 20px; }
+        .recite-mode-selector { display: flex; justify-content: center; gap: 10px; margin: 12px 20px 0 20px; flex-shrink: 0; }
         .mode-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #d0d7de; background: #fff; font-size: 12px; font-weight: 600; color: var(--text-sub); cursor: pointer; }
         .mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-        .recite-card-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; perspective: 1000px; }
+        .recite-card-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 20px;
+            min-height: 260px; /* 保证小屏卡片不被过度挤压 */
+            flex-shrink: 0;
+        }
         
-        .flash-card { width: 100%; max-width: 340px; height: 320px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; padding: 24px; position: relative; cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; border: 1px solid rgba(0,0,0,0.03); }
+        .flash-card {
+            width: 100%;
+            max-width: 340px;
+            min-height: 240px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
         
         .card-top { display: flex; justify-content: space-between; align-items: center; }
-        .card-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .card-word { font-size: 28px; font-weight: 800; color: var(--text-main); margin-bottom: 12px; }
-        .card-meaning-text { font-size: 16px; color: var(--text-sub); line-height: 1.6; visibility: hidden; opacity: 0; transition: opacity 0.2s; }
+        .card-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 0; }
+        .card-word { font-size: 26px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; word-break: break-word; }
+        .card-meaning-text { font-size: 15px; color: var(--text-sub); line-height: 1.5; visibility: hidden; opacity: 0; transition: opacity 0.2s; }
         .card-meaning-text.show { visibility: visible; opacity: 1; }
-        .tap-tip { font-size: 12px; color: #b0b8c4; margin-top: 10px; }
+        .tap-tip { font-size: 12px; color: #b0b8c4; margin-top: 8px; }
 
-        .recite-footer { padding: 16px 20px 30px 20px; background: #fff; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 12px; }
+        /* 底部按钮区（增加了适配 iOS 安全区域 padding） */
+        .recite-footer {
+            padding: 12px 20px calc(16px + env(safe-area-inset-bottom, 0px)) 20px;
+            background: #fff;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+        }
         .progress-bar-bg { width: 100%; height: 6px; background: #f0f2f5; border-radius: 3px; overflow: hidden; }
         .progress-bar-fill { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s; }
         
@@ -118,7 +161,6 @@
         .action-btn:active { transform: scale(0.96); }
         .btn-know { background: #e8f8ee; color: var(--success); }
         .btn-unknow { background: #ffebee; color: var(--danger); }
-        .btn-next { background: var(--primary); color: #fff; }
 
         /* 空状态 */
         .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
