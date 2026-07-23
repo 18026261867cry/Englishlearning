@@ -32,10 +32,11 @@
         .search-icon { color: #8d949e; margin-right: 8px; font-size: 16px; }
 
         /* 主视图切换 */
-        .main-tabs { display: flex; padding: 4px 16px 8px 16px; gap: 8px; }
-        .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 9px; border-radius: 12px; border: none; font-size: 13px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
+        .main-tabs { display: flex; padding: 4px 16px 8px 16px; gap: 6px; }
+        .tab-main-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; padding: 9px 4px; border-radius: 12px; border: none; font-size: 13px; font-weight: 600; background: #f0f2f5; color: var(--text-sub); cursor: pointer; transition: all 0.2s; }
         .tab-main-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 10px rgba(45,122,255,0.25); }
         .tab-main-btn.fav-tab.active { background: var(--danger); box-shadow: 0 4px 10px rgba(255,59,48,0.25); }
+        .tab-main-btn.calendar-tab.active { background: #34c759; box-shadow: 0 4px 10px rgba(52,199,89,0.25); }
         .tab-main-btn.recite-btn { background: #eef4ff; color: var(--primary); border: 1px solid rgba(45,122,255,0.2); }
 
         /* 次级过滤栏 */
@@ -77,7 +78,6 @@
 
         .card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
         
-        /* 按钮通用 */
         .icon-btn { font-size: 18px; cursor: pointer; background: none; border: none; padding: 4px; transition: transform 0.2s; color: #8d949e; line-height: 1; }
         .icon-btn:active { transform: scale(1.2); }
         .star-btn { color: #d1d5db; font-size: 20px; }
@@ -90,6 +90,26 @@
         .letter-index { position: fixed; right: 2px; top: 55%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 1px; z-index: 20; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); padding: 4px 2px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .letter-index span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; cursor: pointer; }
         .letter-index span:active { background: var(--primary); color: #fff; }
+
+        /* ================= 📅 日历面板 CSS ================= */
+        .calendar-container { background: #fff; border-radius: 16px; padding: 16px; box-shadow: var(--card-shadow); margin-bottom: 16px; }
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .calendar-title { font-size: 16px; font-weight: 700; color: var(--text-main); }
+        .calendar-nav-btn { border: none; background: #f0f2f5; padding: 4px 10px; border-radius: 8px; font-size: 12px; cursor: pointer; font-weight: 600; }
+        
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+        .calendar-day-head { font-size: 11px; font-weight: 600; color: var(--text-sub); padding: 4px 0; }
+        .calendar-day-cell { min-height: 48px; border-radius: 10px; background: #f9fafb; border: 1px solid #f0f2f5; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2px; position: relative; }
+        .calendar-day-cell.other-month { opacity: 0.3; }
+        .calendar-day-cell.today { border-color: var(--primary); }
+        
+        .day-num { font-size: 12px; font-weight: 600; color: var(--text-main); }
+        .badge-count { font-size: 9px; font-weight: 700; padding: 1px 4px; border-radius: 6px; margin-top: 2px; }
+        .badge-count.has-study { background: #34c759; color: #fff; }
+        
+        .stats-card { background: #eef4ff; border-radius: 12px; padding: 12px; display: flex; justify-content: space-around; text-align: center; margin-bottom: 16px; }
+        .stat-item-num { font-size: 18px; font-weight: 800; color: var(--primary); }
+        .stat-item-label { font-size: 11px; color: var(--text-sub); margin-top: 2px; }
 
         /* ================= 🃏 背诵全屏弹窗 ================= */
         .recite-modal {
@@ -140,21 +160,15 @@
         .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
         .loading { text-align: center; padding: 80px 20px; color: #8d949e; }
 
-        /* ================= 🖨️ PDF / 打印排版专用 CSS ================= */
+        /* 🖨️ PDF 打印排版 */
         @media print {
             body { background: #fff !important; color: #000 !important; height: auto !important; overflow: visible !important; }
             .top-container, .letter-index, .recite-modal, .card-actions { display: none !important; }
             .main-content { overflow: visible !important; padding: 0 !important; }
-            
-            /* 打印标题 */
             .print-header { display: block !important; text-align: center; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px; }
             .print-title { font-size: 22px; font-weight: bold; }
             .print-subtitle { font-size: 12px; color: #666; margin-top: 4px; }
-
-            /* 字母分组标题 */
             .letter-header { border-bottom: 1px solid #999 !important; font-size: 16px !important; margin-top: 15px !important; color: #000 !important; page-break-after: avoid; }
-            
-            /* 卡片打印排版 */
             .word-card { box-shadow: none !important; border: 1px solid #ddd !important; border-radius: 6px !important; padding: 8px 12px !important; margin: 6px 0 !important; page-break-inside: avoid; }
             .word-text { font-size: 16px !important; color: #000 !important; }
             .word-meaning { filter: none !important; background: transparent !important; color: #333 !important; font-size: 13px !important; }
@@ -165,14 +179,12 @@
 </head>
 <body>
 
-    <!-- 打印时的专属顶部页眉 -->
     <div class="print-header">
         <div class="print-title" id="printTitle">我的单词背诵清单</div>
         <div class="print-subtitle" id="printSubTitle">导出时间：2026-07-23</div>
     </div>
 
     <div class="top-container">
-        <!-- 搜索栏 -->
         <div class="header">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
@@ -180,7 +192,7 @@
             </div>
         </div>
 
-        <!-- 主 Tab -->
+        <!-- 主 Tab：增加了【📅 日历打卡】选项卡 -->
         <div class="main-tabs">
             <button class="tab-main-btn active" id="btnAllTab">
                 <span>📚 全部</span>
@@ -190,12 +202,14 @@
                 <span>❤️ 收藏</span>
                 <span id="countFav">(0)</span>
             </button>
+            <button class="tab-main-btn calendar-tab" id="btnCalendarTab">
+                <span>📅 日历打卡</span>
+            </button>
             <button class="tab-main-btn recite-btn" id="btnOpenRecite">
                 <span>🃏 开始抽背</span>
             </button>
         </div>
 
-        <!-- 次级筛选 -->
         <div class="sub-filter-bar">
             <div class="filter-left">
                 <div class="filter-select-wrapper">
@@ -207,12 +221,10 @@
                         <option value="__ONLY_PHRASES__">💬 仅看短语</option>
                     </select>
                 </div>
-                <!-- 🙈 遮挡释义 开关 -->
                 <label class="mask-toggle">
                     <input type="checkbox" id="maskModeCheckbox">
                     <span>🙈 遮挡释义</span>
                 </label>
-                <!-- 🖨️ 导出 PDF / 打印背诵单 -->
                 <button class="btn-export" id="btnExportPdf">🖨️ 导出PDF</button>
             </div>
             
@@ -220,15 +232,14 @@
         </div>
     </div>
 
-    <!-- 列表容器 -->
+    <!-- 主内容区 -->
     <div class="main-content" id="mainContent">
         <div class="loading">⏳ 加载单词库中...</div>
     </div>
 
-    <!-- 右侧字母快捷索引 -->
     <div class="letter-index" id="letterIndex"></div>
 
-    <!-- ================= 🃏 背诵全屏弹窗 ================= -->
+    <!-- 🃏 背诵全屏弹窗 -->
     <div class="recite-modal" id="reciteModal">
         <div class="recite-header">
             <div class="recite-title" id="reciteScopeTitle">抽背模式</div>
@@ -270,26 +281,23 @@
     </div>
 
     <script>
-        // ============================================================
-        // JSONBin 配置项
-        // ============================================================
         const DATA_URL = 'https://ghproxy.net/https://raw.githubusercontent.com/18026261867cry/Englishlearning/refs/heads/main/vocabulary_list.json';
         const JSONBIN_BIN_ID = '6a6194b7da38895dfe826c68'; 
         const JSONBIN_API_KEY = '$2a$10$XrPLO2BgVEmb62nVI/rQneSm/dQf1yW5C84ROPDoseaFxuUU/.qbi';
-        
         const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
-        // ============================================================
 
         let allWords = [];
-        let currentTab = '全部'; 
+        let currentTab = '全部'; // '全部' | '收藏' | '日历'
         let selectedGroup = '全部';
         let searchKeyword = '';
         
         let favorites = []; 
         let wrongList = []; 
+        let studyHistory = {}; // 格式如: { "2026-07-23": 15, "2026-07-22": 8 }
         
         let isSyncing = false;
         let currentAudio = null;
+        let currentCalendarDate = new Date(); // 当前日历显示的年月
 
         // 背诵状态变量
         let reciteList = [];
@@ -297,17 +305,24 @@
         let isRandomMode = true;
         let isMeaningShown = false;
 
-        // ---------- 🔊 语音发音：使用有道免费在线发音 ----------
-        function speakWord(text) {
-            if (currentAudio) {
-                currentAudio.pause();
-            }
-            const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=1`;
-            currentAudio = new Audio(audioUrl);
-            currentAudio.play().catch(err => console.log('音频播放被阻拦:', err));
+        // 获取今天日期字符串 YYYY-MM-DD
+        function getTodayStr() {
+            const d = new Date();
+            const year = d.getFullYear();
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
 
-        // ---------- 读取/写入云端数据 ----------
+        // ---------- 🔊 语音发音 ----------
+        function speakWord(text) {
+            if (currentAudio) currentAudio.pause();
+            const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=1`;
+            currentAudio = new Audio(audioUrl);
+            currentAudio.play().catch(err => console.log('音频播放受限:', err));
+        }
+
+        // ---------- 云端数据读写 ----------
         async function fetchUserDataFromCloud() {
             try {
                 const res = await fetch(JSONBIN_URL, { headers: { 'X-Master-Key': JSONBIN_API_KEY } });
@@ -317,14 +332,16 @@
                 
                 let favs = [];
                 let wrongs = [];
+                let history = {};
 
                 if (Array.isArray(record)) {
                     favs = record.map(item => typeof item === 'string' ? item : item.word).filter(Boolean);
                 } else if (record && typeof record === 'object') {
                     favs = record.favorites || [];
                     wrongs = record.wrongList || [];
+                    history = record.studyHistory || {};
                 }
-                return { favorites: favs, wrongList: wrongs };
+                return { favorites: favs, wrongList: wrongs, studyHistory: history };
             } catch (err) {
                 return getLocalUserData();
             }
@@ -335,7 +352,11 @@
             isSyncing = true;
             updateSyncStatus('syncing', '⏳ 同步中');
 
-            const payload = { favorites: favorites, wrongList: wrongList };
+            const payload = { 
+                favorites: favorites, 
+                wrongList: wrongList,
+                studyHistory: studyHistory 
+            };
 
             try {
                 const res = await fetch(JSONBIN_URL, {
@@ -357,10 +378,17 @@
         function getLocalUserData() {
             try { 
                 const raw = localStorage.getItem('user_data_cache');
-                return raw ? JSON.parse(raw) : { favorites: [], wrongList: [] };
+                return raw ? JSON.parse(raw) : { favorites: [], wrongList: [], studyHistory: {} };
             } catch { 
-                return { favorites: [], wrongList: [] }; 
+                return { favorites: [], wrongList: [], studyHistory: {} }; 
             }
+        }
+
+        // ---------- 统计背诵打卡单词数 ----------
+        function recordStudyWordCount() {
+            const today = getTodayStr();
+            studyHistory[today] = (studyHistory[today] || 0) + 1;
+            saveUserDataToCloud();
         }
 
         function toggleFavorite(wordText) {
@@ -396,7 +424,6 @@
 
         function isPhrase(item) { return item.meaning && item.meaning.includes('phr.'); }
 
-        // ---------- Dropdown 初始化与更新 ----------
         function initGroupSelect() {
             const set = new Set();
             allWords.forEach(item => set.add(item.list || '未分类'));
@@ -437,14 +464,11 @@
             document.getElementById('countFav').textContent = `(${favorites.length})`;
         }
 
-        // ---------- 数据过滤 ----------
         function getFilteredData() {
             let data = allWords;
-
             if (currentTab === '收藏') {
                 data = data.filter(item => favorites.includes(item.word));
             }
-
             if (selectedGroup === '__WRONG_LIST__') {
                 data = data.filter(item => wrongList.includes(item.word));
             } else if (selectedGroup === '__ONLY_PHRASES__') {
@@ -475,15 +499,13 @@
             return { groups, sortedKeys: Object.keys(groups).sort() };
         }
 
-        // ---------- 🖨️ 导出 PDF / 打印背后逻辑 ----------
+        // ---------- 🖨️ 导出 PDF ----------
         function exportToPdf() {
             const filteredData = getFilteredData();
             if (filteredData.length === 0) {
                 alert('当前筛选列表中没有单词，无法导出！');
                 return;
             }
-
-            // 设置打印页眉标题
             let scopeName = currentTab === '收藏' ? '❤️ 收藏单词集' : '📚 全部单词';
             if (selectedGroup === '__WRONG_LIST__') scopeName = '📕 错题本词单';
             else if (selectedGroup === '__ONLY_WORDS__') scopeName = '🔤 仅单词集';
@@ -492,13 +514,104 @@
 
             document.getElementById('printTitle').textContent = `背诵清单：${scopeName} (共 ${filteredData.length} 词)`;
             document.getElementById('printSubTitle').textContent = `生成时间：${new Date().toLocaleString()} | 提示：可直接保存为 PDF 打印背诵`;
-
-            // 触发浏览器原生打印（在电脑上可直接“另存为 PDF”，手机上可分享/存储为 PDF）
             window.print();
+        }
+
+        // ---------- 📅 渲染日历打卡视图 ----------
+        function renderCalendarView() {
+            const container = document.getElementById('mainContent');
+            document.getElementById('letterIndex').innerHTML = '';
+
+            const year = currentCalendarDate.getFullYear();
+            const month = currentCalendarDate.getMonth(); // 0-11
+            const monthNames = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+
+            // 统计总数据
+            let totalDays = Object.keys(studyHistory).length;
+            let totalWords = Object.values(studyHistory).reduce((a, b) => a + b, 0);
+
+            // 当月第一天与最后一天
+            const firstDayIndex = new Date(year, month, 1).getDay(); // 0 是周日
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const prevMonthDays = new Date(year, month, 0).getDate();
+
+            const todayStr = getTodayStr();
+
+            let calendarCellsHtml = '';
+            
+            // 填充上个月空缺天数
+            for (let x = firstDayIndex; x > 0; x--) {
+                calendarCellsHtml += `<div class="calendar-day-cell other-month"><span class="day-num">${prevMonthDays - x + 1}</span></div>`;
+            }
+
+            // 填充当月天数
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const count = studyHistory[dateStr] || 0;
+                const isToday = (dateStr === todayStr);
+
+                calendarCellsHtml += `
+                    <div class="calendar-day-cell ${isToday ? 'today' : ''}">
+                        <span class="day-num">${day}</span>
+                        ${count > 0 ? `<span class="badge-count has-study">背${count}词</span>` : ''}
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="stats-card">
+                    <div>
+                        <div class="stat-item-num">${totalDays} 天</div>
+                        <div class="stat-item-label">🔥 累计打卡天数</div>
+                    </div>
+                    <div>
+                        <div class="stat-item-num">${totalWords} 词</div>
+                        <div class="stat-item-label">⚡ 累计刷词人次</div>
+                    </div>
+                    <div>
+                        <div class="stat-item-num">${studyHistory[todayStr] || 0} 词</div>
+                        <div class="stat-item-label">🌟 今日复习进度</div>
+                    </div>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="calendar-nav-btn" id="btnPrevMonth">◄ 上个月</button>
+                        <div class="calendar-title">${year}年 ${monthNames[month]}</div>
+                        <button class="calendar-nav-btn" id="btnNextMonth">下个月 ►</button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="calendar-day-head">日</div>
+                        <div class="calendar-day-head">一</div>
+                        <div class="calendar-day-head">二</div>
+                        <div class="calendar-day-head">三</div>
+                        <div class="calendar-day-head">四</div>
+                        <div class="calendar-day-head">五</div>
+                        <div class="calendar-day-head">六</div>
+                        ${calendarCellsHtml}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('btnPrevMonth').addEventListener('click', () => {
+                currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+                renderCalendarView();
+            });
+
+            document.getElementById('btnNextMonth').addEventListener('click', () => {
+                currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+                renderCalendarView();
+            });
         }
 
         // ---------- 主列表渲染 ----------
         function render() {
+            if (currentTab === '日历') {
+                renderCalendarView();
+                return;
+            }
+
             const container = document.getElementById('mainContent');
             const filtered = getFilteredData();
 
@@ -557,7 +670,6 @@
             });
             container.innerHTML = html;
 
-            // 事件绑定：发音、收藏、移除错题
             container.querySelectorAll('.audio-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -580,9 +692,7 @@
             });
         }
 
-        // ============================================================
-        // 🃏 背诵模式核心逻辑
-        // ============================================================
+        // ---------- 🃏 背诵模式 ----------
         function startRecite() {
             const sourceData = getFilteredData();
             if (sourceData.length === 0) {
@@ -591,9 +701,7 @@
             }
 
             reciteList = [...sourceData];
-            if (isRandomMode) {
-                reciteList.sort(() => Math.random() - 0.5);
-            }
+            if (isRandomMode) reciteList.sort(() => Math.random() - 0.5);
             reciteIndex = 0;
 
             let title = `背诵: ${currentTab}`;
@@ -602,7 +710,6 @@
                 title += ` (${selObj.options[selObj.selectedIndex].text})`;
             }
             document.getElementById('reciteScopeTitle').textContent = title;
-
             document.getElementById('reciteModal').classList.add('show');
             renderReciteCard();
         }
@@ -610,7 +717,7 @@
         function renderReciteCard() {
             if (reciteIndex >= reciteList.length) {
                 document.getElementById('cardWord').textContent = '🎉 太棒了！';
-                document.getElementById('cardMeaning').innerHTML = '你已经背完了本轮的所有单词！';
+                document.getElementById('cardMeaning').innerHTML = '你已经背完了本轮的所有单词！打卡记录已同步~';
                 document.getElementById('cardMeaning').classList.add('show');
                 document.getElementById('tapTip').style.display = 'none';
                 document.getElementById('cardTag').textContent = '完成';
@@ -628,17 +735,13 @@
             document.getElementById('tapTip').style.display = 'block';
             document.getElementById('cardTag').textContent = currentObj.list || '未分类';
 
-            // 朗读按钮事件
             const audioBtn = document.getElementById('cardAudioBtn');
             audioBtn.onclick = (e) => {
                 e.stopPropagation();
                 speakWord(currentObj.word);
             };
-
-            // 自动为你朗读当前新出现的单词
             speakWord(currentObj.word);
 
-            // 收藏按钮
             const starBtn = document.getElementById('cardStarBtn');
             const fav = isFavorite(currentObj.word);
             starBtn.className = `icon-btn star-btn ${fav ? 'active' : ''}`;
@@ -668,18 +771,21 @@
             }
         });
 
+        // 点击“记住了”
         document.getElementById('btnKnow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
+            recordStudyWordCount(); // 记录打卡数量并云端同步
             reciteIndex++;
             renderReciteCard();
         });
 
+        // 点击“没记住”
         document.getElementById('btnUnknow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
-            
             const currentObj = reciteList[reciteIndex];
             toggleWrongList(currentObj.word, true);
 
+            recordStudyWordCount(); // 记录打卡数量并云端同步
             reciteList.push(currentObj);
             reciteIndex++;
             renderReciteCard();
@@ -713,7 +819,7 @@
 
         document.getElementById('btnExportPdf').addEventListener('click', exportToPdf);
 
-        // ---------- 加载数据 ----------
+        // ---------- 数据初始化 ----------
         async function loadData() {
             try {
                 const [wordsRes, cloudData] = await Promise.all([
@@ -727,7 +833,8 @@
 
                 favorites = cloudData.favorites || [];
                 wrongList = cloudData.wrongList || [];
-                localStorage.setItem('user_data_cache', JSON.stringify({ favorites, wrongList }));
+                studyHistory = cloudData.studyHistory || {};
+                localStorage.setItem('user_data_cache', JSON.stringify({ favorites, wrongList, studyHistory }));
 
                 initGroupSelect();
                 updateTabCounts();
@@ -741,17 +848,24 @@
             }
         }
 
-        // ---------- 事件绑定 ----------
+        // ---------- Tab 切换事件 ----------
         document.getElementById('btnAllTab').addEventListener('click', function() {
             currentTab = '全部';
-            document.getElementById('btnFavTab').classList.remove('active');
+            document.querySelectorAll('.tab-main-btn').forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             render();
         });
 
         document.getElementById('btnFavTab').addEventListener('click', function() {
             currentTab = '收藏';
-            document.getElementById('btnAllTab').classList.remove('active');
+            document.querySelectorAll('.tab-main-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            render();
+        });
+
+        document.getElementById('btnCalendarTab').addEventListener('click', function() {
+            currentTab = '日历';
+            document.querySelectorAll('.tab-main-btn').forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             render();
         });
@@ -761,7 +875,6 @@
             render();
         });
 
-        // 启动
         loadData();
     </script>
 </body>
