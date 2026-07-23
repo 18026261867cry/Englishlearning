@@ -71,7 +71,15 @@
         .word-text { font-size: 18px; font-weight: 700; color: var(--text-main); letter-spacing: -0.2px; }
         .tag-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 6px; background: #f0f2f5; color: var(--text-sub); }
 
-        .word-meaning { font-size: 14px; color: var(--text-sub); line-height: 1.5; white-space: pre-wrap; margin-top: 4px; transition: all 0.2s; }
+        .word-meaning { 
+            font-size: 15px; 
+            color: #2c3e50; /* 调深颜色，不再是淡灰色 */
+            line-height: 1.6; 
+            white-space: pre-wrap; 
+            margin-top: 6px; 
+            transition: all 0.2s; 
+            font-weight: 500; /* 加粗一点点，更易阅读 */
+        }
         
         body.mask-mode .word-meaning { filter: blur(6px); background: #eee; border-radius: 4px; user-select: none; cursor: pointer; }
         body.mask-mode .word-meaning:hover, body.mask-mode .word-meaning:active { filter: none; background: transparent; }
@@ -143,7 +151,16 @@
         .card-top-right { display: flex; align-items: center; gap: 6px; }
         .card-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 0; }
         .card-word { font-size: 26px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; word-break: break-word; }
-        .card-meaning-text { font-size: 15px; color: var(--text-sub); line-height: 1.5; visibility: hidden; opacity: 0; transition: opacity 0.2s; }
+        .card-meaning-text { 
+            font-size: 17px; /* 增大字号 */
+            color: #1a202c; /* 深色高对比度，清晰易读 */
+            line-height: 1.6; 
+            visibility: hidden; 
+            opacity: 0; 
+            transition: opacity 0.2s; 
+            font-weight: 600; 
+            text-align: center;
+        }
         .card-meaning-text.show { visibility: visible; opacity: 1; }
         .tap-tip { font-size: 12px; color: #b0b8c4; margin-top: 8px; }
 
