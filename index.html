@@ -98,7 +98,7 @@
         // ⚠️ 请修改下面两个配置项
         // ============================================================
         const DATA_URL = 'https://ghproxy.net/https://raw.githubusercontent.com/18026261867cry/Englishlearning/refs/heads/main/vocabulary_list.json';
-        const GITHUB_TOKEN = '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'; // 替换成你生成的 token
+        const GITHUB_TOKEN = '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'; // 替换成你生成的 token
         // ============================================================
 
         // GitHub API 配置
@@ -128,7 +128,7 @@
             try {
                 const res = await fetch(API_BASE, {
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
@@ -154,7 +154,7 @@
                 await fetch(API_BASE, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
                     },
                     body: JSON.stringify({
@@ -177,7 +177,7 @@
                 // 先获取当前文件的 sha
                 const getRes = await fetch(API_BASE, {
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
@@ -191,7 +191,7 @@
                 const putRes = await fetch(API_BASE, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Authorization': `Bearer ${GITHUB_TOKEN}`,
                         'Accept': 'application/vnd.github.v3+json'
                     },
                     body: JSON.stringify({
