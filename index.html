@@ -72,32 +72,31 @@
         body.mask-mode .word-meaning { filter: blur(6px); background: #eee; border-radius: 4px; user-select: none; cursor: pointer; }
         body.mask-mode .word-meaning:hover, body.mask-mode .word-meaning:active { filter: none; background: transparent; }
 
-        /* 收藏按钮 */
-        .star-btn { flex-shrink: 0; font-size: 24px; cursor: pointer; background: none; border: none; padding: 2px; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #d1d5db; line-height: 1; }
+        .card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        
+        /* 按钮通用 */
+        .icon-btn { font-size: 20px; cursor: pointer; background: none; border: none; padding: 2px; transition: transform 0.2s; color: #d1d5db; line-height: 1; }
         .star-btn.active { color: #f5a623; transform: scale(1.1); }
-        .star-btn:active { transform: scale(1.4); }
+        .remove-wrong-btn { color: #8d949e; font-size: 16px; }
+        .remove-wrong-btn:active { transform: scale(1.2); color: var(--danger); }
 
         /* 右侧字母快捷索引 */
         .letter-index { position: fixed; right: 2px; top: 55%; transform: translateY(-50%); display: flex; flex-direction: column; align-items: center; gap: 1px; z-index: 20; background: rgba(255,255,255,0.8); backdrop-filter: blur(4px); padding: 4px 2px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .letter-index span { display: block; font-size: 10px; font-weight: 700; color: var(--primary); width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 50%; cursor: pointer; }
         .letter-index span:active { background: var(--primary); color: #fff; }
 
-        /* ================= 🃏 背诵全屏弹窗（已适配手机屏与滚动） ================= */
+        /* ================= 🃏 背诵全屏弹窗 ================= */
         .recite-modal {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100vw;
-            height: 100%;
-            height: 100dvh; /* 适配移动端动态视口 */
+            height: 100%; height: 100dvh;
             background: #f7f9fc;
             z-index: 100;
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            pointer-events: none;
+            display: flex; flex-direction: column;
+            opacity: 0; pointer-events: none;
             transition: opacity 0.25s ease;
-            overflow-y: auto; /* 允许整个弹窗在超小屏幕上滚动 */
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
         .recite-modal.show { opacity: 1; pointer-events: auto; }
@@ -110,31 +109,9 @@
         .mode-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #d0d7de; background: #fff; font-size: 12px; font-weight: 600; color: var(--text-sub); cursor: pointer; }
         .mode-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-        .recite-card-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 20px;
-            min-height: 260px; /* 保证小屏卡片不被过度挤压 */
-            flex-shrink: 0;
-        }
+        .recite-card-container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px 20px; min-height: 260px; flex-shrink: 0; }
         
-        .flash-card {
-            width: 100%;
-            max-width: 340px;
-            min-height: 240px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            position: relative;
-            cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
+        .flash-card { width: 100%; max-width: 340px; min-height: 240px; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; padding: 20px; position: relative; cursor: pointer; border: 1px solid rgba(0,0,0,0.03); }
         
         .card-top { display: flex; justify-content: space-between; align-items: center; }
         .card-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px 0; }
@@ -143,16 +120,7 @@
         .card-meaning-text.show { visibility: visible; opacity: 1; }
         .tap-tip { font-size: 12px; color: #b0b8c4; margin-top: 8px; }
 
-        /* 底部按钮区（增加了适配 iOS 安全区域 padding） */
-        .recite-footer {
-            padding: 12px 20px calc(16px + env(safe-area-inset-bottom, 0px)) 20px;
-            background: #fff;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex-shrink: 0;
-        }
+        .recite-footer { padding: 12px 20px calc(16px + env(safe-area-inset-bottom, 0px)) 20px; background: #fff; border-top: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
         .progress-bar-bg { width: 100%; height: 6px; background: #f0f2f5; border-radius: 3px; overflow: hidden; }
         .progress-bar-fill { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s; }
         
@@ -162,7 +130,6 @@
         .btn-know { background: #e8f8ee; color: var(--success); }
         .btn-unknow { background: #ffebee; color: var(--danger); }
 
-        /* 空状态 */
         .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
         .loading { text-align: center; padding: 80px 20px; color: #8d949e; }
     </style>
@@ -200,6 +167,7 @@
                     <span>📁 筛选：</span>
                     <select id="groupSelect">
                         <option value="全部">全部分组</option>
+                        <option value="__WRONG_LIST__">📕 错题本</option>
                         <option value="__ONLY_WORDS__">🔤 仅看单词</option>
                         <option value="__ONLY_PHRASES__">💬 仅看短语</option>
                     </select>
@@ -239,7 +207,7 @@
             <div class="flash-card" id="flashCard">
                 <div class="card-top">
                     <span class="tag-badge" id="cardTag">List 1</span>
-                    <button class="star-btn" id="cardStarBtn">☆</button>
+                    <button class="icon-btn star-btn" id="cardStarBtn">☆</button>
                 </div>
                 <div class="card-center">
                     <div class="card-word" id="cardWord">Word</div>
@@ -276,7 +244,10 @@
         let currentTab = '全部'; // '全部' 或 '收藏'
         let selectedGroup = '全部';
         let searchKeyword = '';
+        
         let favorites = []; 
+        let wrongList = []; // 错题本数据
+        
         let isSyncing = false;
 
         // 背诵状态变量
@@ -285,46 +256,65 @@
         let isRandomMode = true;
         let isMeaningShown = false;
 
-        // ---------- 读取/写入云端收藏 ----------
-        async function fetchFavoritesFromCloud() {
+        // ---------- 读取/写入云端数据（聚合收藏与错题） ----------
+        async function fetchUserDataFromCloud() {
             try {
                 const res = await fetch(JSONBIN_URL, { headers: { 'X-Master-Key': JSONBIN_API_KEY } });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 let record = data.record;
+                
+                let favs = [];
+                let wrongs = [];
+
                 if (Array.isArray(record)) {
-                    return record.map(item => typeof item === 'string' ? item : item.word).filter(Boolean);
+                    // 兼容旧格式（纯字符串数组）
+                    favs = record.map(item => typeof item === 'string' ? item : item.word).filter(Boolean);
+                } else if (record && typeof record === 'object') {
+                    // 新格式：{ favorites: [], wrongList: [] }
+                    favs = record.favorites || [];
+                    wrongs = record.wrongList || [];
                 }
-                return [];
+                return { favorites: favs, wrongList: wrongs };
             } catch (err) {
-                return getLocalFavorites();
+                return getLocalUserData();
             }
         }
 
-        async function saveFavoritesToCloud(favList) {
+        async function saveUserDataToCloud() {
             if (isSyncing) return;
             isSyncing = true;
             updateSyncStatus('syncing', '⏳ 同步中');
+
+            const payload = {
+                favorites: favorites,
+                wrongList: wrongList
+            };
 
             try {
                 const res = await fetch(JSONBIN_URL, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_API_KEY },
-                    body: JSON.stringify(favList)
+                    body: JSON.stringify(payload)
                 });
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                localStorage.setItem('fav_words_cache', JSON.stringify(favList));
+                localStorage.setItem('user_data_cache', JSON.stringify(payload));
                 updateSyncStatus('synced', '☁️ 已同步');
             } catch (err) {
                 updateSyncStatus('error', '⚠️ 暂存本地');
-                localStorage.setItem('fav_words_cache', JSON.stringify(favList));
+                localStorage.setItem('user_data_cache', JSON.stringify(payload));
             } finally {
                 isSyncing = false;
             }
         }
 
-        function getLocalFavorites() {
-            try { return JSON.parse(localStorage.getItem('fav_words_cache')) || []; } catch { return []; }
+        function getLocalUserData() {
+            try { 
+                const raw = localStorage.getItem('user_data_cache');
+                return raw ? JSON.parse(raw) : { favorites: [], wrongList: [] };
+            } catch { 
+                return { favorites: [], wrongList: [] }; 
+            }
         }
 
         function toggleFavorite(wordText) {
@@ -333,10 +323,24 @@
             else favorites.push(wordText);
             updateTabCounts();
             render();
-            saveFavoritesToCloud(favorites);
+            saveUserDataToCloud();
+        }
+
+        function toggleWrongList(wordText, forceAdd = false) {
+            const idx = wrongList.indexOf(wordText);
+            if (forceAdd) {
+                if (idx === -1) wrongList.push(wordText);
+            } else {
+                if (idx > -1) wrongList.splice(idx, 1);
+                else wrongList.push(wordText);
+            }
+            updateGroupOptionLabels();
+            render();
+            saveUserDataToCloud();
         }
 
         function isFavorite(wordText) { return favorites.includes(wordText); }
+        function isWrong(wordText) { return wrongList.includes(wordText); }
 
         function updateSyncStatus(status, msg) {
             const el = document.getElementById('syncStatus');
@@ -346,7 +350,7 @@
 
         function isPhrase(item) { return item.meaning && item.meaning.includes('phr.'); }
 
-        // ---------- Dropdown 初始化 ----------
+        // ---------- Dropdown 初始化与更新 ----------
         function initGroupSelect() {
             const set = new Set();
             allWords.forEach(item => set.add(item.list || '未分类'));
@@ -359,6 +363,7 @@
             const selectEl = document.getElementById('groupSelect');
             selectEl.innerHTML = `
                 <option value="全部">全部分组</option>
+                <option value="__WRONG_LIST__" id="wrongOption">📕 错题本 (${wrongList.length})</option>
                 <option value="__ONLY_WORDS__">🔤 仅看单词</option>
                 <option value="__ONLY_PHRASES__">💬 仅看短语</option>
                 <option disabled>──────────</option>
@@ -376,6 +381,11 @@
             });
         }
 
+        function updateGroupOptionLabels() {
+            const opt = document.getElementById('wrongOption');
+            if (opt) opt.textContent = `📕 错题本 (${wrongList.length})`;
+        }
+
         function updateTabCounts() {
             document.getElementById('countAll').textContent = `(${allWords.length})`;
             document.getElementById('countFav').textContent = `(${favorites.length})`;
@@ -389,7 +399,9 @@
                 data = data.filter(item => favorites.includes(item.word));
             }
 
-            if (selectedGroup === '__ONLY_PHRASES__') {
+            if (selectedGroup === '__WRONG_LIST__') {
+                data = data.filter(item => wrongList.includes(item.word));
+            } else if (selectedGroup === '__ONLY_PHRASES__') {
                 data = data.filter(item => isPhrase(item));
             } else if (selectedGroup === '__ONLY_WORDS__') {
                 data = data.filter(item => !isPhrase(item));
@@ -424,7 +436,9 @@
 
             if (filtered.length === 0) {
                 let msg = '😅 没找到符合要求的单词/短语';
-                if (currentTab === '收藏' && favorites.length === 0) {
+                if (selectedGroup === '__WRONG_LIST__') {
+                    msg = '🎉 错题本空空如也，太棒了！';
+                } else if (currentTab === '收藏' && favorites.length === 0) {
                     msg = '💔 暂无收藏内容<br><span style="font-size:13px;color:#abb2bf;">点击单词右侧的 ⭐ 即可收藏</span>';
                 }
                 container.innerHTML = `<div class="empty">${msg}</div>`;
@@ -454,6 +468,7 @@
                     const tag = item.list || '未分类';
                     const meaningHtml = (item.meaning || '').replace(/\n/g, '<br>');
                     const fav = isFavorite(item.word);
+                    const wrong = isWrong(item.word);
                     
                     html += `
                         <div class="word-card">
@@ -464,17 +479,28 @@
                                 </div>
                                 <div class="word-meaning">${meaningHtml}</div>
                             </div>
-                            <button class="star-btn ${fav ? 'active' : ''}" data-word="${item.word}">${fav ? '★' : '☆'}</button>
+                            <div class="card-actions">
+                                ${selectedGroup === '__WRONG_LIST__' ? `<button class="icon-btn remove-wrong-btn" data-word="${item.word}" title="移出错题本">🧹</button>` : ''}
+                                <button class="icon-btn star-btn ${fav ? 'active' : ''}" data-word="${item.word}">${fav ? '★' : '☆'}</button>
+                            </div>
                         </div>
                     `;
                 });
             });
             container.innerHTML = html;
 
+            // 绑定收藏与移除错题事件
             container.querySelectorAll('.star-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     toggleFavorite(this.dataset.word);
+                });
+            });
+
+            container.querySelectorAll('.remove-wrong-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleWrongList(this.dataset.word);
                 });
             });
         }
@@ -491,12 +517,10 @@
 
             reciteList = [...sourceData];
             if (isRandomMode) {
-                // 洗牌算法打乱
                 reciteList.sort(() => Math.random() - 0.5);
             }
             reciteIndex = 0;
 
-            // 设置标题
             let title = `背诵: ${currentTab}`;
             if (selectedGroup !== '全部') {
                 const selObj = document.getElementById('groupSelect');
@@ -510,7 +534,6 @@
 
         function renderReciteCard() {
             if (reciteIndex >= reciteList.length) {
-                // 告捷/结束提示
                 document.getElementById('cardWord').textContent = '🎉 太棒了！';
                 document.getElementById('cardMeaning').innerHTML = '你已经背完了本轮的所有单词！';
                 document.getElementById('cardMeaning').classList.add('show');
@@ -530,10 +553,9 @@
             document.getElementById('tapTip').style.display = 'block';
             document.getElementById('cardTag').textContent = currentObj.list || '未分类';
 
-            // 收藏星号
             const starBtn = document.getElementById('cardStarBtn');
             const fav = isFavorite(currentObj.word);
-            starBtn.className = `star-btn ${fav ? 'active' : ''}`;
+            starBtn.className = `icon-btn star-btn ${fav ? 'active' : ''}`;
             starBtn.textContent = fav ? '★' : '☆';
             starBtn.onclick = (e) => {
                 e.stopPropagation();
@@ -541,13 +563,11 @@
                 renderReciteCard();
             };
 
-            // 进度条与计数
             document.getElementById('cardIndexText').textContent = `${reciteIndex + 1} / ${reciteList.length}`;
             const pct = ((reciteIndex) / reciteList.length) * 100;
             document.getElementById('reciteProgressBar').style.width = `${pct}%`;
         }
 
-        // 切换卡片显示释义
         document.getElementById('flashCard').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
             isMeaningShown = !isMeaningShown;
@@ -562,22 +582,25 @@
             }
         });
 
-        // 记住了 / 没记住
+        // 记住了
         document.getElementById('btnKnow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
             reciteIndex++;
             renderReciteCard();
         });
 
+        // 没记住 -> 自动加入错题本，并在队尾重抽
         document.getElementById('btnUnknow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
-            // 没记住的把当前词放回队列末尾，稍后重新抽到
-            reciteList.push(reciteList[reciteIndex]);
+            
+            const currentObj = reciteList[reciteIndex];
+            toggleWrongList(currentObj.word, true); // 强制加入错题本
+
+            reciteList.push(currentObj);
             reciteIndex++;
             renderReciteCard();
         });
 
-        // 背诵模式：随机 vs 顺序 切换
         document.getElementById('btnModeRandom').addEventListener('click', function() {
             isRandomMode = true;
             this.classList.add('active');
@@ -595,32 +618,29 @@
         document.getElementById('btnOpenRecite').addEventListener('click', startRecite);
         document.getElementById('btnCloseRecite').addEventListener('click', () => {
             document.getElementById('reciteModal').classList.remove('show');
-            render(); // 刷新列表
+            render();
         });
 
-        // 🙈 遮挡释义开关
         document.getElementById('maskModeCheckbox').addEventListener('change', function() {
-            if (this.checked) {
-                document.body.classList.add('mask-mode');
-            } else {
-                document.body.classList.remove('mask-mode');
-            }
+            if (this.checked) document.body.classList.add('mask-mode');
+            else document.body.classList.remove('mask-mode');
         });
 
         // ---------- 加载数据 ----------
         async function loadData() {
             try {
-                const [wordsRes, favs] = await Promise.all([
+                const [wordsRes, cloudData] = await Promise.all([
                     fetch(DATA_URL),
-                    fetchFavoritesFromCloud()
+                    fetchUserDataFromCloud()
                 ]);
                 
                 if (!wordsRes.ok) throw new Error('网络请求失败');
                 allWords = await wordsRes.json();
                 allWords.sort((a, b) => a.word.localeCompare(b.word));
 
-                favorites = (favs && Array.isArray(favs)) ? favs : getLocalFavorites();
-                localStorage.setItem('fav_words_cache', JSON.stringify(favorites));
+                favorites = cloudData.favorites || [];
+                wrongList = cloudData.wrongList || [];
+                localStorage.setItem('user_data_cache', JSON.stringify({ favorites, wrongList }));
 
                 initGroupSelect();
                 updateTabCounts();
