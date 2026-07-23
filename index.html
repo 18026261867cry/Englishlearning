@@ -39,7 +39,7 @@
         /* 次级过滤栏（List 分类筛选） */
         .sub-filter-bar { display: flex; align-items: center; justify-content: space-between; padding: 6px 16px 10px 16px; border-top: 1px dashed #f0f2f5; font-size: 13px; color: var(--text-sub); }
         .filter-select-wrapper { display: flex; align-items: center; gap: 6px; background: #f0f2f5; padding: 4px 10px; border-radius: 8px; }
-        .filter-select-wrapper select { border: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--text-main); outline: none; cursor: pointer; }
+        .filter-select-wrapper select { border: none; background: transparent; font-size: 13px; font-weight: 600; color: var(--text-main); outline: none; cursor: pointer; }
         
         .sync-indicator { font-size: 12px; color: #8d949e; }
         .sync-indicator.synced { color: #34c759; }
@@ -107,12 +107,14 @@
             </button>
         </div>
 
-        <!-- 次级筛选：单元 List & 同步状态 -->
+        <!-- 次级筛选：单元/词性过滤 & 同步状态 -->
         <div class="sub-filter-bar">
             <div class="filter-select-wrapper">
-                <span>📁 分组：</span>
+                <span>📁 筛选：</span>
                 <select id="groupSelect">
                     <option value="全部">全部分组</option>
+                    <option value="__ONLY_WORDS__">🔤 仅看单词</option>
+                    <option value="__ONLY_PHRASES__">💬 仅看短语</option>
                 </select>
             </div>
             <div class="sync-indicator synced" id="syncStatus">
@@ -142,7 +144,7 @@
 
         let allWords = [];
         let currentTab = '全部'; // '全部' 或 '收藏'
-        let selectedGroup = '全部'; // List 单元选择
+        let selectedGroup = '全部'; // 下拉菜单选择项
         let searchKeyword = '';
         let favorites = []; 
         let isSyncing = false;
@@ -223,6 +225,11 @@
             el.textContent = msg;
         }
 
+        // ---------- 判断是否是短语 ----------
+        function isPhrase(item) {
+            return item.meaning && item.meaning.includes('phr.');
+        }
+
         // ---------- 初始化 Dropdown 下拉选项 ----------
         function initGroupSelect() {
             const set = new Set();
@@ -234,11 +241,16 @@
             });
 
             const selectEl = document.getElementById('groupSelect');
-            selectEl.innerHTML = '<option value="全部">全部分组</option>';
+            selectEl.innerHTML = `
+                <option value="全部">全部分组</option>
+                <option value="__ONLY_WORDS__">🔤 仅看单词</option>
+                <option value="__ONLY_PHRASES__">💬 仅看短语</option>
+                <option disabled>──────────</option>
+            `;
             groups.forEach(g => {
                 const opt = document.createElement('option');
                 opt.value = g;
-                opt.textContent = g;
+                opt.textContent = `📁 ${g}`;
                 selectEl.appendChild(opt);
             });
 
@@ -262,8 +274,12 @@
                 data = data.filter(item => favorites.includes(item.word));
             }
 
-            // 2. 分组下拉过滤
-            if (selectedGroup !== '全部') {
+            // 2. 下拉条件过滤（短语 / 单词 / 指定 List 单元）
+            if (selectedGroup === '__ONLY_PHRASES__') {
+                data = data.filter(item => isPhrase(item));
+            } else if (selectedGroup === '__ONLY_WORDS__') {
+                data = data.filter(item => !isPhrase(item));
+            } else if (selectedGroup !== '全部') {
                 data = data.filter(item => (item.list || '未分类') === selectedGroup);
             }
 
@@ -294,9 +310,9 @@
             const filtered = getFilteredData();
 
             if (filtered.length === 0) {
-                let msg = '😅 没找到符合要求的单词';
+                let msg = '😅 没找到符合要求的单词/短语';
                 if (currentTab === '收藏' && favorites.length === 0) {
-                    msg = '💔 暂无收藏单词<br><span style="font-size:13px;color:#abb2bf;">点击单词右侧的 ⭐ 即可收藏</span>';
+                    msg = '💔 暂无收藏内容<br><span style="font-size:13px;color:#abb2bf;">点击单词右侧的 ⭐ 即可收藏</span>';
                 }
                 container.innerHTML = `<div class="empty">${msg}</div>`;
                 document.getElementById('letterIndex').innerHTML = '';
