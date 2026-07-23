@@ -139,9 +139,37 @@
 
         .empty { text-align: center; padding: 80px 20px; color: #8d949e; font-size: 15px; }
         .loading { text-align: center; padding: 80px 20px; color: #8d949e; }
+
+        /* ================= 🖨️ PDF / 打印排版专用 CSS ================= */
+        @media print {
+            body { background: #fff !important; color: #000 !important; height: auto !important; overflow: visible !important; }
+            .top-container, .letter-index, .recite-modal, .card-actions { display: none !important; }
+            .main-content { overflow: visible !important; padding: 0 !important; }
+            
+            /* 打印标题 */
+            .print-header { display: block !important; text-align: center; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px; }
+            .print-title { font-size: 22px; font-weight: bold; }
+            .print-subtitle { font-size: 12px; color: #666; margin-top: 4px; }
+
+            /* 字母分组标题 */
+            .letter-header { border-bottom: 1px solid #999 !important; font-size: 16px !important; margin-top: 15px !important; color: #000 !important; page-break-after: avoid; }
+            
+            /* 卡片打印排版 */
+            .word-card { box-shadow: none !important; border: 1px solid #ddd !important; border-radius: 6px !important; padding: 8px 12px !important; margin: 6px 0 !important; page-break-inside: avoid; }
+            .word-text { font-size: 16px !important; color: #000 !important; }
+            .word-meaning { filter: none !important; background: transparent !important; color: #333 !important; font-size: 13px !important; }
+            .tag-badge { border: 1px solid #ccc; background: none !important; color: #555 !important; }
+        }
+        .print-header { display: none; }
     </style>
 </head>
 <body>
+
+    <!-- 打印时的专属顶部页眉 -->
+    <div class="print-header">
+        <div class="print-title" id="printTitle">我的单词背诵清单</div>
+        <div class="print-subtitle" id="printSubTitle">导出时间：2026-07-23</div>
+    </div>
 
     <div class="top-container">
         <!-- 搜索栏 -->
@@ -184,8 +212,8 @@
                     <input type="checkbox" id="maskModeCheckbox">
                     <span>🙈 遮挡释义</span>
                 </label>
-                <!-- 📥 导出当前筛选数据 -->
-                <button class="btn-export" id="btnExport">📥 导出JSON</button>
+                <!-- 🖨️ 导出 PDF / 打印背诵单 -->
+                <button class="btn-export" id="btnExportPdf">🖨️ 导出PDF</button>
             </div>
             
             <div class="sync-indicator synced" id="syncStatus">☁️ 已同步</div>
@@ -269,12 +297,11 @@
         let isRandomMode = true;
         let isMeaningShown = false;
 
-        // ---------- 🔊 语音发音：使用有道免费在线发音（全平台全系统兼容） ----------
+        // ---------- 🔊 语音发音：使用有道免费在线发音 ----------
         function speakWord(text) {
             if (currentAudio) {
                 currentAudio.pause();
             }
-            // type=2 为美音，type=1 为英音
             const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=1`;
             currentAudio = new Audio(audioUrl);
             currentAudio.play().catch(err => console.log('音频播放被阻拦:', err));
@@ -448,32 +475,26 @@
             return { groups, sortedKeys: Object.keys(groups).sort() };
         }
 
-        // ---------- 📥 智能导出当前列表的数据 ----------
-        function exportCurrentData() {
+        // ---------- 🖨️ 导出 PDF / 打印背后逻辑 ----------
+        function exportToPdf() {
             const filteredData = getFilteredData();
             if (filteredData.length === 0) {
-                alert('当前展示列表为空，无需导出！');
+                alert('当前筛选列表中没有单词，无法导出！');
                 return;
             }
 
-            // 计算导出文件名
-            let scopeName = currentTab === '收藏' ? '收藏集' : '全部单词';
-            if (selectedGroup === '__WRONG_LIST__') scopeName = '错题本';
-            else if (selectedGroup === '__ONLY_WORDS__') scopeName = '仅单词';
-            else if (selectedGroup === '__ONLY_PHRASES__') scopeName = '仅短语';
-            else if (selectedGroup !== '全部') scopeName = selectedGroup;
+            // 设置打印页眉标题
+            let scopeName = currentTab === '收藏' ? '❤️ 收藏单词集' : '📚 全部单词';
+            if (selectedGroup === '__WRONG_LIST__') scopeName = '📕 错题本词单';
+            else if (selectedGroup === '__ONLY_WORDS__') scopeName = '🔤 仅单词集';
+            else if (selectedGroup === '__ONLY_PHRASES__') scopeName = '💬 仅短语集';
+            else if (selectedGroup !== '全部') scopeName = `📁 ${selectedGroup} 词单`;
 
-            const dateStr = new Date().toISOString().split('T')[0];
-            const fileName = `单词库_${scopeName}_${dateStr}.json`;
+            document.getElementById('printTitle').textContent = `背诵清单：${scopeName} (共 ${filteredData.length} 词)`;
+            document.getElementById('printSubTitle').textContent = `生成时间：${new Date().toLocaleString()} | 提示：可直接保存为 PDF 打印背诵`;
 
-            // 转为 JSON 格式下载
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(filteredData, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", fileName);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+            // 触发浏览器原生打印（在电脑上可直接“另存为 PDF”，手机上可分享/存储为 PDF）
+            window.print();
         }
 
         // ---------- 主列表渲染 ----------
@@ -690,7 +711,7 @@
             else document.body.classList.remove('mask-mode');
         });
 
-        document.getElementById('btnExport').addEventListener('click', exportCurrentData);
+        document.getElementById('btnExportPdf').addEventListener('click', exportToPdf);
 
         // ---------- 加载数据 ----------
         async function loadData() {
