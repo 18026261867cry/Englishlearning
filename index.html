@@ -265,17 +265,14 @@
 
         // ---------- 🔊 核心语音发音函数 ----------
         function speakWord(text) {
-            if (!('speechSynthesis' in window)) {
-                alert('抱歉，您的设备/浏览器不支持TTS发音功能。');
-                return;
-            }
-            // 停止之前的发音
-            window.speechSynthesis.cancel();
-
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'en-US'; // 设为美音（也可以设为 en-GB 英文）
-            utterance.rate = 0.9;     // 语速稍微放慢一点点（1是正常）
-            window.speechSynthesis.speak(utterance);
+    // 使用有道词典免费的发音 API (type=1 为英音，type=2 为美音)
+            const audioUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&type=2`;
+            const audio = new Audio(audioUrl);
+            
+            audio.play().catch(err => {
+                console.error("播放失败:", err);
+                alert("发音播放失败，请检查网络设置。");
+            });
         }
 
         // ---------- 读取/写入云端数据 ----------
