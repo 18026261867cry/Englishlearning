@@ -350,8 +350,13 @@
     "list": "单词1"
   },
   {
-    "word": "Tough structure",
+    "word": "tough",
     "meaning": "adj. 坚韧的；艰难的",
+    "list": "单词1"
+  },
+  {
+    "word": "structure",
+    "meaning": "n.结构，架构",
     "list": "单词1"
   },
   {
@@ -482,11 +487,6 @@
   {
     "word": "root",
     "meaning": "n. 根；根源",
-    "list": "单词2"
-  },
-  {
-    "word": "cover",
-    "meaning": "v. 覆盖；包括",
     "list": "单词2"
   },
   {
@@ -1355,11 +1355,6 @@
     "list": "单词5"
   },
   {
-    "word": "remarkable",
-    "meaning": "adj. 非凡的",
-    "list": "单词5"
-  },
-  {
     "word": "plus",
     "meaning": "prep. 加上  n. 优势",
     "list": "单词5"
@@ -2110,11 +2105,6 @@
     "list": "单词7"
   },
   {
-    "word": "press",
-    "meaning": "v. 按下，压  n. 新闻界，出版社",
-    "list": "单词7"
-  },
-  {
     "word": "forehead",
     "meaning": "n. 额头",
     "list": "单词7"
@@ -2336,7 +2326,7 @@
   },
   {
     "word": "expense",
-    "meaning": "n. 支出",
+    "meaning": "n. 支出，花费",
     "list": "单词8"
   },
   {
@@ -2541,7 +2531,7 @@
   },
   {
     "word": "urge",
-    "meaning": "v. 催促，力劝  n. 强烈的欲望",
+    "meaning": "v. 催促，力劝，呼吁  n. 强烈的欲望",
     "list": "单词8"
   },
   {
@@ -2741,7 +2731,7 @@
   },
   {
     "word": "grab",
-    "meaning": "v. 抓住，攫取，赶紧做/吃",
+    "meaning": "v. 抓住，攫取",
     "list": "单词9"
   },
   {
@@ -3318,8 +3308,634 @@
     "word": "colleague",
     "meaning": "n. 同事",
     "list": "单词10"
+  },
+  {
+    "word": "conservation",
+    "meaning": "n. 保护，保存；节约",
+    "list": "单词11"
+  },
+  {
+    "word": "establish",
+    "meaning": "v. 建立，设立，确立",
+    "list": "单词11"
+  },
+  {
+    "word": "establishment",
+    "meaning": "n. 建立，确立",
+    "list": "单词11"
+  },
+  {
+    "word": "tournament",
+    "meaning": "n. 锦标赛，联赛",
+    "list": "单词11"
+  },
+  {
+    "word": "endeavour",
+    "meaning": "n. & v. 努力，尝试（美式：endeavor）",
+    "list": "单词11"
+  },
+  {
+    "word": "prize",
+    "meaning": "n. 奖品，奖金；vt. 珍视，高度评价",
+    "list": "单词11"
+  },
+  {
+    "word": "deed",
+    "meaning": "n. 行为，事迹；",
+    "list": "单词11"
+  },
+  {
+    "word": "strive",
+    "meaning": "v. 努力，奋斗，力求",
+    "list": "单词11"
+  },
+  {
+    "word": "strive to",
+    "meaning": "phr. 努力做……，力争做……",
+    "list": "单词11"
+  },
+  {
+    "word": "mere",
+    "meaning": "adj. 仅仅的，只不过的",
+    "list": "单词11"
+  },
+  {
+    "word": "frighten",
+    "meaning": "v. 使惊恐，吓唬",
+    "list": "单词11"
+  },
+  {
+    "word": "guilty",
+    "meaning": "adj. 内疚的；有罪的",
+    "list": "单词11"
+  },
+  {
+    "word": "ashamed",
+    "meaning": "adj. 感到羞耻的，惭愧的",
+    "list": "单词11"
+  },
+  {
+    "word": "back",
+    "meaning": "v. 支持，退后；n. 后背，背部",
+    "list": "单词11"
+  },
+  {
+    "word": "initial",
+    "meaning": "adj. adj. 最初的，开始的",
+    "list": "单词11"
+  },
+  {
+    "word": "restrict",
+    "meaning": "v. 限制，约束",
+    "list": "单词11"
+  },
+  {
+    "word": "fund",
+    "meaning": "n. 资金，基金；vt. 资助，拨款",
+    "list": "单词11"
+  },
+  {
+    "word": "disturb",
+    "meaning": "v. 打扰，打乱，使不安",
+    "list": "单词11"
+  },
+  {
+    "word": "commercial",
+    "meaning": "adj. 商业的；",
+    "list": "单词11"
+  },
+  {
+    "word": "remarkable",
+    "meaning": "adj. 显著的，非凡的，引人注目的",
+    "list": "单词11"
+  },
+  {
+    "word": "block",
+    "meaning": "v. 堵塞，阻挡；n. 街区，大块，障碍物",
+    "list": "单词11"
+  },
+  {
+    "word": "classify",
+    "meaning": "v. 将……分类，归类",
+    "list": "单词11"
+  },
+  {
+    "word": "litter",
+    "meaning": "n. 垃圾，杂物；v. 乱扔（垃圾）",
+    "list": "单词11"
+  },
+  {
+    "word": "suspect",
+    "meaning": "v. 怀疑，猜想；",
+    "list": "单词11"
+  },
+  {
+    "word": "starve",
+    "meaning": "v. （使）饿死，挨饿",
+    "list": "单词11"
+  },
+  {
+    "word": "equality",
+    "meaning": "n. 平等，均等",
+    "list": "单词11"
+  },
+  {
+    "word": "protest",
+    "meaning": "v. & n. 抗议，反对",
+    "list": "单词11"
+  },
+  {
+    "word": "whisper",
+    "meaning": "v. & n. 低语，耳语，私语",
+    "list": "单词11"
+  },
+  {
+    "word": "excuse",
+    "meaning": "v. 原谅，借口；n. 借口，理由",
+    "list": "单词11"
+  },
+  {
+    "word": "identity",
+    "meaning": "n. 身份，一致性",
+    "list": "单词11"
+  },
+  {
+    "word": "identification",
+    "meaning": "n. 身份证明，确认",
+    "list": "单词11"
+  },
+  {
+    "word": "impact",
+    "meaning": "n. & v. 影响，冲击，碰撞",
+    "list": "单词11"
+  },
+  {
+    "word": "be fresh from",
+    "meaning": "phr. 刚经历过……",
+    "list": "单词11"
+  },
+  {
+    "word": "hit upon",
+    "meaning": "phr. 突然想到，偶然发现",
+    "list": "单词11"
+  },
+  {
+    "word": "call off",
+    "meaning": "phr. 取消，叫停",
+    "list": "单词11"
+  },
+  {
+    "word": "object to",
+    "meaning": "phr. 反对，抗议",
+    "list": "单词11"
+  },
+  {
+    "word": "be of service",
+    "meaning": "phr. 有用，有帮助，能帮忙",
+    "list": "单词11"
+  },
+  {
+    "word": "on account of",
+    "meaning": "phr. 由于，因为",
+    "list": "单词11"
+  },
+  {
+    "word": "on behalf of",
+    "meaning": "phr. 代表……",
+    "list": "单词11"
+  },
+  {
+    "word": "in recognition of",
+    "meaning": "phr. 为表彰……",
+    "list": "单词11"
+  },
+  {
+    "word": "in contrast to",
+    "meaning": "phr. 与……形成鲜明对比",
+    "list": "单词11"
+  },
+  {
+    "word": "contrast",
+    "meaning": "n. 对比，对照；v. 使对比，形成对照",
+    "list": "单词11"
+  },
+  {
+    "word": "harm",
+    "meaning": "n. & v. 伤害，损害，危害",
+    "list": "单词11"
+  },
+  {
+    "word": "agriculture",
+    "meaning": "n. 农业",
+    "list": "单词11"
+  },
+  {
+    "word": "mine",
+    "meaning": " n. 矿山；v. 开采；pron. 我的",
+    "list": "单词11"
+  },
+  {
+    "word": "radio",
+    "meaning": "n. 无线电，收音机",
+    "list": "单词11"
+  },
+  {
+    "word": "print",
+    "meaning": " v. 打印，印刷；n. 印刷品，印迹",
+    "list": "单词11"
+  },
+  {
+    "word": "unpleasant",
+    "meaning": "adj. 使人不愉快的，讨厌的",
+    "list": "单词11"
+  },
+  {
+    "word": "pretend",
+    "meaning": "v. 假装，装作",
+    "list": "单词11"
+  },
+  {
+    "word": "pretend to do",
+    "meaning": "phr. 假装做某事",
+    "list": "单词11"
+  },
+  {
+    "word": "upset",
+    "meaning": "adj. 心烦意乱的，沮丧的；v. 使心烦",
+    "list": "单词11"
+  },
+  {
+    "word": "officer",
+    "meaning": "n. 官员",
+    "list": "单词11"
+  },
+  {
+    "word": "arrest",
+    "meaning": "v. & n. 逮捕，拘留",
+    "list": "单词11"
+  },
+  {
+    "word": "right",
+    "meaning": "n. 权利，右边；adj. 正确的，右边的",
+    "list": "单词11"
+  },
+  {
+    "word": "reporter",
+    "meaning": "n. 记者",
+    "list": "单词11"
+  },
+  {
+    "word": "murder",
+    "meaning": "n. & v. 谋杀，谋杀案",
+    "list": "单词11"
+  },
+  {
+    "word": "cover",
+    "meaning": "v. 报道，覆盖，包含；n. 封面，盖子",
+    "list": "单词11"
+  },
+  {
+    "word": "case",
+    "meaning": "n. 案例，案件，情况",
+    "list": "单词11"
+  },
+  {
+    "word": "inner",
+    "meaning": "adj. 内部的，内心的",
+    "list": "单词11"
+  },
+  {
+    "word": "honesty",
+    "meaning": "n. 诚实，正直",
+    "list": "单词11"
+  },
+  {
+    "word": "pioneer",
+    "meaning": "n. 先驱，开拓者；v. 开拓，倡导",
+    "list": "单词11"
+  },
+  {
+    "word": "attempt",
+    "meaning": "n. & v. 企图，尝试",
+    "list": "单词11"
+  },
+  {
+    "word": "attempt to do sth",
+    "meaning": "phr. 尝试做某事",
+    "list": "单词11"
+  },
+  {
+    "word": "symptom",
+    "meaning": "n. 症状，征兆",
+    "list": "单词11"
+  },
+  {
+    "word": "depress",
+    "meaning": "v. 使抑郁，使沮丧",
+    "list": "单词11"
+  },
+  {
+    "word": "depressive",
+    "meaning": "adj. 抑郁的，令人沮丧的",
+    "list": "单词11"
+  },
+  {
+    "word": "cognitive",
+    "meaning": "adj. 认知的，感知的",
+    "list": "单词11"
+  },
+  {
+    "word": "immune",
+    "meaning": "adj. 免疫的",
+    "list": "单词11"
+  },
+  {
+    "word": "alleviate",
+    "meaning": "v. 减轻，缓和，缓解",
+    "list": "单词11"
+  },
+  {
+    "word": "fatigue",
+    "meaning": "n. 疲劳，疲倦",
+    "list": "单词11"
+  },
+  {
+    "word": "thereby",
+    "meaning": "adv. 因此",
+    "list": "单词11"
+  },
+  {
+    "word": "urban",
+    "meaning": "adj. 城市的",
+    "list": "单词11"
+  },
+  {
+    "word": "suburban",
+    "meaning": "adj. 郊区的，近郊的",
+    "list": "单词11"
+  },
+  {
+    "word": "resource",
+    "meaning": "n. 资源",
+    "list": "单词11"
+  },
+  {
+    "word": "observe",
+    "meaning": "v. 观察，注意到",
+    "list": "单词11"
+  },
+  {
+    "word": "escape",
+    "meaning": "v. & n. 逃脱，避开，逃跑",
+    "list": "单词11"
+  },
+  {
+    "word": "refresh",
+    "meaning": "v. 使恢复精力，刷新",
+    "list": "单词11"
+  },
+  {
+    "word": "inspiration",
+    "meaning": "n. 灵感，鼓舞人心的人/事",
+    "list": "单词11"
+  },
+  {
+    "word": "clarify",
+    "meaning": "v. 澄清，阐明，使清晰",
+    "list": "单词11"
+  },
+  {
+    "word": "like",
+    "meaning": "prep. 像……；v. 喜欢",
+    "list": "单词11"
+  },
+  {
+    "word": "unlike",
+    "meaning": "prep. 不像，与……不同",
+    "list": "单词11"
+  },
+  {
+    "word": "B.C.",
+    "meaning": "abbr. 公元前 (Before Christ)",
+    "list": "单词11"
+  },
+  {
+    "word": "A.D.",
+    "meaning": "abbr. 公元 (Anno Domini)",
+    "list": "单词11"
+  },
+  {
+    "word": "wool",
+    "meaning": "n. 羊毛",
+    "list": "单词11"
+  },
+  {
+    "word": "silver",
+    "meaning": "n. 白银，银器；adj. 银色的",
+    "list": "单词11"
+  },
+  {
+    "word": "gold",
+    "meaning": "n. 黄金，金币；adj. 金色的",
+    "list": "单词11"
+  },
+  {
+    "word": "trade",
+    "meaning": "n. & v. 贸易，交易，买卖",
+    "list": "单词11"
+  },
+  {
+    "word": "ocean",
+    "meaning": "n. 海洋，洋",
+    "list": "单词11"
+  },
+  {
+    "word": "oceanic",
+    "meaning": "adj. 海洋的，海洋生物的",
+    "list": "单词11"
+  },
+  {
+    "word": "navigation",
+    "meaning": "n. 航海，导航，领航",
+    "list": "单词11"
+  },
+  {
+    "word": "sail",
+    "meaning": "v. 航行，帆游；n. 帆，航程",
+    "list": "单词11"
+  },
+  {
+    "word": "fuel",
+    "meaning": "n. 燃料；v. 加燃料，激起",
+    "list": "单词11"
+  },
+  {
+    "word": "known",
+    "meaning": "adj. 著名的，众所周知的，知名的",
+    "list": "单词11"
+  },
+  {
+    "word": "continent",
+    "meaning": "n. 大陆，洲",
+    "list": "单词11"
+  },
+  {
+    "word": "contribute",
+    "meaning": "v. 贡献，捐献，促成",
+    "list": "单词11"
+  },
+  {
+    "word": "along",
+    "meaning": "prep. 沿着，顺着；adv. 向前，一起",
+    "list": "单词11"
+  },
+  {
+    "word": "board",
+    "meaning": "v. 上（船、车、飞机）；n. 木板，董事会",
+    "list": "单词11"
+  },
+  {
+    "word": "dare",
+    "meaning": "v. 敢，敢于",
+    "list": "单词11"
+  },
+  {
+    "word": "occasion",
+    "meaning": "n. 场合，时机，盛会",
+    "list": "单词11"
+  },
+  {
+    "word": "occasional",
+    "meaning": "adj. 偶尔的，偶发的",
+    "list": "单词11"
+  },
+  {
+    "word": "encounter",
+    "meaning": "v. & n. 遭遇，偶遇，邂逅",
+    "list": "单词11"
+  },
+  {
+    "word": "airplane",
+    "meaning": "n. 飞机",
+    "list": "单词11"
+  },
+  {
+    "word": "inborn",
+    "meaning": "adj. 天生的，生来的",
+    "list": "单词11"
+  },
+  {
+    "word": "assist",
+    "meaning": "v. 帮助，协助",
+    "list": "单词11"
+  },
+  {
+    "word": "assistant",
+    "meaning": "n. 助手，助理",
+    "list": "单词11"
+  },
+  {
+    "word": "assistance",
+    "meaning": "n. 帮助，援助",
+    "list": "单词11"
+  },
+  {
+    "word": "press",
+    "meaning": "n. 媒体，新闻界，报刊；v. 压，按",
+    "list": "单词11"
+  },
+  {
+    "word": "destination",
+    "meaning": "n. 目的地，终点",
+    "list": "单词11"
+  },
+  {
+    "word": "taste",
+    "meaning": "n. 味道，品味；v. 品尝，尝起来",
+    "list": "单词11"
+  },
+  {
+    "word": "well-rounded",
+    "meaning": "adj. 面面俱到的，全面发展的",
+    "list": "单词11"
+  },
+  {
+    "word": "open-minded",
+    "meaning": "adj. 思想开明的",
+    "list": "单词11"
+  },
+  {
+    "word": "round",
+    "meaning": "adj. 圆的，球形的；prep. 围绕",
+    "list": "单词11"
+  },
+  {
+    "word": "mind",
+    "meaning": "n. 头脑，思想；v. 介意，照顾",
+    "list": "单词11"
+  },
+  {
+    "word": "video",
+    "meaning": "n. 视频，录像",
+    "list": "单词11"
+  },
+  {
+    "word": "nutrient",
+    "meaning": "n. 营养物；adj. 有营养的",
+    "list": "单词11"
+  },
+  {
+    "word": "technique",
+    "meaning": "n. 技术，技巧",
+    "list": "单词11"
+  },
+  {
+    "word": "fertilizer",
+    "meaning": "n. 肥料，化肥",
+    "list": "单词11"
+  },
+  {
+    "word": "gain an edge on",
+    "meaning": "phr. 在某方面获得优势",
+    "list": "单词11"
+  },
+  {
+    "word": "fascinate",
+    "meaning": "v. 深深吸引，使入迷",
+    "list": "单词11"
+  },
+  {
+    "word": "fascinating",
+    "meaning": "adj. 迷人的，极有吸引力的",
+    "list": "单词11"
+  },
+  {
+    "word": "be fascinated by",
+    "meaning": "phr. 被……深深吸引，对……入迷",
+    "list": "单词11"
+  },
+  {
+    "word": "shocked",
+    "meaning": "adj. 感到震惊的，震撼的",
+    "list": "单词11"
+  },
+  {
+    "word": "shock",
+    "meaning": "n. 震惊，震动；v. 使震惊",
+    "list": "单词11"
+  },
+  {
+    "word": "grade",
+    "meaning": "n. 年级，成绩，等级；v. 分级，评分",
+    "list": "单词11"
+  },
+  {
+    "word": "slight",
+    "meaning": "adj. 轻微的，微小的",
+    "list": "单词11"
   }
 ]
+
 
 
 
