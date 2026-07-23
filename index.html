@@ -443,11 +443,13 @@
 
         function initGroupSelect() {
             const set = new Set();
-            allWords.forEach(item => set.add(item.list || '未分类'));
+            allWords.forEach(item => {
+                if (item.list) set.add(item.list);
+            });
+
+            // 🌟 优化后的排序逻辑：使用 zh-CN 拼音/字母自然排序
             const groups = Array.from(set).sort((a, b) => {
-                const numA = parseInt(a.replace(/\D/g, '')) || 0;
-                const numB = parseInt(b.replace(/\D/g, '')) || 0;
-                return numA - numB;
+                return a.localeCompare(b, 'zh-CN', { numeric: true, sensitivity: 'base' });
             });
 
             const selectEl = document.getElementById('groupSelect');
@@ -458,6 +460,7 @@
                 <option value="__ONLY_PHRASES__">💬 仅看短语</option>
                 <option disabled>──────────</option>
             `;
+            
             groups.forEach(g => {
                 const opt = document.createElement('option');
                 opt.value = g;
