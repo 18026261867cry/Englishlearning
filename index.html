@@ -790,9 +790,10 @@
         }
 
         // ---------- 🃏 背诵模式 ----------
+        // ---------- 🃏 背诵模式 (修复版) ----------
         function startRecite() {
             const sourceData = getFilteredData();
-            if (sourceData.length === 0) {
+            if (!sourceData || sourceData.length === 0) {
                 alert('当前筛选状态下没有可以背诵的单词！');
                 return;
             }
@@ -801,13 +802,28 @@
             if (isRandomMode) reciteList.sort(() => Math.random() - 0.5);
             reciteIndex = 0;
 
+            // 1. 构建背诵标题（兼容单选/多选框）
             let title = `背诵: ${currentTab}`;
-            if (selectedGroup !== '全部') {
+            if (typeof selectedGroups !== 'undefined' && Array.isArray(selectedGroups)) {
+                if (!selectedGroups.includes('全部')) {
+                    title += ` (${selectedGroups.length}个分组)`;
+                }
+            } else {
                 const selObj = document.getElementById('groupSelect');
-                title += ` (${selObj.options[selObj.selectedIndex].text})`;
+                if (selObj && selObj.selectedIndex !== -1) {
+                    const optText = selObj.options[selObj.selectedIndex].text;
+                    if (selObj.value !== '全部') {
+                        title += ` (${optText})`;
+                    }
+                }
             }
-            document.getElementById('reciteScopeTitle').textContent = title;
-            document.getElementById('reciteModal').classList.add('show');
+            
+            const titleEl = document.getElementById('reciteScopeTitle');
+            if (titleEl) titleEl.textContent = title;
+            
+            const modalEl = document.getElementById('reciteModal');
+            if (modalEl) modalEl.classList.add('show');
+            
             renderReciteCard();
         }
 
