@@ -924,27 +924,40 @@
         document.getElementById('btnExportPdf').addEventListener('click', exportToPdf);
 
         // ---------- 数据初始化 ----------
+        // ---------- 数据初始化 (优化容错版) ----------
         async function loadData() {
             try {
-                const [wordsRes, cloudData] = await Promise.all([
-                    fetch(DATA_URL),
-                    fetchUserDataFromCloud()
-                ]);
+                // 1. 先加载核心单词库数据
+                const wordsRes = await fetch(DATA_URL);
+                if (!wordsRes.ok) throw new Error(`单词库加载失败 (HTTP ${wordsRes.status})`);
                 
-                if (!wordsRes.ok) throw new Error('网络请求失败');
                 allWords = await wordsRes.json();
                 allWords.sort((a, b) => a.word.localeCompare(b.word));
 
-                favorites = cloudData.favorites || [];
-                wrongList = cloudData.wrongList || [];
-                studyHistory = cloudData.studyHistory || {};
-                localStorage.setItem('user_data_cache', JSON.stringify({ favorites, wrongList, studyHistory }));
+                // 2. 尝试获取云端用户数据（如果网络不好失败了，自动降级用本地缓存，不影响单词显示）
+                try {
+                    const cloudData = await fetchUserDataFromCloud();
+                    favorites = cloudData.favorites || [];
+                    wrongList = cloudData.wrongList || [];
+                    studyHistory = cloudData.studyHistory || {};
+                    localStorage.setItem('user_data_cache', JSON.stringify({ favorites, wrongList, studyHistory }));
+                    updateSyncStatus('synced', '☁️ 已同步');
+                } catch (cloudErr) {
+                    console.warn('云端同步失败，已降级使用本地缓存:', cloudErr);
+                    const localData = getLocalUserData();
+                    favorites = localData.favorites || [];
+                    wrongList = localData.wrongList || [];
+                    studyHistory = localData.studyHistory || {};
+                    updateSyncStatus('error', '⚠️ 离线模式');
+                }
 
+                // 3. 初始化 UI 界面
                 initGroupSelect();
                 updateTabCounts();
                 render();
-                updateSyncStatus('synced', '☁️ 已同步');
+
             } catch (err) {
+                // 只有当单词库本地/网络文件彻底打不开时，才显示真正的加载失败
                 document.getElementById('mainContent').innerHTML = `
                     <div class="empty">❌ 加载失败<br><span style="font-size:13px;color:#bbb;">${err.message}</span></div>
                 `;
