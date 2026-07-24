@@ -290,9 +290,12 @@
             <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="reciteProgressBar"></div>
             </div>
-            <div class="recite-actions">
+            <div class="recite-actions" id="reciteActionsNormal">
                 <button class="action-btn btn-unknow" id="btnUnknow">❌ 没记住</button>
                 <button class="action-btn btn-know" id="btnKnow">✅ 记住了</button>
+            </div>
+            <div class="recite-actions" id="reciteActionsNext" style="display: none;">
+                <button class="action-btn btn-know" id="btnNextWord" style="background: var(--primary); color: #fff;">➡️ 下一个</button>
             </div>
         </div>
     </div>
@@ -734,7 +737,12 @@
             renderReciteCard();
         }
 
+        // ---------- 🃏 背诵卡片渲染 ----------
         function renderReciteCard() {
+            // 重置按钮显示（恢复为：没记住 / 记住了）
+            document.getElementById('reciteActionsNormal').style.display = 'flex';
+            document.getElementById('reciteActionsNext').style.display = 'none';
+
             if (reciteIndex >= reciteList.length) {
                 document.getElementById('cardWord').textContent = '🎉 太棒了！';
                 document.getElementById('cardMeaning').innerHTML = '你已经背完了本轮的所有单词！打卡记录已同步~';
@@ -743,6 +751,10 @@
                 document.getElementById('cardTag').textContent = '完成';
                 document.getElementById('cardIndexText').textContent = `${reciteList.length} / ${reciteList.length}`;
                 document.getElementById('reciteProgressBar').style.width = '100%';
+                
+                // 隐藏控制按钮
+                document.getElementById('reciteActionsNormal').style.display = 'none';
+                document.getElementById('reciteActionsNext').style.display = 'none';
                 return;
             }
 
@@ -777,21 +789,7 @@
             document.getElementById('reciteProgressBar').style.width = `${pct}%`;
         }
 
-        document.getElementById('flashCard').addEventListener('click', () => {
-            if (reciteIndex >= reciteList.length) return;
-            isMeaningShown = !isMeaningShown;
-            const meaningEl = document.getElementById('cardMeaning');
-            const tipEl = document.getElementById('tapTip');
-            if (isMeaningShown) {
-                meaningEl.classList.add('show');
-                tipEl.style.display = 'none';
-            } else {
-                meaningEl.classList.remove('show');
-                tipEl.style.display = 'block';
-            }
-        });
-
-        // 点击“记住了”
+        // 点击“记住了” -> 直接跳到下一个
         document.getElementById('btnKnow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
             recordStudyWordCount(); // 记录打卡数量并云端同步
@@ -799,18 +797,30 @@
             renderReciteCard();
         });
 
-        // 点击“没记住”
+        // 点击“没记住” -> 自动显示释义 + 切换为【➡️ 下一个】按钮
         document.getElementById('btnUnknow').addEventListener('click', () => {
             if (reciteIndex >= reciteList.length) return;
             const currentObj = reciteList[reciteIndex];
-            toggleWrongList(currentObj.word, true);
+            toggleWrongList(currentObj.word, true); // 存入错题本
+            recordStudyWordCount(); // 记录打卡
+            reciteList.push(currentObj); // 放到队尾重新背
 
-            recordStudyWordCount(); // 记录打卡数量并云端同步
-            reciteList.push(currentObj);
+            // 1. 展开释义
+            isMeaningShown = true;
+            document.getElementById('cardMeaning').classList.add('show');
+            document.getElementById('tapTip').style.display = 'none';
+
+            // 2. 切换底部按钮为“下一个”
+            document.getElementById('reciteActionsNormal').style.display = 'none';
+            document.getElementById('reciteActionsNext').style.display = 'flex';
+        });
+
+        // 点击“➡️ 下一个” -> 切到下一个单词
+        document.getElementById('btnNextWord').addEventListener('click', () => {
             reciteIndex++;
             renderReciteCard();
         });
-
+        
         document.getElementById('btnModeRandom').addEventListener('click', function() {
             isRandomMode = true;
             this.classList.add('active');
