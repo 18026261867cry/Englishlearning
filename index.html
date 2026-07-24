@@ -229,14 +229,15 @@
 
         <div class="sub-filter-bar">
             <div class="filter-left">
-                <div class="filter-select-wrapper">
+                <div class="filter-select-wrapper" style="position: relative;">
                     <span>📁 筛选：</span>
-                    <select id="groupSelect">
-                        <option value="全部">全部分组</option>
-                        <option value="__WRONG_LIST__">📕 错题本</option>
-                        <option value="__ONLY_WORDS__">🔤 仅看单词</option>
-                        <option value="__ONLY_PHRASES__">💬 仅看短语</option>
-                    </select>
+                    <button id="filterBtn" type="button" style="border:none; background:transparent; font-size:12px; font-weight:600; cursor:pointer; color:var(--text-main);">
+                        全部分组 ▼
+                    </button>
+                    <!-- 多选下拉面板 -->
+                    <div id="filterDropdown" style="display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #ddd; box-shadow:0 4px 12px rgba(0,0,0,0.15); border-radius:8px; padding:8px 12px; z-index:100; min-width:160px; max-height:250px; overflow-y:auto;">
+                        <!-- 动态生成的复选框会放在这里 -->
+                    </div>
                 </div>
                 <label class="mask-toggle">
                     <input type="checkbox" id="maskModeCheckbox">
@@ -308,7 +309,7 @@
 
         let allWords = [];
         let currentTab = '全部'; // '全部' | '收藏' | '日历'
-        let selectedGroup = '全部';
+        let selectedGroup = ['全部'];
         let searchKeyword = '';
         
         let favorites = []; 
@@ -450,31 +451,99 @@
                 if (item.list) set.add(item.list);
             });
 
-            // 🌟 优化后的排序逻辑：使用 zh-CN 拼音/字母自然排序
             const groups = Array.from(set).sort((a, b) => {
                 return a.localeCompare(b, 'zh-CN', { numeric: true, sensitivity: 'base' });
             });
 
-            const selectEl = document.getElementById('groupSelect');
-            selectEl.innerHTML = `
-                <option value="全部">全部分组</option>
-                <option value="__WRONG_LIST__" id="wrongOption">📕 错题本 (${wrongList.length})</option>
-                <option value="__ONLY_WORDS__">🔤 仅看单词</option>
-                <option value="__ONLY_PHRASES__">💬 仅看短语</option>
-                <option disabled>──────────</option>
+            const dropdown = document.getElementById('filterDropdown');
+            const filterBtn = document.getElementById('filterBtn');
+
+            // 构建多选选项列表
+            let optionsHtml = `
+                <label style="display:flex; align-items:center; gap:6px; margin:4px 0; font-size:12px; cursor:pointer;">
+                    <input type="checkbox" value="全部" class="group-checkbox" checked> 全部分组
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; margin:4px 0; font-size:12px; cursor:pointer;">
+                    <input type="checkbox" value="__WRONG_LIST__" class="group-checkbox"> 📕 错题本 (<span id="wrongCountText">${wrongList.length}</span>)
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; margin:4px 0; font-size:12px; cursor:pointer;">
+                    <input type="checkbox" value="__ONLY_WORDS__" class="group-checkbox"> 🔤 仅看单词
+                </label>
+                <label style="display:flex; align-items:center; gap:6px; margin:4px 0; font-size:12px; cursor:pointer;">
+                    <input type="checkbox" value="__ONLY_PHRASES__" class="group-checkbox"> 💬 仅看短语
+                </label>
+                <hr style="border:none; border-top:1px solid #eee; margin:6px 0;">
             `;
-            
+
             groups.forEach(g => {
-                const opt = document.createElement('option');
-                opt.value = g;
-                opt.textContent = `📁 ${g}`;
-                selectEl.appendChild(opt);
+                optionsHtml += `
+                    <label style="display:flex; align-items:center; gap:6px; margin:4px 0; font-size:12px; cursor:pointer;">
+                        <input type="checkbox" value="${g}" class="group-checkbox"> 📁 ${g}
+                    </label>
+                `;
             });
 
-            selectEl.addEventListener('change', (e) => {
-                selectedGroup = e.target.value;
-                render();
+            dropdown.innerHTML = optionsHtml;
+
+            // 展开/收起面板
+            filterBtn.onclick = (e) => {
+                e.stopPropagation();
+                dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+            };
+
+            // 点击外部关闭下拉框
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.filter-select-wrapper')) {
+                    dropdown.style.display = 'none';
+                }
             });
+
+            // 监听多选框勾选事件
+            dropdown.querySelectorAll('.group-checkbox').forEach(chk => {
+                chk.addEventListener('change', (e) => {
+                    const val = e.target.value;
+
+                    if (val === '全部') {
+                        if (e.target.checked) {
+                            // 选了“全部”，取消其他所有勾选
+                            dropdown.querySelectorAll('.group-checkbox').forEach(c => {
+                                if (c.value !== '全部') c.checked = false;
+                            });
+                        }
+                    } else {
+                        // 选了具体的，取消“全部”的勾选
+                        const allChk = dropdown.querySelector('.group-checkbox[value="全部"]');
+                        if (allChk) allChk.checked = false;
+                    }
+
+                    // 收集所有被勾选的值
+                    const checkedBoxes = Array.from(dropdown.querySelectorAll('.group-checkbox:checked')).map(c => c.value);
+                    
+                    if (checkedBoxes.length === 0) {
+                        // 如果都没勾，默认选中“全部”
+                        const allChk = dropdown.querySelector('.group-checkbox[value="全部"]');
+                        if (allChk) allChk.checked = true;
+                        selectedGroups = ['全部'];
+                    } else {
+                        selectedGroups = checkedBoxes;
+                    }
+
+                    // 更新按钮提示文字
+                    if (selectedGroups.includes('全部')) {
+                        filterBtn.textContent = '全部分组 ▼';
+                    } else {
+                        filterBtn.textContent = `已选 (${selectedGroups.length}项) ▼`;
+                    }
+
+                    render();
+                });
+            });
+        }
+
+        // 辅助更新错题本数量的显示
+        function updateGroupOptionLabels() {
+            const el = document.getElementById('wrongCountText');
+            if (el) el.textContent = wrongList.length;
         }
 
         function updateGroupOptionLabels() {
@@ -489,19 +558,24 @@
 
         function getFilteredData() {
             let data = allWords;
+
             if (currentTab === '收藏') {
                 data = data.filter(item => favorites.includes(item.word));
             }
-            if (selectedGroup === '__WRONG_LIST__') {
-                data = data.filter(item => wrongList.includes(item.word));
-            } else if (selectedGroup === '__ONLY_PHRASES__') {
-                data = data.filter(item => isPhrase(item));
-            } else if (selectedGroup === '__ONLY_WORDS__') {
-                data = data.filter(item => !isPhrase(item));
-            } else if (selectedGroup !== '全部') {
-                data = data.filter(item => (item.list || '未分类') === selectedGroup);
+
+            // 多选条件筛选逻辑 (满足任意一个选中条件的词都会展示)
+            if (!selectedGroups.includes('全部')) {
+                data = data.filter(item => {
+                    return selectedGroups.some(group => {
+                        if (group === '__WRONG_LIST__') return wrongList.includes(item.word);
+                        if (group === '__ONLY_PHRASES__') return isPhrase(item);
+                        if (group === '__ONLY_WORDS__') return !isPhrase(item);
+                        return (item.list || '未分类') === group;
+                    });
+                });
             }
 
+            // 关键字搜索
             if (searchKeyword.trim() !== '') {
                 const kw = searchKeyword.trim().toLowerCase();
                 data = data.filter(item =>
@@ -820,7 +894,7 @@
             reciteIndex++;
             renderReciteCard();
         });
-        
+
         document.getElementById('btnModeRandom').addEventListener('click', function() {
             isRandomMode = true;
             this.classList.add('active');
