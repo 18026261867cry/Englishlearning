@@ -557,29 +557,31 @@
         }
 
         function getFilteredData() {
-            let data = allWords;
+            let data = allWords || [];
 
             if (currentTab === '收藏') {
                 data = data.filter(item => favorites.includes(item.word));
             }
 
-            // 多选条件筛选逻辑 (满足任意一个选中条件的词都会展示)
-            if (!selectedGroups.includes('全部')) {
-                data = data.filter(item => {
-                    return selectedGroups.some(group => {
-                        if (group === '__WRONG_LIST__') return wrongList.includes(item.word);
-                        if (group === '__ONLY_PHRASES__') return isPhrase(item);
-                        if (group === '__ONLY_WORDS__') return !isPhrase(item);
-                        return (item.list || '未分类') === group;
+            // 统一的多选过滤逻辑
+            if (typeof selectedGroups !== 'undefined' && Array.isArray(selectedGroups)) {
+                if (!selectedGroups.includes('全部')) {
+                    data = data.filter(item => {
+                        return selectedGroups.some(group => {
+                            if (group === '__WRONG_LIST__') return wrongList.includes(item.word);
+                            if (group === '__ONLY_PHRASES__') return isPhrase(item);
+                            if (group === '__ONLY_WORDS__') return !isPhrase(item);
+                            return (item.list || '未分类') === group;
+                        });
                     });
-                });
+                }
             }
 
             // 关键字搜索
             if (searchKeyword.trim() !== '') {
                 const kw = searchKeyword.trim().toLowerCase();
                 data = data.filter(item =>
-                    item.word.toLowerCase().includes(kw) ||
+                    (item.word && item.word.toLowerCase().includes(kw)) ||
                     (item.meaning && item.meaning.toLowerCase().includes(kw))
                 );
             }
